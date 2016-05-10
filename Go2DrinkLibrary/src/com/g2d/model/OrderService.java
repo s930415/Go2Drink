@@ -12,6 +12,7 @@ import com.g2d.domain.Customer;
  *
  * @author Administrator
  */
+//+折價
 public class OrderService {
     public double order(Customer c, Product p , int q){
         double rtn = 0;

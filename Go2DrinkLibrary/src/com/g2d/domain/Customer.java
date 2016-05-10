@@ -40,15 +40,12 @@ public class Customer {
     private String address;
     private String phone;
     private int status = 1;
-<<<<<<< HEAD
 
     //private boolean married = false;
     //private int warwr;
     //private int qqaa;
 
     private int test;
-=======
->>>>>>> 8440d60d1e47eb9484343e467b86b1404649cc5f
 
 
    public Customer(){
