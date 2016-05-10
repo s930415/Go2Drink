@@ -34,6 +34,10 @@ public class Customer {
     private String phone;
     private boolean married = false;
     private int status = 1;
+<<<<<<< HEAD
+=======
+    private int warwr;
+>>>>>>> 5ec761176986b5a6dcf3366d7e59fdbe2d1db772
     
    public Customer(){
     }
