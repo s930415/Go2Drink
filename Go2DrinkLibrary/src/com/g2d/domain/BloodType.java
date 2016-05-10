@@ -2,7 +2,7 @@ package com.g2d.domain;
 
 public enum BloodType {
 	
-	O,A,AB,B;
+	O,A,AB,B,C;
 
     @Override
     public String toString() {
