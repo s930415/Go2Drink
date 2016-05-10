@@ -23,7 +23,7 @@ public class Customer {
     
     
     
-    private static String EMAILPATTERN = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+    private static String EMAILPATTERN = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";//email格式的判斷式
     private String email;
     private String name;
     private char gender;
@@ -150,14 +150,15 @@ public class Customer {
     /**
      * @param birthday the birthday to set
      */
-    public void setBirthday(Date birthday) {
+    public void setBirthday(Date birthday) throws Go2DrinkException{
         if(birthday==null){
             this.birthday = birthday;
         }else{
             if(new Date().after(birthday)){
                 this.birthday = birthday;
             }else{
-                System.err.println("出生日期必須小於今天");
+               // System.err.println("出生日期必須小於今天");
+               throw new Go2DrinkException("出生日期必須小於今天");
             }
                
         }
