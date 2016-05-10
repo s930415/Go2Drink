@@ -5,9 +5,14 @@
  */
 package com.g2d.domain;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -164,7 +169,16 @@ public class Customer {
         }
     }
     
-
+    public static final DateFormat birthdayFormat = new SimpleDateFormat("yyyy/M/d");    
+    public void setBirthday(String s) throws Go2DrinkException{
+        try {
+            Date d = birthdayFormat.parse(s);
+            this.setBirthday(d);
+        } catch (ParseException ex) {
+            Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, "日期格是不正確", ex);
+            throw new Go2DrinkException("日期格式不正確",ex);
+        }
+    }
     /**
      * @return the address
      */

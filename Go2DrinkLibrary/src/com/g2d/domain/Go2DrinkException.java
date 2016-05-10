@@ -27,4 +27,8 @@ public class Go2DrinkException extends Exception {
     public Go2DrinkException(String msg) {
         super(msg);
     }
+
+    public Go2DrinkException(String message, Throwable cause) {
+        super(message, cause);
+    }
 }
