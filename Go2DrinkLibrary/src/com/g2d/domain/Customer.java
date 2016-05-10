@@ -24,7 +24,6 @@ public class Customer {
     
     
     private static String EMAILPATTERN = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
-    private static String IDPATTERN = "[A-Z][12]\\d{8}";
     private String email;
     private String name;
     private char gender;
@@ -38,7 +37,7 @@ public class Customer {
    public Customer(){
     }
     
-   public Customer(String name,String password){
+   public Customer(String name,String password) throws Go2DrinkException{
         this.setName(name);
         this.setPassword(password);
    }
@@ -46,7 +45,7 @@ public class Customer {
    
     //提供方便
     
-   public Customer(String name,String password,String email,char gender){
+   public Customer(String name,String password,String email,char gender) throws Go2DrinkException{
         this(name,password);
         this.setEmail(email);
         this.setGender(gender);
@@ -131,12 +130,13 @@ public class Customer {
      */
     
     //可用entropy去檢查密碼強度
-    public void setPassword(String password) {
+    public void setPassword(String password) throws Go2DrinkException{
         
         if((password.trim().length()>=6) && password.length()<=12){
             this.password = password;
         }else{
-            System.err.println("密碼必須大於6碼小於12碼");
+           // System.err.println("密碼必須大於6碼小於12碼");
+             throw new Go2DrinkException("密碼必須大於6碼小於12碼");
         }
     }   
 
