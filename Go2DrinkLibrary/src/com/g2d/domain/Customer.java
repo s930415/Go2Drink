@@ -35,6 +35,7 @@ public class Customer {
     private boolean married = false;
     private int status = 1;
     private BloodType bloodtype;
+    private int qoo;
     
    public Customer(){
     }
