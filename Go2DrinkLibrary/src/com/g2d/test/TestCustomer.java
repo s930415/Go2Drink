@@ -5,7 +5,6 @@
  */
 package com.g2d.test;
 
-import com.g2d.domain.BloodType;
 import com.g2d.domain.Customer;
 import com.g2d.domain.Product;
 import java.text.DateFormat;
@@ -29,14 +28,12 @@ public class TestCustomer {
         c.setAddress("新北市");
         c.setEmail("adas@com.tw");
         c.setBirthday(new GregorianCalendar(1985, 4 - 1, 28).getTime()); //月分因為是用國外的,且用陣列所以0對應一月,1對應2月,故要減1
-        c.setBloodtype(BloodType.A);
         Product p = new Product();
         p.setName("錫蘭紅茶");
         p.setUntiPrice(25);
         int age = c.getAge();
 
         System.out.println("age:" + age);
-        System.out.println(c.getBloodtype());
         System.out.println("c.name:" + c.getName());
         System.out.println("c.birthday:" + c.getBirthday());//1985/4/28
         System.out.println("p.name:" + p.getName());

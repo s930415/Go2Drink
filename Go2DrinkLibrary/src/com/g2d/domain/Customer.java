@@ -34,7 +34,6 @@ public class Customer {
     private String phone;
     private boolean married = false;
     private int status = 1;
-    private BloodType bloodtype;
     private int qoo;
     
    public Customer(){
@@ -277,16 +276,5 @@ public class Customer {
             return false;
         }
         return true;
-    }
-
-	public BloodType getBloodtype() {
-		return bloodtype;
-	}
-
-	public void setBloodtype(BloodType bloodtype) {
-		this.bloodtype = bloodtype;
-	}
-    
-    
-    
+    } 
 }
