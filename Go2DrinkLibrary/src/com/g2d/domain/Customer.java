@@ -94,12 +94,13 @@ public class Customer {
     /**
      * @param email the email to set
      */
-    public void setEmail(String email) {
+    public void setEmail(String email) throws Go2DrinkException {
         // 一個反斜線是控制字元,兩個反斜線是跟系統說這是給regular expression lib去用的
         if(email != null && (email.trim()).matches(EMAILPATTERN)){
             this.email = email;
         }else{
-            System.err.println("email不須符合正確格式");
+            //System.err.println("email不須符合正確格式");
+            throw new Go2DrinkException("email不須符合正確格式");
         }
     }
 
