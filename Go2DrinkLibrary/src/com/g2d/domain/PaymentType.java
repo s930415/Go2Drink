@@ -11,7 +11,7 @@ package com.g2d.domain;
  */
 public enum PaymentType {
     
-    FACE("面交"), ATM("轉帳") , STORE("便利商店,60") ,HOME("貨到付款,100");
+    FACE("面交");
     
     private final String chName;
     private final int price;
