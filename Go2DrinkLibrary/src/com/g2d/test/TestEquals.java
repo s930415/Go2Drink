@@ -14,8 +14,8 @@ import com.g2d.domain.Customer;
 public class TestEquals {
     public static void main(String[] args) {
         
-        Customer c1 = new Customer("A123456789" , "John","123456");
-        Customer c2 = new Customer("A123456789" , "John","123456");
+        Customer c1 = new Customer( "John","123456");
+        Customer c2 = new Customer( "John","123456");
         System.out.println(c1);
         System.out.println(c2);
         System.out.println(c1 == c2);  // == 是判定這兩個物件是否是參考到同一個記憶體位置

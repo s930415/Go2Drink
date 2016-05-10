@@ -18,7 +18,7 @@ import com.g2d.model.OrderService;
 public class TestOrderService {
     public static void main(String[] args) {
         
-        Customer c = new Customer("A123456789", "John", "123456");
+        Customer c = new Customer("John", "123456");
   
         Product p = new Product(0, "錫蘭紅茶", 25);
 
@@ -26,7 +26,7 @@ public class TestOrderService {
         OrderService service = new OrderService();
         System.out.println(service.order(c, p, 25));
         
-        c = new VIP("A123456789", "John", "123456");
+        c = new VIP("John", "123456");
         p = new Outlet(1, "阿薩姆奶茶", 35);      
         System.out.println(service.order(c, p, 25));
     }

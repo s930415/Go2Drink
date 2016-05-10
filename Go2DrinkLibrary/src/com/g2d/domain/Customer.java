@@ -25,7 +25,6 @@ public class Customer {
     
     private static String EMAILPATTERN = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
     private static String IDPATTERN = "[A-Z][12]\\d{8}";
-    private String id;
     private String email;
     private String name;
     private char gender;
@@ -40,8 +39,7 @@ public class Customer {
    public Customer(){
     }
     
-   public Customer(String id,String name,String password){
-        this.setId(id);
+   public Customer(String name,String password){
         this.setName(name);
         this.setPassword(password);
    }
@@ -49,28 +47,12 @@ public class Customer {
    
     //提供方便
     
-   public Customer(String id,String name,String password,String email,char gender){
-        this(id,name,password);
+   public Customer(String name,String password,String email,char gender){
+        this(name,password);
         this.setEmail(email);
         this.setGender(gender);
     }
-    
-    
-    
-    public void setId(String idValue){
-        
-        //檢查是否格式正確,必要欄位不能是null
-        if(idValue != null && (idValue = idValue.trim()).length()== 10){
-            this.id = idValue;
-        }else{
-            System.err.println("指派id不正確:"+ idValue);
-        }
-    }
-    
-    public String getId(){
-        return id;
-    }
-    
+
     public void setName(String name){
         if(name != null && name.trim().length() >=2){
             this.name = name;
@@ -240,16 +222,8 @@ public class Customer {
     }
     
     @Override
-    public Customer clone(){
-        Customer c = new Customer();
-        c.setId(this.getId());
-        
-        return c;
-    }
-
-    @Override
     public String toString() {
-        return this.getClass().getName()+ '\n' + "id=" + id + ", email=" + email + ", name=" + name + ", gender=" + gender + ", password=" + password + ", birthday=" + birthday + ", address=" + address + ", phone=" + phone + ", married=" + married + ", status=" + status ;
+        return this.getClass().getName()+ '\n'  + ", email=" + email + ", name=" + name + ", gender=" + gender + ", password=" + password + ", birthday=" + birthday + ", address=" + address + ", phone=" + phone + ", married=" + married + ", status=" + status ;
     }
 
     /*
@@ -278,7 +252,7 @@ public class Customer {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 89 * hash + Objects.hashCode(this.id);
+        hash = 89 * hash + Objects.hashCode(this.email);
         hash = 89 * hash + Objects.hashCode(this.password);
         return hash;
     }
@@ -295,7 +269,7 @@ public class Customer {
             return false;
         }
         final Customer other = (Customer) obj;
-        if (!Objects.equals(this.id, other.id)) {
+        if (!Objects.equals(this.email, other.email)) {
             return false;
         }
         if (!Objects.equals(this.password, other.password)) {

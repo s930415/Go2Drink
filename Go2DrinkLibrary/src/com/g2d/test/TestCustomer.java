@@ -24,7 +24,6 @@ public class TestCustomer {
         System.out.println("i:" + i);//i:8
 
         Customer c = new Customer();
-        c.setId("A123456789");
         System.out.println(c);
         c.setName("小米德");
         c.setAddress("新北市");

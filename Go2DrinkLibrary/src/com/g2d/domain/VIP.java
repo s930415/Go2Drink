@@ -15,12 +15,12 @@ public class VIP extends Customer{
     public VIP() {
     }
 
-    public VIP(String id, String name, String password) {
-        super(id, name, password);
+    public VIP( String name, String password) {
+        super( name, password);
     }
 
-    public VIP(String id, String name, String password, String email, char gender) {
-        super(id, name, password, email, gender);
+    public VIP(String name, String password, String email, char gender) {
+        super( name, password, email, gender);
     }
     
     /**

@@ -16,7 +16,7 @@ public class TestPoolymorphism {
     public static void main(String[] args) {
         Object o = "Hello";
 
-        Customer c = new VIP("A123456789", "John", "123123");
+        Customer c = new VIP( "John", "123123");
         
         o = c;
         
