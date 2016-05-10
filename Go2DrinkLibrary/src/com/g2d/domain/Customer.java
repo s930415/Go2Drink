@@ -34,7 +34,8 @@ public class Customer {
     private String phone;
     private boolean married = false;
     private int status = 1;
-    private int qoo;
+    private int warwr;
+    private int qqaa;
     
    public Customer(){
     }
