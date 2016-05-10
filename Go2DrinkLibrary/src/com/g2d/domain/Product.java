@@ -14,9 +14,9 @@ public class Product {
     private int id;
     private String name;
     private double untiPrice;
-    private boolean free;
     private String url;
     private String descripition;
+    //private boolean free;
     
     public Product(){
     }
@@ -83,14 +83,14 @@ public class Product {
     /**
      * @return the free
      */
-    public boolean isFree() {
+    /**public boolean isFree() {
         return free;
     }
 
     /**
      * @param free the free to set
      */
-    public void setFree(boolean free) {
+    /**public void setFree(boolean free) {
         this.free = free;
     }
 
@@ -138,7 +138,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return this.getClass().getName()+'\n'+ "id=" + id + ", name=" + name + ", untiPrice=" + untiPrice + ", free=" + free + ", url=" + url + ", descripition=" + descripition + '}';
+        return this.getClass().getName()+'\n'+ "id=" + id + ", name=" + name + ", untiPrice=" + untiPrice + ", url=" + url + ", descripition=" + descripition + '}';
     }
 /*
     @Override

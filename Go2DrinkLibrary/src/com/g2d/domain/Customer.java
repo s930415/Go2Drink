@@ -24,7 +24,7 @@ public class Customer {
     
     
     private static String EMAILPATTERN = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
-    private static String IDPATTERN = "[A-Z][12]\\d{8}";
+    //private static String IDPATTERN = "[A-Z][12]\\d{8}";
     private String email;
     private String name;
     private char gender;
@@ -32,10 +32,10 @@ public class Customer {
     private Date birthday;
     private String address;
     private String phone;
-    private boolean married = false;
     private int status = 1;
-    private int warwr;
-    private int qqaa;
+    //private boolean married = false;
+    //private int warwr;
+    //private int qqaa;
 
    public Customer(){
     }
@@ -197,14 +197,14 @@ public class Customer {
     /**
      * @return the married
      */
-    public boolean isMarried() {
+   /** public boolean isMarried() {
         return married;
     }
 
     /**
      * @param married the married to set
      */
-    public void setMarried(boolean married) {
+    /**public void setMarried(boolean married) {
         this.married = married;
     }
 
@@ -224,7 +224,7 @@ public class Customer {
     
     @Override
     public String toString() {
-        return this.getClass().getName()+ '\n'  + ", email=" + email + ", name=" + name + ", gender=" + gender + ", password=" + password + ", birthday=" + birthday + ", address=" + address + ", phone=" + phone + ", married=" + married + ", status=" + status ;
+        return this.getClass().getName()+ '\n'  + ", email=" + email + ", name=" + name + ", gender=" + gender + ", password=" + password + ", birthday=" + birthday + ", address=" + address + ", phone=" + phone + ", status=" + status ;
     }
 
     /*
