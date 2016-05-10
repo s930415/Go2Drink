@@ -5,9 +5,14 @@
  */
 package com.g2d.domain;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,9 +27,11 @@ public class Customer {
     
     
     
-    
-    private static String EMAILPATTERN = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+   
     //private static String IDPATTERN = "[A-Z][12]\\d{8}";
+
+    private static String EMAILPATTERN = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";//email格式的判斷式
+
     private String email;
     private String name;
     private char gender;
@@ -33,14 +40,18 @@ public class Customer {
     private String address;
     private String phone;
     private int status = 1;
+
     //private boolean married = false;
     //private int warwr;
     //private int qqaa;
 
+    private int test;
+
+
    public Customer(){
     }
     
-   public Customer(String name,String password){
+   public Customer(String name,String password) throws Go2DrinkException{
         this.setName(name);
         this.setPassword(password);
    }
@@ -48,7 +59,7 @@ public class Customer {
    
     //提供方便
     
-   public Customer(String name,String password,String email,char gender){
+   public Customer(String name,String password,String email,char gender) throws Go2DrinkException{
         this(name,password);
         this.setEmail(email);
         this.setGender(gender);
@@ -92,12 +103,13 @@ public class Customer {
     /**
      * @param email the email to set
      */
-    public void setEmail(String email) {
+    public void setEmail(String email) throws Go2DrinkException {
         // 一個反斜線是控制字元,兩個反斜線是跟系統說這是給regular expression lib去用的
         if(email != null && (email.trim()).matches(EMAILPATTERN)){
             this.email = email;
         }else{
-            System.err.println("email不須符合正確格式");
+            //System.err.println("email不須符合正確格式");
+            throw new Go2DrinkException("email不須符合正確格式");
         }
     }
 
@@ -133,12 +145,13 @@ public class Customer {
      */
     
     //可用entropy去檢查密碼強度
-    public void setPassword(String password) {
+    public void setPassword(String password) throws Go2DrinkException{
         
         if((password.trim().length()>=6) && password.length()<=12){
             this.password = password;
         }else{
-            System.err.println("密碼必須大於6碼小於12碼");
+           // System.err.println("密碼必須大於6碼小於12碼");
+             throw new Go2DrinkException("密碼必須大於6碼小於12碼");
         }
     }   
 
@@ -152,20 +165,30 @@ public class Customer {
     /**
      * @param birthday the birthday to set
      */
-    public void setBirthday(Date birthday) {
+    public void setBirthday(Date birthday) throws Go2DrinkException{
         if(birthday==null){
             this.birthday = birthday;
         }else{
             if(new Date().after(birthday)){
                 this.birthday = birthday;
             }else{
-                System.err.println("出生日期必須小於今天");
+               // System.err.println("出生日期必須小於今天");
+               throw new Go2DrinkException("出生日期必須小於今天");
             }
                
         }
     }
     
-
+    public static final DateFormat birthdayFormat = new SimpleDateFormat("yyyy/M/d");    
+    public void setBirthday(String s) throws Go2DrinkException{
+        try {
+            Date d = birthdayFormat.parse(s);
+            this.setBirthday(d);
+        } catch (ParseException ex) {
+            Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, "日期格是不正確", ex);
+            throw new Go2DrinkException("日期格式不正確",ex);
+        }
+    }
     /**
      * @return the address
      */
