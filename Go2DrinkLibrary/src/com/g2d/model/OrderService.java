@@ -12,7 +12,7 @@ import com.g2d.domain.Customer;
  *
  * @author Administrator
  */
-//+折價
+
 public class OrderService {
     public double order(Customer c, Product p , int q){
         double rtn = 0;
@@ -20,4 +20,22 @@ public class OrderService {
         return rtn ;
     }
     
+    public double total(double[] price){
+        
+        double rtn = 0;
+            
+        for(int i = 0 ; i <= price.length ; i++){
+                
+            rtn += price[i];
+                
+        }
+        
+        if(price.length > 9){ 
+            
+            rtn = rtn*0.9;
+
+        }
+        
+        return rtn;
+    }
 }
