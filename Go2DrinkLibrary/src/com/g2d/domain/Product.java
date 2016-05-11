@@ -10,12 +10,16 @@ package com.g2d.domain;
  * @author Administrator
  */
 public class Product {
-
-    private int id;
-    private String name;
-    private double untiPrice;
-    private String url;
-    private String descripition;
+ 
+    private int id; //編號
+    private String name; //名稱
+    private double untiPrice; //價錢
+    private String url; //圖片
+    private String descripition;//敘述
+    private char size; //大小 M & L
+    
+    public static final char MIDDLE = 'M';
+    public static final char LARGE = 'L';
     //private boolean free;
     
     public Product(){
@@ -126,6 +130,18 @@ public class Product {
         }
     }
 
+    public char getSize() {
+        return size;
+    }
+
+    public void setSize(char size) {
+        if(size== 'M' || size == 'L'){
+            this.size = size;
+        }else{
+            System.err.println("請輸入M(中)orL(大)");
+        }
+    }
+    
     @Override
     public Product clone(){
         Product p=new Product();
