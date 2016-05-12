@@ -23,10 +23,10 @@ public class OrderService {
     public double total(double[] price){
         
         double rtn = 0;
-            
-        for(int i = 0 ; i < price.length ; i++){
+        
+        for(double data:price){
                 
-            rtn =  rtn + price[i];
+            rtn += data;
                 
         }
         
