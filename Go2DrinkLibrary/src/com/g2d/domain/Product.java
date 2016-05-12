@@ -153,7 +153,7 @@ public class Product {
     }
 
     @Override
-    public String toString() {
+    public String toString() {//id:產品編號 name:產品名稱 untiPrice:單價  url:圖片 descripition:描述
         return this.getClass().getName()+'\n'+ "id=" + id + ", name=" + name + ", untiPrice=" + untiPrice + ", url=" + url + ", descripition=" + descripition + '}';
     }
 /*
