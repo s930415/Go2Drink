@@ -22,6 +22,4 @@ public class TestCustomerService {
         a.setGender('M');
         System.out.println(ar.sayHello(a));
     }
-
-    
 }

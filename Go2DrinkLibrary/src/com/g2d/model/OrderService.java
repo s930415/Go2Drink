@@ -24,9 +24,9 @@ public class OrderService {
         
         double rtn = 0;
             
-        for(int i = 0 ; i <= price.length ; i++){
+        for(int i = 0 ; i < price.length ; i++){
                 
-            rtn += price[i];
+            rtn =  rtn + price[i];
                 
         }
         
