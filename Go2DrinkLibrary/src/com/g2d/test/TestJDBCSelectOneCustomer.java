@@ -9,6 +9,8 @@ import com.g2d.domain.Customer;
 import com.g2d.domain.Go2DrinkException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -20,8 +22,10 @@ import java.util.logging.Logger;
  *
  * @author Administrator
  */
-public class TestJDBCConnection {
+public class TestJDBCSelectOneCustomer {
     public static void main(String[] args) {
+        String email = "ddaddy@yahoo.com.tw";
+        final String SELECT_SQL = "SELECT * FROM customer WHERE email = ?";
         try {
             //1.載入DRIVER類別
             Class.forName("com.mysql.jdbc.Driver");
@@ -29,10 +33,11 @@ public class TestJDBCConnection {
             //2.建立連線
             try(
             Connection connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/go_2_drink?zeroDateTimeBehavior=convertToNull", "root", "qwer1234");
-                    java.sql.Statement stmt = connection.createStatement();//3.建立Statement
-                    ResultSet rs = stmt.executeQuery("SELECT * FROM customer")//4. 執行指令
+                    "jdbc:mysql://lotmods.ddns.net:23144/go_2_drink?zeroDateTimeBehavior=convertToNull", "s930415", "1234");
+                    PreparedStatement stmt = connection.prepareStatement(SELECT_SQL);//3.建立Statement
             ){
+                stmt.setString(1,email);
+                try(ResultSet rs = stmt.executeQuery()){//4. 執行指令
                 //System.out.println(connection.getCatalog());
                 //5.處理ResultSet
                 List<Customer> customerList = new ArrayList<>();
@@ -67,11 +72,12 @@ public class TestJDBCConnection {
                     }
                 }
                 System.out.println(customerList);
+                }
             }catch(SQLException ex){
                 System.err.println(ex);
             }
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(TestJDBCConnection.class.getName()).log(Level.SEVERE, "無法載入JDBC", ex);
+            Logger.getLogger(TestJDBCSelectOneCustomer.class.getName()).log(Level.SEVERE, "無法載入JDBC", ex);
         }
         
     }
