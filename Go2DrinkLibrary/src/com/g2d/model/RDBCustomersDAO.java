@@ -8,7 +8,6 @@ package com.g2d.model;
 import com.g2d.domain.Customer;
 import com.g2d.domain.Go2DrinkException;
 import java.sql.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,29 +45,24 @@ public class RDBCustomersDAO {
         try(Connection connection = RDBConnection.getConnection();
                 Statement stmt = connection.createStatement();
                  ResultSet rs = stmt.executeQuery(SELECT_ALL_SQL);){
+            Customer c = null;
             while(rs.next()){
+                    c.setName(rs.getString("name"));
+                    c.setPassword(rs.getString("password"));
+                    c.setEmail(rs.getString("email"));
+                    c.setGender(rs.getString("gender").charAt(0));
+                    c.setBirthday(rs.getDate("birthday"));
+                    c.setAddress(rs.getString("address"));
+                    c.setPhone(rs.getString("phone"));
+                    c.setStatus(0);
 
-                    
-
-                
-                
             }
         }catch(SQLException ex){
             throw new Go2DrinkException("查詢失敗", ex);
-            
 
         }
         return list;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     public Customer get(String email) throws Go2DrinkException{

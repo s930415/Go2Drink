@@ -19,7 +19,7 @@ public class TestRDBCustomerDAO {
     public static void main(String[] args) {
         try{
             RDBCustomersDAO dao = new RDBCustomersDAO();
-            try{
+           /* try{
                 
                 Customer c = dao.get("qscesz");
                 if(c != null){
@@ -30,14 +30,33 @@ public class TestRDBCustomerDAO {
             }catch(Go2DrinkException ex ){
                 Logger.getLogger(TestRDBCustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            
+          */  
+         /*   
             Customer c = new Customer("vincent", "123456", "qwwqe@yahoo.com.yw",'M');
             c.setBirthday("1911/08/06");
             dao.insert(c);
             System.out.println("新增成功");
         }catch(Go2DrinkException ex ){
            Logger.getLogger(TestRDBCustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }       
+        }
+        */
+        //--------------------------------------------------------------------------------------
+            try{
+                System.out.println(dao.getAll());
+                
+                
+                
+                
+            }catch(Go2DrinkException ex){
+                Logger.getLogger(TestRDBCustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            
+            
+        }catch(Exception ex){
+            Logger.getLogger(TestRDBCustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          
     }
 }
