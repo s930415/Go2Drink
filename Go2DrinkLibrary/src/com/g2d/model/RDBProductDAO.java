@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -32,6 +34,23 @@ public class RDBProductDAO {
                         p.setUntiPrice(rs.getDouble("price"));
                 }
             return p;
+            }   
+        }
+    }
+    public List<Product> getAll()throws Go2DrinkException, SQLException{
+        List<Product> list = new ArrayList<>();
+        try(Connection connection =  RDBConnection.getConnection();
+            PreparedStatement pstmt =connection.prepareStatement(SELECT_ALL_SQL)){
+            try(ResultSet rs = pstmt.executeQuery();){  
+                Product p = new Product();
+                while (rs.next()){
+                        p.setId(rs.getInt("id"));
+                        p.setName(rs.getString("name"));
+                        p.setUntiPrice(rs.getDouble("price"));
+                        list.add(p);
+                        
+                }
+            return list;
             }   
         }
     }
