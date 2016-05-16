@@ -30,25 +30,14 @@ public class TestRDBCustomerDAO {
             }catch(Go2DrinkException ex ){
                 Logger.getLogger(TestRDBCustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+            
             Customer c = new Customer("vincent", "123456", "qwwqe@yahoo.com.yw",'M');
             c.setBirthday("1911/08/06");
-            dao.insert(c);  
+            dao.insert(c);
+            System.out.println("新增成功");
         }catch(Go2DrinkException ex ){
            Logger.getLogger(TestRDBCustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        try{
-            RDBCustomersDAO dao = new RDBCustomersDAO();
-            Customer c = new Customer("vincent", "123456", "s123456@yahoo.com.tw", 'M');
-            c.setBirthday("1911/08/06");
-            dao.insert(c);
-            System.out.println(dao.getAll());
-        }catch(Go2DrinkException ex){
-            Logger.getLogger(TestRDBCustomerDAO.class.getName()).log(Level.SEVERE, null,ex);
-        }
-        
-        
-        
+        }       
     }
-
 }

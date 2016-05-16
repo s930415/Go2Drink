@@ -23,8 +23,7 @@ public class RDBCustomersDAO {
             +"VALUES(?,?,?,?,?,?,?,?)";
     public void insert(Customer c) throws Go2DrinkException{
         try (Connection connection = RDBConnection.getConnection();
-                
-            PreparedStatement pstmt = connection.prepareStatement(INSERT_SQL);){
+             PreparedStatement pstmt = connection.prepareStatement(INSERT_SQL);){
             
             pstmt.setString(1,c.getEmail());
             pstmt.setString(2,c.getName());
