@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,8 @@ public class RDBProductDAO {
     private static final String SELECT_SQL = "SELECT * FROM product WHERE name=?";
     private static final String SELECT_ALL_SQL = "SELECT * FROM product";
     private static final String INSERT_SQL = "INSERT INTO product (name,price) VALUE(?,?)";
-    private static final String UPDATE_SQL = "UPDATE product SET name = ? , price ? WHERE name=?";
+    private static final String UPDATE_SQL = "UPDATE product SET price=? WHERE name=?";
+    private static final String DELETE_SQL = "DELETE FROM product WHERE name=?";
     
     public Product get(String name)throws Go2DrinkException, SQLException{
         try(Connection connection =  RDBConnection.getConnection();
@@ -39,22 +41,21 @@ public class RDBProductDAO {
             }   
         }
     }
-    public List<Product> getAll()throws Go2DrinkException, SQLException{
+    public List<Product> getAll()throws Go2DrinkException,SQLException{
         List<Product> list = new ArrayList<>();
         try(Connection connection =  RDBConnection.getConnection();
-            PreparedStatement pstmt =connection.prepareStatement(SELECT_ALL_SQL)){
-            try(ResultSet rs = pstmt.executeQuery();){  
-                Product p = new Product();
-                while (rs.next()){
-                        p.setId(rs.getInt("id"));
-                        p.setName(rs.getString("name"));
-                        p.setUntiPrice(rs.getDouble("price"));
-                        list.add(p);
-                        
-                }
-            return list;
-            }   
+            Statement stmt =connection.createStatement();
+            ResultSet rs = stmt.executeQuery(SELECT_ALL_SQL);){
+                while(rs.next()){
+                    Product p = new Product();
+                    p.setName(rs.getString("name"));
+                    p.setUntiPrice(rs.getDouble("price"));
+                    list.add(p);
+            }
+        }catch(SQLException ex) {
+            throw new Go2DrinkException("查詢全部客戶失敗", ex);
         }
+          return list;
     }
     public void insert(Product p)throws Go2DrinkException{
         try(
@@ -71,13 +72,22 @@ public class RDBProductDAO {
     public void update(Product p)throws Go2DrinkException{
         try(
                 Connection connection = RDBConnection.getConnection();
-                PreparedStatement pstmt = connection.prepareStatement(INSERT_SQL);
+                PreparedStatement pstmt = connection.prepareStatement(UPDATE_SQL);
             ){
-            pstmt.setString(1,p.getName());
-            pstmt.setDouble(2,p.getUntiPrice());
+            pstmt.setDouble(1,p.getUntiPrice());
+            pstmt.setString(2,p.getName());
             pstmt.executeUpdate();  
         }catch(SQLException ex) {
             throw new Go2DrinkException("修改客戶失敗!", ex);
         }
     }
+    public void delete(Product p )throws Go2DrinkException{
+        try (Connection connection = RDBConnection.getConnection();
+                PreparedStatement pstmt = connection.prepareStatement(DELETE_SQL);) {
+            pstmt.setString(1, p.getName());            
+            pstmt.executeUpdate();
+        } catch (SQLException ex) {
+            throw new Go2DrinkException("刪除客戶失敗!", ex);
+        }
+    }       
 }

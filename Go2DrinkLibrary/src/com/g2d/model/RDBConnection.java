@@ -21,7 +21,7 @@ public class RDBConnection {
     private static final String userid = "root";
     private static final String password = "qwer1234";
 */
-    private static final String url = "jdbc:mysql://lotmods.ddns.net:23144/go_2_drink?zeroDateTimeBehavior=convertToNull";
+    private static final String url = "jdbc:mysql://go2drink.ddns.net:23144/go_2_drink?zeroDateTimeBehavior=convertToNull";
     private static final String userid = "s930415";
     private static final String password = "1234";
 

@@ -33,13 +33,14 @@ public class TestRDBProductDAO {
             System.out.println("錯誤" + ex);
         }
         */
-        
+
         try{
             Product p = new Product();
-            p.setName("可爾必思");
-            p.setUntiPrice(50);
+            p.setName("可爾必思冰沙");
+            p.setUntiPrice(70);
             RDBProductDAO dao = new RDBProductDAO();
-            dao.update(p);
+            dao.delete(p);
+            
             System.out.println("WIN");
         }catch(Go2DrinkException ex){
             System.out.println("錯誤" + ex);
