@@ -16,22 +16,22 @@ import java.util.logging.Logger;
  * @author Administrator
  */
 public class TestRDBCustomerDAO {
+
     public static void main(String[] args) {
-        try{
+        try {
             RDBCustomersDAO dao = new RDBCustomersDAO();
-           /* try{
-                
-                Customer c = dao.get("qscesz");
-                if(c != null){
-                    System.out.println("查詢成功"+c);
-                }else{
-                    System.out.println("查無此客戶!");
-                }
-            }catch(Go2DrinkException ex ){
-                Logger.getLogger(TestRDBCustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Customer c = dao.get("qscesz");
+            if (c != null) {
+                System.out.println("查詢成功" + c);
+            } else {
+                System.out.println("查無此客戶!");
             }
-          */  
-         /*   
+
+        } catch (Go2DrinkException ex) {
+            Logger.getLogger(TestRDBCustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        /*   
             Customer c = new Customer("vincent", "123456", "qwwqe@yahoo.com.yw",'M');
             c.setBirthday("1911/08/06");
             dao.insert(c);
@@ -39,24 +39,22 @@ public class TestRDBCustomerDAO {
         }catch(Go2DrinkException ex ){
            Logger.getLogger(TestRDBCustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        */
+         */
         //--------------------------------------------------------------------------------------
-            try{
-                System.out.println(dao.getAll());
-                
-                
-                
-                
-            }catch(Go2DrinkException ex){
-                Logger.getLogger(TestRDBCustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            
-            
-            
-        }catch(Exception ex){
+        try {
+            System.out.println(dao.getAll());
+
+        } catch (Go2DrinkException ex) {
             Logger.getLogger(TestRDBCustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-          
+
     }
+    catch(Exception ex
+
+    
+        ){
+            Logger.getLogger(TestRDBCustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
+}
 }

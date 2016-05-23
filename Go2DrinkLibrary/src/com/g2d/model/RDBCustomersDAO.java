@@ -20,6 +20,10 @@ public class RDBCustomersDAO {
     private static final String SELECT_ALL_SQL = "SELECT * FROM customer";
     private static final String INSERT_SQL = "INSERT INTO customer (email,name,gender,password,birthday,address,phone,status) "
             +"VALUES(?,?,?,?,?,?,?,?)";
+    private static final String UPDATE_SQL = "UPDATE_SQL = UPDATE customer" + "SET name = ? , gender = ?, password = ?,birthday = ?, address = ?,phone = ?,status = ? WHERE email=?";
+    private static final String DELETE_SQL = "DELETE FROM customer WHERE email = ?";
+    
+    //查詢單筆
     public void insert(Customer c) throws Go2DrinkException{
         try (Connection connection = RDBConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(INSERT_SQL);){
@@ -38,7 +42,7 @@ public class RDBCustomersDAO {
         }
     }
     
-    
+    //查詢全部
     public List<Customer> getAll() throws Go2DrinkException{
         
         List<Customer> list = new ArrayList<>();
@@ -96,4 +100,35 @@ public class RDBCustomersDAO {
             throw new Go2DrinkException("查詢客戶失敗: " + email, ex);
         }
     }
+    //新增
+    public void update(Customer c)throws Go2DrinkException{
+        try (Connection connection = RDBConnection.getConnection();
+        PreparedStatement pstmt = connection.prepareStatement(UPDATE_SQL);){
+            
+
+            pstmt.setString(1,c.getName());
+            pstmt.setString(2,c.getGender()+"");
+            pstmt.setString(3,c.getPassword());
+            pstmt.setDate(4, (c.getBirthday()!=null ?new java.sql.Date(c.getBirthday().getTime()):null));
+            pstmt.setString(5,c.getAddress());
+            pstmt.setString(6,c.getPhone());
+            pstmt.setInt(7,1);
+            pstmt.setString(8,c.getEmail());
+            pstmt.executeUpdate();
+        }catch(SQLException ex){
+            throw new Go2DrinkException("修改客戶失敗", ex);
+        }
+    }
+    //刪除
+    public void delete(Customer c)throws Go2DrinkException{
+        try (Connection connection = RDBConnection.getConnection();
+        PreparedStatement pstmt = connection.prepareStatement(DELETE_SQL);){
+            
+            pstmt.setString(1,c.getEmail());
+            pstmt.executeUpdate();
+        }catch(SQLException ex){
+            throw new Go2DrinkException("刪除客戶失敗", ex);
+        }
+    }
+    
 }

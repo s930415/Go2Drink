@@ -6,18 +6,50 @@
 package com.g2d.model;
 
 import com.g2d.domain.Customer;
+import com.g2d.domain.Go2DrinkException;
+import java.util.List;
 
 /**
  *
  * @author Administrator
  */
 public class CustomerService {
+    private RDBCustomersDAO dao = new RDBCustomersDAO();
     
-    public Customer login (String id, String pwd ){
-        
-        return null;
-        
+    public void register(Customer c)throws Go2DrinkException{
+
     }
+    
+    public Customer login (String email, String pwd )throws Go2DrinkException{
+        if(email==null || pwd==null){
+            throw new Go2DrinkException("帳號密碼不得空白");
+        }else{
+        
+            Customer c = dao.get(email);
+            if(c!=null && pwd.equals(c.getPassword())){
+            return c ;
+            }
+        }
+        throw new Go2DrinkException("登入失敗!!");
+    }
+        
+
+    public void insert(Customer c) throws Go2DrinkException {
+        dao.insert(c);
+    }
+
+    public List<Customer> getAll() throws Go2DrinkException {
+        return dao.getAll();
+    }
+
+    public Customer get(String email) throws Go2DrinkException {
+        return dao.get(email);
+    }
+
+    public void delete(Customer c) throws Go2DrinkException {
+        dao.delete(c);
+    }
+    
     
     
     

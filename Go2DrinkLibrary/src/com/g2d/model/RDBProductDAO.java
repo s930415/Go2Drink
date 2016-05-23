@@ -21,6 +21,8 @@ import java.util.List;
 public class RDBProductDAO {
     private static final String SELECT_SQL = "SELECT * FROM product WHERE name=?";
     private static final String SELECT_ALL_SQL = "SELECT * FROM product";
+    private static final String INSERT_SQL = "INSERT INTO product (name,price) VALUE(?,?)";
+    private static final String UPDATE_SQL = "UPDATE product SET name = ? , price ? WHERE name=?";
     
     public Product get(String name)throws Go2DrinkException, SQLException{
         try(Connection connection =  RDBConnection.getConnection();
@@ -52,6 +54,30 @@ public class RDBProductDAO {
                 }
             return list;
             }   
+        }
+    }
+    public void insert(Product p)throws Go2DrinkException{
+        try(
+                Connection connection = RDBConnection.getConnection();
+                PreparedStatement pstmt = connection.prepareStatement(INSERT_SQL);
+            ){
+            pstmt.setString(1,p.getName());
+            pstmt.setDouble(2,p.getUntiPrice());
+            pstmt.executeUpdate();  
+        }catch(SQLException ex) {
+            throw new Go2DrinkException("新增客戶失敗!", ex);
+        }
+    }
+    public void update(Product p)throws Go2DrinkException{
+        try(
+                Connection connection = RDBConnection.getConnection();
+                PreparedStatement pstmt = connection.prepareStatement(INSERT_SQL);
+            ){
+            pstmt.setString(1,p.getName());
+            pstmt.setDouble(2,p.getUntiPrice());
+            pstmt.executeUpdate();  
+        }catch(SQLException ex) {
+            throw new Go2DrinkException("修改客戶失敗!", ex);
         }
     }
 }
