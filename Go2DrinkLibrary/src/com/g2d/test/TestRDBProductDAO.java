@@ -36,10 +36,10 @@ public class TestRDBProductDAO {
 
         try{
             Product p = new Product();
-            p.setName("可爾必思冰沙");
-            p.setUntiPrice(70);
+            p.setName("包種茶");
+            p.setUntiPrice(30);
             RDBProductDAO dao = new RDBProductDAO();
-            dao.delete(p);
+            dao.update(p);
             
             System.out.println("WIN");
         }catch(Go2DrinkException ex){

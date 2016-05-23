@@ -33,7 +33,6 @@ public class RDBProductDAO {
             try(ResultSet rs = pstmt.executeQuery();){  
                 Product p = new Product();
                 while (rs.next()){
-                        p.setId(rs.getInt("id"));
                         p.setName(rs.getString("name"));
                         p.setUntiPrice(rs.getDouble("price"));
                 }
@@ -53,7 +52,7 @@ public class RDBProductDAO {
                     list.add(p);
             }
         }catch(SQLException ex) {
-            throw new Go2DrinkException("查詢全部客戶失敗", ex);
+            throw new Go2DrinkException("查詢全部產品失敗", ex);
         }
           return list;
     }
@@ -66,7 +65,7 @@ public class RDBProductDAO {
             pstmt.setDouble(2,p.getUntiPrice());
             pstmt.executeUpdate();  
         }catch(SQLException ex) {
-            throw new Go2DrinkException("新增客戶失敗!", ex);
+            throw new Go2DrinkException("新增產品失敗!", ex);
         }
     }
     public void update(Product p)throws Go2DrinkException{
@@ -78,7 +77,7 @@ public class RDBProductDAO {
             pstmt.setString(2,p.getName());
             pstmt.executeUpdate();  
         }catch(SQLException ex) {
-            throw new Go2DrinkException("修改客戶失敗!", ex);
+            throw new Go2DrinkException("修改產品失敗!", ex);
         }
     }
     public void delete(Product p )throws Go2DrinkException{
@@ -87,7 +86,7 @@ public class RDBProductDAO {
             pstmt.setString(1, p.getName());            
             pstmt.executeUpdate();
         } catch (SQLException ex) {
-            throw new Go2DrinkException("刪除客戶失敗!", ex);
+            throw new Go2DrinkException("刪除產品失敗!", ex);
         }
     }       
 }

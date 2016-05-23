@@ -8,6 +8,8 @@ package com.g2d.gui;
 import com.g2d.domain.Product;
 import com.g2d.model.ProductService;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,7 +18,17 @@ import javax.swing.table.DefaultTableModel;
  * @author Administrator
  */
 public class ProductFrame extends javax.swing.JFrame {
+    
+    private ProductService service = new ProductService();
 
+    private void showProduct(Product p) {
+        if (p != null) {
+            //idField.setValue(c.getId());
+            nameField.setText(p.getName());
+            priceField.setVale(p.getUntiPrice());
+
+        }
+    }
     /**
      * Creates new form ProductFrame
      */
@@ -33,36 +45,23 @@ public class ProductFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         getAllButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         customersTable = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        passwordField = new javax.swing.JFormattedTextField();
         jLabel2 = new javax.swing.JLabel();
-        nameField = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        emailField = new javax.swing.JPasswordField();
         getButton = new javax.swing.JButton();
         addButton = new javax.swing.JButton();
         updateButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        maleRadio = new javax.swing.JRadioButton();
-        femaleRadio = new javax.swing.JRadioButton();
-        jLabel5 = new javax.swing.JLabel();
-        birthdayField = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        addressField = new javax.swing.JTextField();
-        phoneField = new javax.swing.JTextField();
+        nameField = new javax.swing.JTextField();
+        priceField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setLayout(new javax.swing.OverlayLayout(jPanel1));
+        getContentPane().setLayout(new javax.swing.OverlayLayout(getContentPane()));
 
         getAllButton.setFont(new java.awt.Font("新細明體", 0, 18)); // NOI18N
         getAllButton.setText("查詢全部產品");
@@ -103,39 +102,20 @@ public class ProductFrame extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(getAllButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(getAllButton)
                 .addGap(1, 1, 1)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("清單", jPanel4);
 
-        try {
-            passwordField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("U#########")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        passwordField.setFont(new java.awt.Font("新細明體", 0, 14)); // NOI18N
-
         jLabel2.setFont(new java.awt.Font("新細明體", 0, 14)); // NOI18N
-        jLabel2.setText("會員姓名:");
-
-        nameField.setFont(new java.awt.Font("新細明體", 0, 14)); // NOI18N
-        nameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameFieldpasswordFieldActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setFont(new java.awt.Font("新細明體", 0, 14)); // NOI18N
-        jLabel3.setText("會員密碼:");
-
-        emailField.setFont(new java.awt.Font("新細明體", 0, 14)); // NOI18N
+        jLabel2.setText("產品名稱:");
 
         getButton.setFont(new java.awt.Font("新細明體", 0, 14)); // NOI18N
         getButton.setText("查詢");
@@ -159,126 +139,56 @@ public class ProductFrame extends javax.swing.JFrame {
         deleteButton.setFont(new java.awt.Font("新細明體", 0, 14)); // NOI18N
         deleteButton.setText("刪除");
 
-        jLabel4.setFont(new java.awt.Font("新細明體", 0, 14)); // NOI18N
-        jLabel4.setText("會員性別:");
-
-        maleRadio.setFont(new java.awt.Font("新細明體", 0, 14)); // NOI18N
-        maleRadio.setText("男");
-
-        femaleRadio.setFont(new java.awt.Font("新細明體", 0, 14)); // NOI18N
-        femaleRadio.setText("女");
-
-        jLabel5.setFont(new java.awt.Font("新細明體", 0, 14)); // NOI18N
-        jLabel5.setText("電子郵件:");
-
-        birthdayField.setFont(new java.awt.Font("新細明體", 0, 14)); // NOI18N
-        birthdayField.addActionListener(new java.awt.event.ActionListener() {
+        nameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                birthdayFieldActionPerformed(evt);
+                nameFieldActionPerformed(evt);
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("新細明體", 0, 14)); // NOI18N
-        jLabel7.setText("出生日期:");
-
-        jLabel8.setFont(new java.awt.Font("新細明體", 0, 14)); // NOI18N
-        jLabel8.setText("連絡電話:");
-
-        jLabel9.setFont(new java.awt.Font("新細明體", 0, 14)); // NOI18N
-        jLabel9.setText("連絡地址:");
-
-        addressField.setFont(new java.awt.Font("新細明體", 0, 14)); // NOI18N
-
-        phoneField.setFont(new java.awt.Font("新細明體", 0, 14)); // NOI18N
-        phoneField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                phoneFieldActionPerformed(evt);
-            }
-        });
+        jLabel1.setText("價錢：");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(emailField))
+                        .addGap(15, 15, 15)
+                        .addComponent(getButton))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nameField, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(46, 46, 46)
-                        .addComponent(maleRadio)
-                        .addGap(26, 26, 26)
-                        .addComponent(femaleRadio)))
-                .addContainerGap(112, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(getButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(addButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(updateButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deleteButton)
-                .addGap(15, 15, 15))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(addressField)
-                .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(birthdayField, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
+                        .addGap(25, 25, 25)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
-                            .addComponent(phoneField))))
-                .addGap(23, 23, 23))
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))))
+                .addGap(42, 42, 42)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 176, Short.MAX_VALUE)
+                        .addComponent(addButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(updateButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(deleteButton)
+                        .addGap(15, 15, 15))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(priceField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nameField))
+                        .addGap(151, 151, 151))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(maleRadio)
-                    .addComponent(femaleRadio))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel7)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(birthdayField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel8)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(jLabel9)
-                .addGap(24, 24, 24)
-                .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                    .addComponent(priceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(getButton)
                     .addComponent(addButton)
@@ -289,32 +199,7 @@ public class ProductFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("明細", jPanel2);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(662, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(349, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        getContentPane().add(jTabbedPane1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -322,7 +207,6 @@ public class ProductFrame extends javax.swing.JFrame {
     private void getAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getAllButtonActionPerformed
 
         System.out.println("getAllButton ActionPerformed!");
-        ProductService service = new ProductService();
         try{
             List<Product> list= service.getAll();
             DefaultTableModel model = (DefaultTableModel)customersTable.getModel();
@@ -335,29 +219,28 @@ public class ProductFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_getAllButtonActionPerformed
 
-    private void nameFieldpasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldpasswordFieldActionPerformed
+    private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nameFieldpasswordFieldActionPerformed
-
-    private void getButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getButtonActionPerformed
-
-            // 顯示客戶資料
-
-
- 
-    }//GEN-LAST:event_getButtonActionPerformed
+    }//GEN-LAST:event_nameFieldActionPerformed
 
     private void addButtonregisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonregisterButtonActionPerformed
 
     }//GEN-LAST:event_addButtonregisterButtonActionPerformed
 
-    private void birthdayFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_birthdayFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_birthdayFieldActionPerformed
+    private void getButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getButtonActionPerformed
+        try{
+            String name = nameField.getText();
+            if(name != null || name.length()> 0){
+                Product p = service.get(name);
+                showProduct(p);
+            }
 
-    private void phoneFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_phoneFieldActionPerformed
+        }catch(Exception ex) {
+            Logger.getLogger(CustomerFrame.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+
+        }
+    }//GEN-LAST:event_getButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -396,30 +279,18 @@ public class ProductFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
-    private javax.swing.JTextField addressField;
-    private javax.swing.JTextField birthdayField;
     private javax.swing.JTable customersTable;
     private javax.swing.JButton deleteButton;
-    private javax.swing.JPasswordField emailField;
-    private javax.swing.JRadioButton femaleRadio;
     private javax.swing.JButton getAllButton;
     private javax.swing.JButton getButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JRadioButton maleRadio;
     private javax.swing.JTextField nameField;
-    private javax.swing.JFormattedTextField passwordField;
-    private javax.swing.JTextField phoneField;
+    private javax.swing.JTextField priceField;
     private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }
