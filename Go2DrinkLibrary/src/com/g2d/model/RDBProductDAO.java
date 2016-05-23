@@ -22,9 +22,18 @@ import java.util.List;
 public class RDBProductDAO {
     private static final String SELECT_SQL = "SELECT * FROM product WHERE name=?";
     private static final String SELECT_ALL_SQL = "SELECT * FROM product";
+<<<<<<< HEAD
+    private static final String INSERT_SQL = "INSERT INTO customers "
+            + "(id, name, price,"
+            + " blood_type, status, type, discount) "
+            + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    
+    
+=======
     private static final String INSERT_SQL = "INSERT INTO product (name,price) VALUE(?,?)";
     private static final String UPDATE_SQL = "UPDATE product SET price=? WHERE name=?";
     private static final String DELETE_SQL = "DELETE FROM product WHERE name=?";
+>>>>>>> 6f4ab49028c2fa99199591a5349534d7adae37d8
     
     public Product get(String name)throws Go2DrinkException, SQLException{
         try(Connection connection =  RDBConnection.getConnection();

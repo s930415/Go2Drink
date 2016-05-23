@@ -11,7 +11,7 @@ package com.g2d.domain;
  */
 public class Product {
  
-    private int id; //編號
+    private int id; //編號  //Pkey
     private String name; //名稱
     private double untiPrice; //價錢
     private String url; //圖片
@@ -20,15 +20,14 @@ public class Product {
     
     public static final char MIDDLE = 'M';
     public static final char LARGE = 'L';
-    //private boolean free;
-    
+
     public Product(){
     }
 
     public Product(int id, String name, double untiPrice) {
-        this.id = id;
-        this.name = name;
-        this.untiPrice = untiPrice;
+        this.setId(id);
+        this.setName(name);
+        this. setUntiPrice(untiPrice);
     }
 
     /**
@@ -81,6 +80,8 @@ public class Product {
     public void setUntiPrice(double untiPrice) {
         if(untiPrice != 0){
         this.untiPrice = untiPrice;
+        }else{
+            System.out.println("產品單價不得為負數");
         }
     }
 
@@ -110,8 +111,9 @@ public class Product {
      */
     public void setUrl(String url) {
         if(url != null){
-            this.url = url;
+            url = url.trim();
         }
+        this.url = url;
     }
 
     /**
@@ -127,7 +129,7 @@ public class Product {
     public void setDescripition(String descripition) {
         if(descripition != null){
             this.descripition = descripition;
-        }
+        } 
     }
 
     public char getSize() {
@@ -154,7 +156,10 @@ public class Product {
 
     @Override
     public String toString() {//id:產品編號 name:產品名稱 untiPrice:單價  url:圖片 descripition:描述
-        return this.getClass().getName()+'\n'+ "id=" + id + ", name=" + name + ", untiPrice=" + untiPrice + ", url=" + url + ", descripition=" + descripition + '}';
+        return this.getClass().getName()+
+                "產品編號: " + id + " , 產品名稱: " + name + 
+                " , 產品單價: " + untiPrice + " , 產品圖片: " 
+                + url + " , 產品描述: " + descripition;
     }
 /*
     @Override

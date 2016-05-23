@@ -26,7 +26,7 @@ public class TestDAOInsert {
             dao.insert(c);  
             System.out.println("建立成功");
         }catch(Go2DrinkException ex ){
-           Logger.getLogger(TestRDBCustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(TestRDBCustomersDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

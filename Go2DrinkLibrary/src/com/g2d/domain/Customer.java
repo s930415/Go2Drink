@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.g2d.domain;
 
 import java.text.DateFormat;
@@ -19,18 +14,11 @@ import java.util.logging.Logger;
  * @author Administrator
  */
 public class Customer {
-
-    
+    //private static String IDPATTERN = "[A-Z][12]\\d{8}";//身分證判斷式
+    private static String EMAILPATTERN = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";//email格式的判斷式
     
     public static final char MALE = 'M';
     public static final char FEMALE = 'F';
-    
-    
-    
-   
-    //private static String IDPATTERN = "[A-Z][12]\\d{8}";
-
-    private static String EMAILPATTERN = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";//email格式的判斷式
 
     private String email;
     private String name;
@@ -39,14 +27,7 @@ public class Customer {
     private Date birthday;
     private String address;
     private String phone;
-    private int status = 1;
-
-    //private boolean married = false;
-    //private int warwr;
-    //private int qqaa;
-
-    private int test;
-
+    private int status = 1;//帳號狀態, 停用or起用
 
    public Customer(){
     }
@@ -55,8 +36,7 @@ public class Customer {
         this.setName(name);
         this.setPassword(password);
    }
-   
-   
+
     //提供方便
     
    public Customer(String name,String password,String email,char gender) throws Go2DrinkException{
@@ -65,11 +45,16 @@ public class Customer {
         this.setGender(gender);
     }
 
-    public void setName(String name){
-        if(name != null && name.trim().length() >=2){
+    public Customer(String 李四方, String string, char c) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setName(String name) throws Go2DrinkException{
+        if (name != null && (name = name.trim()).length() > 0) {
             this.name = name;
-        }else{
-            System.err.println("指派name不正確:"+ name);
+        } else {
+            //System.err.println("姓名為必要欄位!");
+            throw new Go2DrinkException("姓名為必要欄位!");
         }
     }
     
@@ -125,11 +110,12 @@ public class Customer {
      */
     
     //char是基本型別不可能是null值,所以不用判定null
-    public void setGender(char gender) {
-        if(gender == 'M' || gender == 'F'){
+    public void setGender(char gender) throws Go2DrinkException{
+        if (gender == MALE || gender == FEMALE) {
             this.gender = gender;
-        }else{
-            System.err.println("請輸入M(男)orF(女)");
+        } else {
+            //System.err.println("性別資料不正確");
+            throw new Go2DrinkException("性別資料不正確");
         }
     }
 
@@ -247,7 +233,11 @@ public class Customer {
     
     @Override
     public String toString() {
-        return this.getClass().getName()+ '\n'  + ", email=" + email + ", name=" + name + ", gender=" + gender + ", password=" + password + ", birthday=" + birthday + ", address=" + address + ", phone=" + phone + ", status=" + status ;
+        return this.getClass().getName() + 
+                " , email: " + email + " , 名稱:" + name + 
+                " , 性別: " + gender + " , 密碼:" + password + 
+                " , 生日: " + birthday + " , 地址: " + address + 
+                " , 電話: " + phone;
     }
 
     /*
