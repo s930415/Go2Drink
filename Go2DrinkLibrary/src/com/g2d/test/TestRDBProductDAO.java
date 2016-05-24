@@ -16,9 +16,9 @@ import java.sql.SQLException;
  */
 public class TestRDBProductDAO {
     public static void main(String[] args) throws SQLException {
-        try{
+     /*   try{
             RDBProductDAO dao = new RDBProductDAO();
-            Product p = dao.get("鳳梨冰茶");
+            Product p = dao.get("奶茶");
             System.out.println(p);
 
         }catch(Go2DrinkException ex){
@@ -29,6 +29,19 @@ public class TestRDBProductDAO {
             Product p = dao.getAll();
             System.out.println(p);
 
+        }catch(Go2DrinkException ex){
+            System.out.println("錯誤" + ex);
+        }
+        */
+
+        try{
+            Product p = new Product();
+            p.setName("可爾必思冰沙");
+            p.setUntiPrice(70);
+            RDBProductDAO dao = new RDBProductDAO();
+            dao.delete(p);
+            
+            System.out.println("WIN");
         }catch(Go2DrinkException ex){
             System.out.println("錯誤" + ex);
         }
