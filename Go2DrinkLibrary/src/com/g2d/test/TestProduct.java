@@ -14,9 +14,9 @@ import com.g2d.domain.Product;
 public class TestProduct {
     public static void main(String[] args) {
         Product p = new Product();
-        
+        System.out.println(p.getId());
         p.setId(1);
-        p.setName("錫蘭紅茶");
+        p.setName("紅茶");
         p.setUntiPrice(25);
         System.out.println(p.getName() + p.getUntiPrice() + '元');
         System.out.println(p);

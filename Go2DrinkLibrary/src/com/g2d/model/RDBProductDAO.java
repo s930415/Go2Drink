@@ -21,6 +21,12 @@ import java.util.List;
 public class RDBProductDAO {
     private static final String SELECT_SQL = "SELECT * FROM product WHERE name=?";
     private static final String SELECT_ALL_SQL = "SELECT * FROM product";
+    private static final String INSERT_SQL = "INSERT INTO customers "
+            + "(id, name, price,"
+            + " blood_type, status, type, discount) "
+            + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    
+    
     
     public Product get(String name)throws Go2DrinkException, SQLException{
         try(Connection connection =  RDBConnection.getConnection();

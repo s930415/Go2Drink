@@ -20,6 +20,13 @@ public class RDBCustomersDAO {
     private static final String SELECT_ALL_SQL = "SELECT * FROM customer";
     private static final String INSERT_SQL = "INSERT INTO customer (email,name,gender,password,birthday,address,phone,status) "
             +"VALUES(?,?,?,?,?,?,?,?)";
+    private static final String UPDATE_SQL = "UPDATE customers " +
+            "SET name=?,gender=?,password=?," +
+            "birthday=?,address=?,phone=?" +
+            "status=? WHERE email=?";
+    
+    private static final String DELETE_SQL = "DELETE FROM customers WHERE email=?";
+    
     public void insert(Customer c) throws Go2DrinkException{
         try (Connection connection = RDBConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(INSERT_SQL);){
@@ -28,38 +35,71 @@ public class RDBCustomersDAO {
             pstmt.setString(2,c.getName());
             pstmt.setString(3,c.getGender()+"");
             pstmt.setString(4,c.getPassword());
-            pstmt.setDate(5, new java.sql.Date(c.getBirthday().getTime()));
+            pstmt.setDate(5, (c.getBirthday()!=null?new java.sql.Date(c.getBirthday().getTime()):null));
             pstmt.setString(6,c.getAddress());
             pstmt.setString(7,c.getPhone());
-            pstmt.setInt(8,1);
+            pstmt.setInt(8, c.getStatus());
             pstmt.executeUpdate();
         }catch(SQLException ex){
             throw new Go2DrinkException("新增客戶失敗", ex);
         }
     }
     
+    public void update(Customer c)throws Go2DrinkException {
+        try (Connection connection = RDBConnection.getConnection();
+                PreparedStatement pstmt = connection.prepareStatement(UPDATE_SQL);) {
+        
+            pstmt.setString(1, c.getName());         
+            pstmt.setString(2, c.getGender() + "");
+            pstmt.setString(3, c.getPassword());
+            pstmt.setDate(4, (c.getBirthday()!=null?new java.sql.Date(c.getBirthday().getTime()):null));
+            pstmt.setString(5, c.getAddress());
+            pstmt.setString(6, c.getPhone());          
+            pstmt.setInt(7, c.getStatus());            
+            pstmt.setString(8, c.getEmail());            
+            pstmt.executeUpdate();
+        } catch (SQLException ex) {
+            throw new Go2DrinkException("修改客戶失敗!", ex);
+        }
+    }
+    
+    public void delete(Customer c) throws Go2DrinkException{
+        try (Connection connection = RDBConnection.getConnection();
+                PreparedStatement pstmt = connection.prepareStatement(DELETE_SQL);) {
+            pstmt.setString(1, c.getEmail());            
+            pstmt.executeUpdate();
+        } catch (SQLException ex) {
+            throw new Go2DrinkException("刪除客戶失敗!", ex);
+        }
+    }
+    
     
     public List<Customer> getAll() throws Go2DrinkException{
-        
+       
         List<Customer> list = new ArrayList<>();
-        try(Connection connection = RDBConnection.getConnection();
+        try (Connection connection = RDBConnection.getConnection();
                 Statement stmt = connection.createStatement();
-                 ResultSet rs = stmt.executeQuery(SELECT_ALL_SQL);){
-            Customer c = null;
-            while(rs.next()){
-                    c.setName(rs.getString("name"));
-                    c.setPassword(rs.getString("password"));
+                ResultSet rs = stmt.executeQuery(SELECT_ALL_SQL);) {
+            while (rs.next()) {
+                Customer c = new Customer();
+                try {
                     c.setEmail(rs.getString("email"));
+                    c.setName(rs.getString("name"));
                     c.setGender(rs.getString("gender").charAt(0));
+                    c.setPassword(rs.getString("password"));                                       
                     c.setBirthday(rs.getDate("birthday"));
                     c.setAddress(rs.getString("address"));
-                    c.setPhone(rs.getString("phone"));
-                    c.setStatus(0);
-
+                    c.setPhone(rs.getString("phone"));      
+                    c.setStatus(rs.getInt("status"));
+                    
+                    list.add(c);
+                } catch (Go2DrinkException ex) {
+                    System.out.println("資料讀取錯誤: " + ex);
+                }
             }
-        }catch(SQLException ex){
-            throw new Go2DrinkException("查詢失敗", ex);
-
+            //System.out.println("customerList = " + list);
+        } catch (SQLException ex) {
+            throw new Go2DrinkException("查詢全部客戶失敗", ex);
         }
         return list;
     }
@@ -71,19 +111,18 @@ public class RDBCustomersDAO {
             pstmt.setString(1, email);//3.1 傳SQL指令要的參數值
             try (ResultSet rs = pstmt.executeQuery();) {//4. 執行指令並取得結果                    
                 //5. 處理ResultSet的內容                
-                Customer c = null;
-                while (rs.next()) {
-                    String type = rs.getString("type");
+                Customer c = new Customer();
+                while (rs.next()) {                   
                     try {
-                        c.setName(rs.getString("name"));
-                        c.setPassword(rs.getString("password"));
-                        c.setEmail(rs.getString("email"));
-                        c.setGender(rs.getString("gender").charAt(0));
-                        c.setBirthday(rs.getDate("birthday"));
-                        c.setAddress(rs.getString("address"));
-                        c.setPhone(rs.getString("phone"));
-                        c.setStatus(0);
-           
+                    c.setEmail(rs.getString("email"));   
+                    c.setName(rs.getString("name"));
+                    c.setGender(rs.getString("gender").charAt(0));
+                    c.setPassword(rs.getString("password"));                                       
+                    c.setBirthday(rs.getDate("birthday"));
+                    c.setAddress(rs.getString("address"));
+                    c.setPhone(rs.getString("phone"));      
+                    c.setStatus(rs.getInt("status"));
+                    
                     } catch (Go2DrinkException ex) {
                         System.out.println("查詢客戶失敗,資料讀取錯誤: " + ex);
                         throw ex;
