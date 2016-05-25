@@ -20,7 +20,8 @@ import java.util.List;
  * @author Administrator
  */
 public class RDBProductDAO {
-    private static final String SELECT_SQL = "SELECT * FROM product WHERE name=?";
+    private static final String COL_LIST = "name , price , ice , sugar , size";
+    private static final String SELECT_SQL = "SELECT " + COL_LIST + " FROM product WHERE name=?";
     private static final String SELECT_ALL_SQL = "SELECT * FROM product";
     private static final String INSERT_SQL = "INSERT INTO product (name,price) VALUE(?,?)";
     private static final String UPDATE_SQL = "UPDATE product SET price=? WHERE name=?";
