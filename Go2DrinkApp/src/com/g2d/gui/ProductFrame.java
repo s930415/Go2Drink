@@ -24,8 +24,7 @@ public class ProductFrame extends javax.swing.JFrame {
     private void showProduct(Product p) {
         if (p != null) {
             //idField.setValue(c.getId());
-            nameField.setText(p.getName());
-            priceField.setVale(p.getUntiPrice());
+            priceField.(p.getUntiPrice());
 
         }
     }
