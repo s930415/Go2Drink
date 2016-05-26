@@ -39,7 +39,7 @@ public class TestRDBCustomerDAO {
         }catch(Go2DrinkException ex ){
            Logger.getLogger(TestRDBCustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-         */
+         
         //--------------------------------------------------------------------------------------
         try {
             System.out.println(dao.getAll());
@@ -47,14 +47,6 @@ public class TestRDBCustomerDAO {
         } catch (Go2DrinkException ex) {
             Logger.getLogger(TestRDBCustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-    }
-    catch(Exception ex
-
-    
-        ){
-            Logger.getLogger(TestRDBCustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
-    }
-
-}
+*/
+    }  
 }
