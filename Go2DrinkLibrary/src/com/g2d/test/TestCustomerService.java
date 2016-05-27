@@ -18,8 +18,6 @@ public class TestCustomerService {
 
         Customer a = new Customer();
         CustomerService ar = new CustomerService();
-        a.setName(null);
-        a.setGender('M');
         System.out.println(ar.sayHello(a));
     }
 }

@@ -43,7 +43,7 @@ public class Product {
     public void setId(int id) {
         if(id>=0){
             this.id = id;
-        }else{
+        }else {
             System.err.println("產品編號不能為負數");   
         }
     }
@@ -78,7 +78,7 @@ public class Product {
      * @param untiPrice the untiPrice to set
      */
     public void setUntiPrice(double untiPrice) {
-        if(untiPrice != 0){
+        if(untiPrice != 0 && untiPrice > 0){
         this.untiPrice = untiPrice;
         }else{
             System.out.println("產品單價不得為負數");
@@ -102,7 +102,8 @@ public class Product {
     /**
      * @return the url
      */
-    public String getUrl() {
+    
+    public String getUrl(){
         return url;
     }
 

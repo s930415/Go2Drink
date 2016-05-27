@@ -5,54 +5,57 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-     <head>
+    <head>
         <title>會員註冊</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <h1>會員註冊</h1>
-        <a href="/Go2Drink/" title="首頁" >首頁</a> |
-        <a href="/Go2Drink/Login.html" title="會員登入" >登入</a> |
-        <a href="register.html" title="會員註冊" >註冊</a>   
-        <hr>      
+        <hr>
+        <a href="Login.html" title="會員登入">登入</a>|
+        <a href="Register.html" title="會員註冊">註冊</a>|
+        <a href="Register.html" title="店家資訊">店家資訊</a>
+        <a href="Register.html" title="商品">商品</a>
+        <hr>
         <form method="POST" action="register.do">
-            <p>        
-               <label for="email">會員帳號:</label>
-               <input type="text" id="email" name="email" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" placeholder="請輸入email" required>
-            </p>        
-            <p>        
-               <label for="name">會員姓名:</label>
-               <input type="text" id="name" name="name" placeholder="請輸入姓名" required>
-            </p>
-            <p>
-                 <label>會員性別:</label>
-                   <input type="radio" id="male" name="gender" required><label for="male">男</label>
-                   <input type="radio" id="female" name="gender" required><label for="female">女</label>  
-            </p>
-            <p>
-               <label for="pwd1">會員密碼:</label>
-               <input type="password" id="pwd1" name="password1" placeholder="請輸入密碼" minlength="6" maxlength="20" required>
-               <label for="pwd2">確認密碼:</label>
-               <input type="password" id="pwd2" name="password2" placeholder="請確認密碼" minlength="6" maxlength="20" required>
-            </p>    
-            <p>
-                <label for="birthday">出生日期:</label>
-                <input type="date" id="birthday" name="birthday">
-            </p>
-            <p>
-                <label for="address">聯絡地址:</label>
-                <input type="text" id="address" name="address" placeholder="請輸入聯絡地址">
-            </p>           
-            <p>
-                <label for="phone">聯絡電話:</label>
-                <input type="tel" id="phone" name="phone" placeholder="請輸入聯絡電話">
-            </p>
-            <p>
-               <label for="check_code">驗證碼　:</label>
-               <input type="text" id="check_code" name="checkCode" placeholder="請輸入驗證碼" required>
-            </p>
-            <input type="submit" value="確定註冊">
+        <p>
+            <label>會員帳號</label>
+            <input type="email" id="email" name="email" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$+?\.[a-zA-Z]{2,3}$" placeholder="請輸入信箱" required="">
+        </p>
+        <p>
+            <label>會員密碼</label>
+            <input type="password" id="pwd1" name="password1" pattern="[a-zA-Z]{8}" placeholder="請輸入密碼" required="">
+            <label>確認密碼</label>
+            <input type="password" id="pwd2" name="password2" pattern="[a-zA-Z]{8}" placeholder="請輸入密碼" required="">
+        </p>
+        <p>
+            <label>會員姓名</label>
+            <input type="text" id="name" name="name" pattern="[a-zA-Z]{8}" placeholder="請輸入姓名" required="">
+        </p>
+        <p>
+            <label>性別</label>
+            <input type="radio" id="male" name="gender" required=""><label for="male">男</label>
+            <input type="radio" id="male" name="gender" required=""><label for="female">女</label>
+        </p>
+        <p>
+            <label>出生年月日</label>
+            <input type="date" id="birthday" name="birthday" required="">
+        </p>
+        <p>
+            <label>出生年月日</label>
+            <select id="year" name="year">
+                <option value="2015">2015</option>
+            </select>
+            <select id="mouth" name="mouth"><option value="2015">2015</option></select>
+            <select id="date" name="date"><option value="2015">2015</option></select>
+        </p>
+        <p>
+            <label for="phone">電　　話</label>
+            <input type="tel" id="phone" name="phone">
+        </p>
+        
+        <input type="submit" value="確定登入">
         </form>
     </body>
 </html>

@@ -16,7 +16,7 @@ and open the template in the editor.
         <a href="/Go2Drink/Login.html" title="會員登入" >登入</a> |
         <a href="register.html" title="會員註冊" >註冊</a>        
         <hr>      
-        <form method="POST" action="register.do">
+        <form method="POST" action="login.do">
             <p>        
                <label for="email">會員帳號:</label>
                <input type="text" id="email" name="email" placeholder="請輸入email" required>
@@ -26,6 +26,15 @@ and open the template in the editor.
                <input type="password" id="pwd" name="password" placeholder="請輸入密碼" required>
             </p>
             <p>
+                <img src="images/check.jpg" id="check_code_image">
+                <input type="button" onclick="refreshHandler()" value="更新圖片">
+                <script>
+                    function refreshHandler(){
+                        var check_img = document.getElementById("check_code_image");
+                        check_img.src="images/check.jpg?get=" + new Date();
+                    }
+                </script>
+                <br>
                <label for="check_code">驗證碼　:</label>
                <input type="text" id="check_code" name="checkCode" placeholder="請輸入驗證碼" required>
             </p>

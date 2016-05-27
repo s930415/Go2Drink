@@ -19,7 +19,7 @@ import sun.font.EAttribute;
  *
  * @author Administrator
  */
-@WebServlet(name = "DumpServlet", urlPatterns = {"/DumpServlet"})
+@WebServlet(name = "DumpServlet", urlPatterns = {"/dump.view"})
 public class DumpServlet extends HttpServlet {
 
     /**
@@ -33,6 +33,7 @@ public class DumpServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
         response.setCharacterEncoding("utf-8");
         try (PrintWriter out = response.getWriter()) {
@@ -40,32 +41,36 @@ public class DumpServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DumpServlet</title>");            
+            out.println("<title>Dump Servlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet DumpServlet at " + request.getContextPath() + "</h1>");
-            out.println("<p>URL Path:"+ request.getRequestURL()+"</p>");
-            out.println("<table boder='1'>");
-            out.println("<caption>Header List</caption>");
-            out.println("<tr><td>Name</td><td>Value</td></tr>");
-            Enumeration<String> headerNames= request.getHeaderNames();
-            while(headerNames.hasMoreElements()){
+            out.println("<h1>Context Path: " + request.getContextPath() + "</h1>");
+            out.println("<p>URL Path: " + request.getRequestURL() + "</p>");
+
+            //以下表格將顯示request headers清單
+            out.println("<table border='1'>");
+            out.println("<caption>Headers List</caption>");
+            out.println("<tr><th>Name</th><th>Value</th></tr>");
+            Enumeration<String> headerNames = request.getHeaderNames();
+            while (headerNames.hasMoreElements()) {
                 String name = headerNames.nextElement();
                 String value = request.getHeader(name);
-                out.println("<tr><td>"+ name+"</td><td>"+value+"</td></tr>");
+                out.println("<tr><td>" + name + "</td><td>" + value + "</td></tr>");
             }
             out.println("</table><br><br>");
-                //
-            out.println("</table border='1'>");
-            out.println("<caption>表格</caption>");
-            out.println("<tr><td>Name</td><td>Value</td></tr>");
-            Enumeration<String> paraNames= request.getParameterNames();
-            while(headerNames.hasMoreElements()){
-                String name = paraNames.nextElement();
-                String value = request.getParameter(name);
-                out.println("<tr><td>"+ name+"</td><td>"+value+"</td></tr>");
+
+            //以下表格將顯示request parameters清單
+            out.println("<table border='1'>");
+            out.println("<caption>表格參數清單</caption>");
+            out.println("<tr><th>Name</th><th>Value</th></tr>");
+            Enumeration<String> paramNames = request.getParameterNames();
+            while (paramNames.hasMoreElements()) {
+                String name = paramNames.nextElement();
+                String[] value = request.getParameterValues(name);
+                out.println("<tr><td>" + name + "</td><td>" + Arrays.toString(value) + "</td></tr>");
             }
             out.println("</table>");
+
             out.println("</body>");
             out.println("</html>");
         }
