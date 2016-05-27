@@ -7,8 +7,8 @@ package com.g2d.view;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -49,6 +49,16 @@ public class HelloServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet HelloServlet at " + request.getContextPath() + "</h1>");
+            ServletContext application = this.getServletContext();
+            Object o = application.getAttribute("g2d.app.visitors.count");
+            if(o instanceof Integer){
+                int visitorsCount =(Integer)o;
+                out.println("<p>拜訪人次" + visitorsCount + "</p>");
+                application.setAttribute("g2d.app.visitors.count" , ++visitorsCount);
+            }else{
+                application.setAttribute("g2d.app.visitors.count" , 1);
+            }
+
             out.println("</body>");
             out.println("</html>");
         }

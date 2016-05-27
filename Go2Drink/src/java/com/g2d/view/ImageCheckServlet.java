@@ -24,11 +24,7 @@ import javax.servlet.http.HttpSession;
  * @author Administrator
  */
 public class ImageCheckServlet extends HttpServlet {
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> b712231273b34195bf4fe9e304dc1c813341b419
     private int len = 6;
     private int width = 16 * 2 + 12 * len, height = 20;
 
@@ -42,25 +38,6 @@ public class ImageCheckServlet extends HttpServlet {
           width = 16 * 2 + 12 * this.len;
         }
     }
-    
-<<<<<<< HEAD
-
-    private int len = 6;
-    private int width = 16 * 2 + 12 * len, height = 20;
-    
-    @Override
-    public void init(){
-        System.out.println(this.getServletName()+"init....");
-        System.out.println(this.getInitParameter("len"));
-        String len = this.getInitParameter("len");
-        if(len != null&&len.matches("\\d+")){
-            this.len = Integer.parseInt(len);
-
-        }
-    }
-
-=======
->>>>>>> b712231273b34195bf4fe9e304dc1c813341b419
 
     private BufferedImage generateImage(String rand, int width, int height) {
         //開始建立影像

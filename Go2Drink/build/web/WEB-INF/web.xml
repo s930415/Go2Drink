@@ -1,51 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.1"
-         xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <listener>
+        <description>ServletContextListener</description>
+        <listener-class>com.g2d.web.VisitorsCountListener</listener-class>
+    </listener>
+    <listener>
+        <description>ServletContextListener, HttpSessionListener</description>
+        <listener-class>com.g2d.web.VisitorsCountListener</listener-class>
+    </listener>
     <servlet>
         <servlet-name>ImageCheckServlet</servlet-name>
         <servlet-class>com.g2d.view.ImageCheckServlet</servlet-class>
         <init-param>
             <param-name>len</param-name>
-<<<<<<< HEAD
-
-            <param-value>4</param-value>         
-        </init-param>
-    </servlet>        
-
             <param-value>4</param-value>
         </init-param>
     </servlet>
-
-=======
-            <param-value>4</param-value>         
-        </init-param>
-    </servlet>        
->>>>>>> b712231273b34195bf4fe9e304dc1c813341b419
     <servlet-mapping>
         <servlet-name>ImageCheckServlet</servlet-name>
         <url-pattern>/images/check.jpg</url-pattern>
     </servlet-mapping>
-<<<<<<< HEAD
-
-=======
->>>>>>> b712231273b34195bf4fe9e304dc1c813341b419
     <servlet>
         <servlet-name>RegisterImageCheckServlet</servlet-name>
-        <servlet-class>com.g2d.view.ImageCheckServlet</servlet-class> 
-        <init-param>
-            <param-name>len</param-name>
-            <param-value>7</param-value>         
-        </init-param>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>RegisterImageCheckServlet</servlet-name>
-        <url-pattern>/images/Register_check.jpg</url-pattern>
-    </servlet-mapping>
-<<<<<<< HEAD
-    
-
-    <servlet>
-        <servlet-name>registerImageCheckServlet</servlet-name>
         <servlet-class>com.g2d.view.ImageCheckServlet</servlet-class>
         <init-param>
             <param-name>len</param-name>
@@ -53,12 +29,9 @@
         </init-param>
     </servlet>
     <servlet-mapping>
-        <servlet-name>registerImageCheckServlet</servlet-name>
+        <servlet-name>RegisterImageCheckServlet</servlet-name>
         <url-pattern>/images/Register_check.jpg</url-pattern>
     </servlet-mapping>
-
-=======
->>>>>>> b712231273b34195bf4fe9e304dc1c813341b419
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
