@@ -6,6 +6,7 @@
         <servlet-class>com.g2d.view.ImageCheckServlet</servlet-class>
         <init-param>
             <param-name>len</param-name>
+<<<<<<< HEAD
 
             <param-value>4</param-value>         
         </init-param>
@@ -15,11 +16,19 @@
         </init-param>
     </servlet>
 
+=======
+            <param-value>4</param-value>         
+        </init-param>
+    </servlet>        
+>>>>>>> b712231273b34195bf4fe9e304dc1c813341b419
     <servlet-mapping>
         <servlet-name>ImageCheckServlet</servlet-name>
         <url-pattern>/images/check.jpg</url-pattern>
     </servlet-mapping>
+<<<<<<< HEAD
 
+=======
+>>>>>>> b712231273b34195bf4fe9e304dc1c813341b419
     <servlet>
         <servlet-name>RegisterImageCheckServlet</servlet-name>
         <servlet-class>com.g2d.view.ImageCheckServlet</servlet-class> 
@@ -32,6 +41,7 @@
         <servlet-name>RegisterImageCheckServlet</servlet-name>
         <url-pattern>/images/Register_check.jpg</url-pattern>
     </servlet-mapping>
+<<<<<<< HEAD
     
 
     <servlet>
@@ -47,6 +57,8 @@
         <url-pattern>/images/Register_check.jpg</url-pattern>
     </servlet-mapping>
 
+=======
+>>>>>>> b712231273b34195bf4fe9e304dc1c813341b419
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
