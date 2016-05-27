@@ -25,6 +25,17 @@ import javax.servlet.http.HttpSession;
  */
 public class ImageCheckServlet extends HttpServlet {
     private int len = 6, width = 16 * 2 + 12 * len, height = 20;
+    
+    @Override
+    public void init(){
+        System.out.println(this.getServletName()+"init....");
+        System.out.println(this.getInitParameter("len"));
+        String len = this.getInitParameter("len");
+        if(len != null&&len.matches("\\d+")){
+            this.len = Integer.parseInt(len);
+
+        }
+    }
 
     private BufferedImage generateImage(String rand, int width, int height) {
         //開始建立影像

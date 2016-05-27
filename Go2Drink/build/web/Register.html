@@ -54,6 +54,19 @@ and open the template in the editor.
             <label for="phone">電　　話</label>
             <input type="tel" id="phone" name="phone">
         </p>
+        <p>
+            <img src="images/Register_check.jpg" id="check_code_image">
+            <input type="button" onclick="refreshHandler()" value="更新圖片">
+            <script>
+                function refreshHandler(){
+                var check_img = document.getElementById("check_code_image");
+                check_img.src= "images/check.jpg?get=" + new Date();
+            }
+            </script>
+            <br>
+        <label for="check_code">驗證碼:</label>
+        <input type="text" id="check_code" name="check_code" placeholder="請依據圖片上的文字keyin">
+        </p>
         
         <input type="submit" value="確定登入">
         </form>
