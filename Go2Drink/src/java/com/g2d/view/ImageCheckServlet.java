@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  * @author Administrator
  */
 public class ImageCheckServlet extends HttpServlet {
-<<<<<<< HEAD
+
     private int len = 6;
     private int width = 16 * 2 + 12 * len, height = 20;
 
@@ -39,8 +39,9 @@ public class ImageCheckServlet extends HttpServlet {
         }
     }
     
-=======
-    private int len = 6, width = 16 * 2 + 12 * len, height = 20;
+
+    private int len = 6;
+    private int width = 16 * 2 + 12 * len, height = 20;
     
     @Override
     public void init(){
@@ -52,7 +53,7 @@ public class ImageCheckServlet extends HttpServlet {
 
         }
     }
->>>>>>> eef1644c947811542f7276ea36e1f424d82e323f
+
 
     private BufferedImage generateImage(String rand, int width, int height) {
         //開始建立影像

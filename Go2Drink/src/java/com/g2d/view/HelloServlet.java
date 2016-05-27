@@ -18,11 +18,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Administrator
  */
-<<<<<<< HEAD
+
 @WebServlet(name = "helloServlet", urlPatterns = {"/hello.view","/hello.asp"})
-=======
-@WebServlet(name = "helloServlet", urlPatterns = {"/hello.view"},initParams = {@WebInitParam(name="welcome",value="HI")})
->>>>>>> eef1644c947811542f7276ea36e1f424d82e323f
+
+//@WebServlet(name = "helloServlet", urlPatterns = {"/hello.view"},initParams = {@WebInitParam(name="welcome",value="HI")})
+
 public class HelloServlet extends HttpServlet {
 
     public HelloServlet(){
