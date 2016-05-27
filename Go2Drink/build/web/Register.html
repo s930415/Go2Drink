@@ -9,6 +9,13 @@ and open the template in the editor.
         <title>會員註冊</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+            div{
+                background-color: #ccffcc;
+               width: 250px;
+               position: fixed;
+            }
+    </style>    
     </head>
     <body>
         <h1>會員註冊</h1>
@@ -17,6 +24,7 @@ and open the template in the editor.
         <a href="Login.html" title="會員登入">會員登入</a>|
         <a href="Register.html" title="會員註冊" >會員註冊</a>
         <hr>
+        <div>
         <form method="POST" action="register.do">
         <p>
             <label>會員帳號:</label>
@@ -25,6 +33,8 @@ and open the template in the editor.
         <p>
             <label>會員密碼:</label>
             <input type="password" id="pwd1" name="password1" pattern="[a-zA-Z]{8}" placeholder="請輸入密碼" required="">
+            <br>
+            <br>
             <label>確認密碼:</label>
             <input type="password" id="pwd2" name="password2" pattern="[a-zA-Z]{8}" placeholder="請確認密碼" required="">
         </p>
@@ -59,7 +69,7 @@ and open the template in the editor.
             <script>
                 function refreshHandler(){
                 var check_img = document.getElementById("check_code_image");
-                check_img.src= "images/check.jpg?get=" + new Date();
+                check_img.src= "images/Register_check.jpg?get=" + new Date();
             }
             </script>
             <br>
@@ -69,5 +79,6 @@ and open the template in the editor.
         
         <input type="submit" value="確定註冊">
         </form>
+        </div>
     </body>
 </html>
