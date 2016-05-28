@@ -25,9 +25,9 @@ import javax.servlet.http.HttpServletResponse;
 
 public class HelloServlet extends HttpServlet {
 
-    public HelloServlet(){
-        System.out.println(this.getClass().getSimpleName() + "created....");
-    }
+//    public HelloServlet(){
+//        System.out.println(this.getClass().getSimpleName() + "created....");
+//    }
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.

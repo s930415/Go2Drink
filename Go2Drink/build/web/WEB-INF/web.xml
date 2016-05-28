@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <listener>
-        <description>ServletContextListener</description>
-        <listener-class>com.g2d.web.VisitorsCountListener</listener-class>
-    </listener>
-    <listener>
-        <description>ServletContextListener, HttpSessionListener</description>
+        <description>ServletContextListener,HttpSessionListener</description>
         <listener-class>com.g2d.web.VisitorsCountListener</listener-class>
     </listener>
     <servlet>
@@ -35,4 +31,8 @@
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
+    <init-param>
+        <param-name>len</param-name>
+        <param-value>4</param-value>
+    </init-param>
 </web-app>

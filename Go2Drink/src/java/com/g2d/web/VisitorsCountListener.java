@@ -35,25 +35,26 @@ public class VisitorsCountListener implements ServletContextListener, HttpSessio
         try (FileReader reader = new FileReader(file)){
             props.load(reader);
             application.log("讀取網站拜訪人次成功"+file.getAbsolutePath());
-        }catch(Exception ex){
-            application.log("讀取網站拜訪人次失敗");
-        }
-        
-        Enumeration names = props.propertyNames();
-        while(names.hasMoreElements()){
-            String name = (String)names.nextElement();
-            String value = props.getProperty(name);
-            if(value != null &&value.matches("\\d+")){
-                application.setAttribute(name, Integer.);
+            Enumeration names = props.propertyNames();
+            while(names.hasMoreElements()){
+                String name = (String)names.nextElement();
+                String value = props.getProperty(name);
+                if(value != null &&value.matches("\\d+")){
+                application.setAttribute(name, Integer.parseInt(value));
+                } else if (value != null) {
+                    application.setAttribute(name, value);
+                }
             }
+        }catch(Exception ex){
+            application.log("讀取網站拜訪人次失敗",ex);
         }
+
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         System.out.println("g2d contextDestroyed...");
         ServletContext applcation =sce.getServletContext();
-        String path = applcation.getRealPath("/WEB-INF/g2d.properties");
         //System.out.println("path:" + path);
         Properties props = new Properties();
         Enumeration<String> names = applcation.getAttributeNames();
@@ -65,6 +66,7 @@ public class VisitorsCountListener implements ServletContextListener, HttpSessio
                 props.setProperty(name,Value.toString());
             }
         }
+        String path = applcation.getRealPath("/WEB-INF/g2d.properties");
         File file = new File(path);
         try(FileWriter writer = new FileWriter(file)){
             props.store(writer, "拜訪人次");
