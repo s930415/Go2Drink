@@ -5,6 +5,7 @@
 --%>
 
 
+<%@page import="com.g2d.domain.DrinkType"%>
 <%@page import="com.g2d.domain.Product"%>
 <%@page import="java.util.List"%>
 <%@page import="com.g2d.model.ProductService"%>
@@ -43,7 +44,8 @@
         </div>
         <%
             ProductService service = new ProductService();
-            List<Product> list = service.getAll();
+            List<Product> list = service.getByDrinkType(DrinkType.COFFEE);
+            list.addAll(service.getByDrinkType(DrinkType.ICE));
             if (list != null && list.size() > 0) {
         %>
         <ul style="position:absolute;top:180px;left:250px;">
@@ -52,9 +54,15 @@
             <li style="width: 180px">
                 <h2><%= p.getName()%></h2>
                 <img height="135"  src='<%= p.getUrl()%>'>
-                <p>價錢:<%=(int)p.getUntiPrice()%></p>
+                <h5>價錢:<%=(int)p.getUntiPrice()%></h5>
             </li>
             <%}%>
+            <ul style="position:absolute;bottom:0px;left:250px;">
+            <li><a class='active' href='product_1.jsp'>1</a></li>
+            <li><a class='active' href="#">2</a></li>
+            <li><a href="product_1.jsp">上一頁</a></li>
+            <li><a href="product_2.jsp">最後頁</a></li>
+            </ul>
         </ul>
         <%}%>
     </body>

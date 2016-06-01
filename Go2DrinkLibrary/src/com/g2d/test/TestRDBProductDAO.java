@@ -5,10 +5,13 @@
  */
 package com.g2d.test;
 
+import com.g2d.domain.DrinkType;
 import com.g2d.domain.Product;
 import com.g2d.domain.Go2DrinkException;
 import com.g2d.model.RDBProductDAO;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -33,15 +36,18 @@ public class TestRDBProductDAO {
             System.out.println("錯誤" + ex);
         }
         */
-
+//
+//        try{
+//            Product p = new Product();
+//            p.setName("包種茶");
+//            p.setUntiPrice(30);
+//            RDBProductDAO dao = new RDBProductDAO();
+//            dao.update(p);
         try{
-            Product p = new Product();
-            p.setName("包種茶");
-            p.setUntiPrice(30);
+            List<Product> list =new ArrayList<>();
             RDBProductDAO dao = new RDBProductDAO();
-            dao.update(p);
-            
-            System.out.println("WIN");
+            list = dao.getByDrinkType(DrinkType.MILK);
+            System.out.println(list);
         }catch(Go2DrinkException ex){
             System.out.println("錯誤" + ex);
         }

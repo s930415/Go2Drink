@@ -6,6 +6,7 @@
 package com.g2d.model;
 
 import com.g2d.domain.Customer;
+import com.g2d.domain.DrinkType;
 import com.g2d.domain.Go2DrinkException;
 import com.g2d.domain.Product;
 import java.sql.SQLException;
@@ -35,5 +36,8 @@ public class ProductService {
     public void delete(Product p) throws Go2DrinkException {
         dao.delete(p);
     }
-
+    
+    public List<Product> getByDrinkType(DrinkType drinktype) throws Go2DrinkException, SQLException {
+        return dao.getByDrinkType(drinktype);
+    }
 }

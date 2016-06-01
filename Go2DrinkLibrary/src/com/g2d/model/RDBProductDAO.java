@@ -5,6 +5,7 @@
  */
 package com.g2d.model;
 
+import com.g2d.domain.DrinkType;
 import com.g2d.domain.Go2DrinkException;
 import com.g2d.domain.Product;
 import java.sql.Connection;
@@ -20,7 +21,8 @@ import java.util.List;
  * @author Administrator
  */
 public class RDBProductDAO {
-    private static final String COL_LIST = "name , price , ice , sugar , url";
+    private static final String COL_LIST = "name , price , ice , sugar , url , type";
+    private static final String SELECT_BYDRINKTYPE_SQL = "SELECT " + COL_LIST + " FROM product WHERE type=?";
     private static final String SELECT_SQL = "SELECT " + COL_LIST + " FROM product WHERE name=?";
     private static final String SELECT_ALL_SQL = "SELECT * FROM product";
     private static final String INSERT_SQL = "INSERT INTO product (name,price) VALUE(?,?)";
@@ -40,6 +42,23 @@ public class RDBProductDAO {
                         p.setUrl(rs.getString("url"));
                 }
             return p;
+            }   
+        }
+    }
+    public List<Product> getByDrinkType(DrinkType Drinktype)throws Go2DrinkException, SQLException{
+        try(Connection connection =  RDBConnection.getConnection();
+            PreparedStatement pstmt =connection.prepareStatement(SELECT_BYDRINKTYPE_SQL)){
+            pstmt.setString(1, Drinktype.toString());
+            try(ResultSet rs = pstmt.executeQuery();){  
+                List<Product> list = new ArrayList<>();
+                while (rs.next()){
+                        Product p = new Product();
+                        p.setName(rs.getString("name"));
+                        p.setUntiPrice(rs.getDouble("price"));
+                        p.setUrl(rs.getString("url"));
+                        list.add(p);
+                }
+            return list;
             }   
         }
     }

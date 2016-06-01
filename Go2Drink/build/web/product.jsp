@@ -49,10 +49,10 @@
         <ul style="position:absolute;top:180px;left:250px;">
             <h1><%= this.getServletInfo()%></h1>
             <% for (Product p : list) {%>
-            <li style="width: 250px">
+            <li style="width: 180px">
                 <h2><%= p.getName()%></h2>
                 <img height="135"  src='<%= p.getUrl()%>'>
-                <p>price:<%= p.getUntiPrice()%></p>
+                <p>價錢:<%=(int)p.getUntiPrice()%></p>
             </li>
             <%}%>
         </ul>

@@ -12,7 +12,7 @@ package com.g2d.domain;
 //+ M or L   &  冰沙不可選
 public enum DrinkType {
 
-    TEA("茶"),MIKE("奶"),JUICE("鮮果汁"),COFFE("咖啡"),ICE("冰沙");
+    TEA("茶"),MILK("奶"),DIS("特調"),COFFEE("咖啡"),ICE("冰沙");
     
     private final String type;
     
@@ -20,10 +20,7 @@ public enum DrinkType {
         
         this.type = type;
         
-        
-    }
-
-            
+    }      
 }
 
     

@@ -17,6 +17,7 @@ public class Product {
     private String url; //圖片
     private String descripition;//敘述
     private char size; //大小 M & L
+    private DrinkType drinktype;
     
     public static final char MIDDLE = 'M';
     public static final char LARGE = 'L';
@@ -115,6 +116,14 @@ public class Product {
             url = url.trim();
         }
         this.url = url;
+    }
+
+    public DrinkType getDrinktype() {
+        return drinktype;
+    }
+
+    public void setDrinktype(DrinkType drinktype) {
+        this.drinktype = drinktype;
     }
 
     /**
