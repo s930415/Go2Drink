@@ -20,7 +20,7 @@ import java.util.List;
  * @author Administrator
  */
 public class RDBProductDAO {
-    private static final String COL_LIST = "name , price , ice , sugar , size";
+    private static final String COL_LIST = "name , price , ice , sugar , url";
     private static final String SELECT_SQL = "SELECT " + COL_LIST + " FROM product WHERE name=?";
     private static final String SELECT_ALL_SQL = "SELECT * FROM product";
     private static final String INSERT_SQL = "INSERT INTO product (name,price) VALUE(?,?)";
@@ -37,6 +37,7 @@ public class RDBProductDAO {
                 while (rs.next()){
                         p.setName(rs.getString("name"));
                         p.setUntiPrice(rs.getDouble("price"));
+                        p.setUrl(rs.getString("url"));
                 }
             return p;
             }   
@@ -51,6 +52,7 @@ public class RDBProductDAO {
                     Product p = new Product();
                     p.setName(rs.getString("name"));
                     p.setUntiPrice(rs.getDouble("price"));
+                    p.setUrl(rs.getString("url"));
                     list.add(p);
             }
         }catch(SQLException ex) {

@@ -1,3 +1,5 @@
+<%@page import="com.g2d.domain.Customer"%>
+<%@page pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -19,18 +21,17 @@ and open the template in the editor.
         </style>
     </head>
     <body>
-        <h1><img style="width:150px" src="image/G2Drink_Logo.png" alt=""/></h1>
+        <h1><img style="width:200px" src="image/icon/LOGO走路.jpg" alt=""/></h1>
         <hr>
         <a href="Login.html" title="會員登入">會員登入</a>|
         <a href="Register.html" title="會員註冊">會員註冊</a>|
         <a href="Register.html" title="店家資訊">店家資訊</a>
-        <a href="Register.html" title="商品">商品清單</a>
+        <a href="product.jsp" title="商品">商品清單</a>
         <hr>        
         <ul>
             <li>
                 <h2>巧克力冰沙</h2>
                 <img style="width: 10%" src="../image/products/巧克力冰沙.png" alt=""/>
-                <img src="../image/products/巧克力冰沙.png" alt=""/>
             </li>
             <li>
                 <h2>巧克力冰沙</h2>
