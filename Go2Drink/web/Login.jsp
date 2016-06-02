@@ -1,3 +1,7 @@
+<%@page import="java.util.List"%>
+<%@page import="java.util.Collection"%>
+<%@page import="java.util.Enumeration"%>
+<%@page pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -21,14 +25,25 @@ and open the template in the editor.
         </style>
     </head>
     <body>
-        <h1>會員登入</h1>
+        <h1><img style="width:200px" src="image/icon/LOGO走路.jpg" alt=""/></h1>
         <hr>
-         <a href="/g2d/" title="首頁" >首頁</a> |
-        <a href="Login.html" title="會員登入">會員登入</a>|
-        <a href="Register.html" title="會員註冊" >會員註冊</a>        
-        <hr>
+        <a href="/g2d/" title="首頁" >首頁</a>|
+        <a href="Login.jsp" title="會員登入">會員登入</a>|
+        <a href="Register.jsp" title="會員註冊" >會員註冊</a>        
         <hr>
         <div>
+        <h1>會員登入</h1>
+        <%
+            List<String> errors = (List<String>)request.getAttribute("error");
+            if(errors!=null && errors.size()>0){
+                
+            %>
+            <ul>
+                <% for (String msg:errors){%>
+                <li><%=msg%></li>
+                <% } %>
+            </ul>
+        <% } %>
         <form method="POST" action="login.do">
         <p>
             <label for="email">會員帳號:</label>
@@ -49,7 +64,7 @@ and open the template in the editor.
             </script>
             <br>
         <label for="check_code">驗證碼　:</label>
-        <input type="text" id="check_code" name="check_code" placeholder="請輸入驗證碼">
+        <input type="text" id="check_code" name="check_code"placeholder="請輸入驗證碼">
         </p>
         <input type="submit" value="確定登入">
         </form>
