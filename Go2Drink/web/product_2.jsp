@@ -30,7 +30,7 @@
         <h1><img style="width:200px" src="image/icon/LOGO走路.jpg" alt=""/></h1>
         <hr>
         <a href="/g2d/" title="首頁" >首頁</a> |
-        <a href="Customer.html" title="會員專區">會員專區</a>|  
+        <a href="Customer.jsp" title="會員專區">會員專區</a>|  
         <a href="Test.html" title="商品專區">商品專區</a> 
         <hr>               
         <div class="page-container">

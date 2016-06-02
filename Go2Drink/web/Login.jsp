@@ -48,6 +48,8 @@ and open the template in the editor.
         <p>
             <label for="email">會員帳號:</label>
             <input type="text" id="email" name="email" placeholder="請輸入信箱" required="">
+            <input type="checkbox" name="remember" id="remember">
+            <label>記住帳號</label>
         </p>
         <p>
             <label for="password">會員密碼:</label>
