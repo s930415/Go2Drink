@@ -19,3 +19,6 @@ hs_err_pid*
 /Go2DrinkApp/build/
 /Go2DrinkLibrary/dist/
 /Go2Drink/dist/
+/Go2Drink/build
+/Go2Drink/nbproject/private
+/Go2Drink/build
