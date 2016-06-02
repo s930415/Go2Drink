@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -18,13 +20,25 @@ and open the template in the editor.
     </style>    
     </head>
     <body>
-        <h1>會員註冊</h1>
+        <h1><img style="width:200px" src="image/icon/LOGO走路.jpg" alt=""/></h1>
         <hr>
         <a href="/g2d/" title="首頁" >首頁</a> |
-        <a href="Login.html" title="會員登入">會員登入</a>|
-        <a href="Register.html" title="會員註冊" >會員註冊</a>
+        <a href="Login.jsp" title="會員登入">會員登入</a>|
+        <a href="Register.jsp" title="會員註冊" >會員註冊</a>
         <hr>
+        <%
+            List<String> errors = (List<String>)request.getAttribute("errors");
+            if(errors!=null && errors.size()>0){
+                
+            %>
+            <ul>
+                <% for (String msg:errors){%>
+                <li><%=msg%></li>
+                <% } %>
+            </ul>
+        <% } %>
         <div>
+        <h1>會員註冊</h1>
         <form method="POST" action="register.do">
         <p>
             <label>會員帳號:</label>
@@ -32,20 +46,20 @@ and open the template in the editor.
         </p>
         <p>
             <label>會員密碼:</label>
-            <input type="password" id="pwd1" name="password1" pattern="[a-zA-Z]{8}" placeholder="請輸入密碼" required="">
+            <input type="password" id="pwd1" name="password1" minlength="6" maxlength="20" placeholder="請輸入密碼" required="">
             <br>
             <br>
             <label>確認密碼:</label>
-            <input type="password" id="pwd2" name="password2" pattern="[a-zA-Z]{8}" placeholder="請確認密碼" required="">
+            <input type="password" id="pwd2" name="password2" minlength="6" maxlength="20" placeholder="請確認密碼" required="">
         </p>
         <p>
             <label>會員姓名:</label>
-            <input type="text" id="name" name="name" pattern="[a-zA-Z]{8}" placeholder="請輸入姓名" required="">
+            <input type="text" id="name" name="name" placeholder="請輸入姓名" required="">
         </p>
         <p>
             <label>性別:</label>
-            <input type="radio" id="male" name="gender" required=""><label for="male">男</label>
-            <input type="radio" id="male" name="gender" required=""><label for="female">女</label>
+            <input type="radio" id="male" name="gender" value="M" required=""><label for="male">男</label>
+            <input type="radio" id="male" name="gender" value="F" required=""><label for="female">女</label>
         </p>
         <p>
             <label>出生日期:</label>

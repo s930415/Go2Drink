@@ -79,6 +79,11 @@ public class VisitorsCountListener implements ServletContextListener, HttpSessio
 
     @Override
     public void sessionCreated(HttpSessionEvent se) {
+        ServletContext application = se.getSession().getServletContext();
+        Integer count = (Integer)application.getAttribute("g2d.app.visitors.count");
+        if(count == null){
+            
+        }
     }
 
     @Override

@@ -6,16 +6,19 @@
 package com.g2d.controller;
 
 import com.g2d.domain.Customer;
+import com.g2d.domain.Go2DrinkException;
 import com.g2d.model.CustomerService;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -44,65 +47,47 @@ public class LoginServlet extends HttpServlet {
         
         if( email==null || (email=email.trim()).length()==0){
             errors.add("會員帳號必須輸入!!!!!!!!");
-            
         } 
         if( password==null || (password=password.trim()).length()==0){
             errors.add("會員密碼必須輸入!!!!!!!!");
-            
         } 
-        if(check_code==null){
+        HttpSession session = request.getSession();
+        if(check_code==null || (check_code = check_code.trim()).length() ==0){
             errors.add("檢查碼必須輸入!!!!!!!!");
-            
+        }else {
+            String oldcheck_code =(String)session.getAttribute("imageCheckServlet");
+            if(!check_code.equalsIgnoreCase(oldcheck_code)){
+                errors.add("驗證碼必須一樣!!!!");
+            }
         }
         
-        if(errors.isEmpty()){  //當錯誤清單沒有錯誤訊息的字串
-
-            //2.呼叫商業邏輯,呼叫CustomerService login (u,p)
-            try{
+        if (errors.isEmpty()) { //當errors中沒有錯誤訊息字串
+            //2. 呼叫CustomerService的商業邏輯方法: login(u,p)
+            try {
                 CustomerService service = new CustomerService();
-                Customer c =service.login(email, password);
-            //3.1顯示登入成功
-                response.setContentType("text/html");
-                response.setCharacterEncoding("utf-8");
-                try (PrintWriter out = response.getWriter()) {
-                    out.println("<!DOCTYPE html>");
-                    out.println("<html>");
-                    out.println("<head>");
-                    out.println("<title>登入成功</title>");
-                    out.println("</head>");
-                    out.println("<body>");
-                    out.println("<h1>"+ c.getName()+",歡迎登入</h1>");
-                    out.println("</body>");
-                    out.println("</html>");
-                    
-                }
+                Customer c = service.login(email, password);
 
-
+                //3.1 forward給登入成功view: /login_ok.jsp
+                session.setAttribute("user", c);
+               // request.setAttribute("customer", c);              session生命週期較久
+                RequestDispatcher dispatcher = request.getRequestDispatcher("login_ok.jsp");
+                dispatcher.forward(request, response);
                 return;
-            }catch(Exception ex){
+            } catch (Go2DrinkException ex) {
+                errors.add(ex.getMessage());
+//                if(ex.getCause()!=null){
+//                    ex.printStackTrace();
+//                }
+            } catch (Exception ex) {
                 errors.add(ex.toString());
             }
-
-        
-                    
-                }
-        //3.2顯示登入失敗
-            response.setContentType("text/html");
-            response.setCharacterEncoding("utf-8");
-            try(PrintWriter out = response.getWriter()){
-                    out.println("<!DOCTYPE html>");
-                    out.println("<html>");
-                    out.println("<head>");
-                    out.println("<title>登入成功</title>");
-                    out.println("</head>");
-                    out.println("<body>");
-                    out.println("<h1>登入失敗</h1>");
-                    out.println(errors);
-                    out.println("</body>");
-                    out.println("</html>");
-        
-        }  
+        }
+        //3.2forward給登入失敗view:/login_fail.jsp
+        request.setAttribute("errors", errors);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("Login.jsp");
+        dispatcher.forward(request,response);  
     }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -113,13 +98,12 @@ public class LoginServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    /*
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-*/
+//    @Override
+//    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+//            throws ServletException, IOException {
+//        processRequest(request, response);
+//    }
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -128,17 +112,19 @@ public class LoginServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /*
+    /**
      * Returns a short description of the servlet.
      *
      * @return a String containing servlet description
      */
-  // </editor-fold>
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
 }
