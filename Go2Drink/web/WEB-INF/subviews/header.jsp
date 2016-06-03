@@ -21,6 +21,4 @@
         <a href="Customer.jsp" title="會員專區">會員專區</a>|
         <a href="Register.html" title="店家資訊">店家資訊</a> |
         <a href="product_1.jsp" title="商品">商品清單</a>
-        <hr>    
-    </body>
-</html>
+        <hr>

@@ -41,13 +41,13 @@ public class HelloServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet HelloServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
+//            out.println("<!DOCTYPE html>");
+//            out.println("<html>");
+//            out.println("<head>");
+//            out.println("<title>Servlet HelloServlet</title>");            
+//            out.println("</head>");
+//            out.println("<body>");
+            
             out.println("<h1>Servlet HelloServlet at " + request.getContextPath() + "</h1>");
             ServletContext application = this.getServletContext();
             Object o = application.getAttribute("g2d.app.visitors.count");
