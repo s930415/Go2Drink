@@ -26,7 +26,7 @@
         </style>
     </head>
     <body>
-        <h1><img style="width:200px" src="image/icon/LOGO走路.jpg" alt=""/></h1>
+        <a href="/g2k/"><img src="image/LOGO走路.jpg" width="200"></a>
         <hr>
         <a href="/g2d/" title="首頁" >首頁</a> |
         <a href="Customer.html" title="會員專區">會員專區</a>|  

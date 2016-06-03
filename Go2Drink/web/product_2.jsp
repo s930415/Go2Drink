@@ -27,7 +27,7 @@
         </style>
     </head>
     <body>
-        <h1><img style="width:200px" src="image/icon/LOGO走路.jpg" alt=""/></h1>
+        <a href="/g2k/"><img src="image/LOGO走路.jpg" width="200"></a>
         <hr>
         <a href="/g2d/" title="首頁" >首頁</a> |
         <a href="Customer.jsp" title="會員專區">會員專區</a>|  
@@ -37,7 +37,7 @@
             <div class="left">
                 <img src="image/icon/1.png" width="200px"/>
                 <p><a href="Dis.html">特色飲品介紹</a></p>
-                <p><a href="product.html">所有飲品</a></p>
+                <p><a href="product_1.jsp">所有飲品</a></p>
                 <p><a href="jelly.html">日本鮮果凍</a></p>
                 <p><a href="MENU.html">產品MENU</a></p>			
             </div>
