@@ -8,8 +8,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style type="text/css">
 	body {
-                margin: 0;
-                padding: 0;
                 color: black;
                 background: url('image/cfd1.jpg') no-repeat;
             }
