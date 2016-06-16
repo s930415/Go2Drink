@@ -6,17 +6,18 @@
         <title><%= request.getParameter("sub_title")%></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style type="text/css">
-	body {
-                color: black;
-                background: url('image/cfd1.jpg') no-repeat;
-            }
-        </style>
+        <link href="${pageContext.request.contextPath}/style/g2d.css" rel="stylesheet" type="text/css"/>
+        <script src="${pageContext.request.contextPath}/js/jquery.js" type="text/javascript"></script>
     </head>
     <body>
-        <h1><img style="width:200px" src="image/icon/LOGO走路.jpg" alt=""/><sub style="font-size:small">歡迎光臨</sub></h1>
-        <hr>
-        <a href="Customer.jsp" title="會員專區">會員專區</a>|
-        <a href="Register.html" title="店家資訊">店家資訊</a> |
-        <a href="product_1.jsp" title="商品">商品清單</a>
-        <hr>
+
+            <header>
+                <nav class="headermenu">
+                    <a href="index.jsp"><img src="image/LOGO走路.jpg" width="180"></a>
+                    <a href="Customer.jsp"><img src="image/最新資訊.jpg"width="125"></a> 
+                    <a href="Dis.jsp"><img src="image/商品專區.jpg"width="125"></a>
+                    <a href="Customer.jsp"><img src="image/門市專區.jpg"width="125"></a>
+                    <a href="Customer.jsp"><img src="image/會員專區.jpg"width="125"></a>
+                    <a href="Test.html"><img src="image/car2.jpg"width="100"></a>
+                </nav>
+            </header>

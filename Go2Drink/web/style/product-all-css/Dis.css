@@ -1,0 +1,29 @@
+.left {
+    margin: 0;
+    float: left;
+    width: 200px;
+    height: 400px;
+    background-color: white;
+}
+.left a{
+    text-decoration:none;
+}
+.left p{
+    border-bottom-style: solid; 
+    border-bottom-color:#cccccc;
+    width:200px;
+}
+.right {
+    margin: 20px;
+    float: left;
+    width: 720px;
+    height: 1000px;
+    background-color: white;
+}
+.page-container {
+    margin: 50px;
+    float: left;
+    width: 1000px;
+    height: 1050px;
+    background-color: white;   
+}

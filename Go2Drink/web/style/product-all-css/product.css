@@ -1,0 +1,56 @@
+.left {
+    margin: 30px;
+    float: left;
+    width: 200px;
+    height: 400px;
+    background-color: white;
+
+}
+.right {
+    margin: 20px;
+    width: 950px;
+    height: 1200px;
+    clear: none;
+}
+li {
+    display:  inline;
+    float: left;
+}
+.left p{
+    border-bottom-style: solid; 
+    border-bottom-color:#cccccc;
+    width:200px;
+}
+.left a{
+    text-decoration:none;
+}
+.right a{
+    text-decoration:none;
+}
+.right ul {
+    width: 900px;
+    height: 1100px;
+    float: right;
+}
+.amo a{
+    margin: 0px 25px;
+    background-color:white;
+    width: 400px;
+    text-align:center;
+    font-size: 2em;
+    text-decoration:none;
+    /*                margin-top: 0px;*/
+    text-align: center;
+    /*                height: 84px;*/                    
+}
+.amo img{
+    top: 80px;
+}
+.navigator{
+    position: relative;
+    top: -20px;                
+}
+.button li {
+    width: 20px;
+    height: 30px;
+}
