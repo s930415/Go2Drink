@@ -11,7 +11,7 @@
         <p><a href="jelly.jsp">日本鮮果凍</a></p>
         <p><a href="menu.jsp">產品MENU</a></p>			
     </div>
-    <div class="right">
+    <div class="right">        
         <div id="main_content"> 							
             <p><img src="image/特色飲品.jpg"> </p>			
         </div>  

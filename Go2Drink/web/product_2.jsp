@@ -18,6 +18,13 @@
     </div>
 
     <div class="right">
+        <div class="sort">
+        <a href="Tea.jsp">茶類</a>
+        <a href="Milk.jsp">奶茶</a>
+        <a href="Feature.jsp">特調</a>
+        <a href="Smoothies.jsp">冰沙</a>
+        <a href="Coffee.jsp">咖啡</a>
+        </div>
         <%
             ProductService service = new ProductService();
             List<Product> list = service.getByDrinkType(DrinkType.COFFEE);
@@ -34,8 +41,8 @@
             <%}%>            
         </ul>
         <div class="button">
-            <h3><a href="product_1.jsp">1</a><h3>
-            <h3><a href="product_2.jsp">2</a><h3>
+            <a href="product_1.jsp">1</a>
+            <a href="product_2.jsp">2</a>
         </div>
     </div>
     <%}%>

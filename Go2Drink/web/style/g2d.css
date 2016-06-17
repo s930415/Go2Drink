@@ -32,6 +32,30 @@ header{
     background:white;
 }
 footer{
+    padding: 20px;
+    padding: auto;
+    max-width:1000px;
+    margin:auto;
+    background:white;
+}
+.dr{
+    direction:rtl;
+}
+.dr a{
+    color: red;
+    text-decoration:none;
+    margin: 5px;
+}
+.line1 {
+    border-top: #6fba2c 1px solid;
+
+}
+.line2{
+    min-width: 980px;
+    border-top: #6fba2c 1px solid;
+
+}
+footer{
     clear: both;
     text-align:center; 
     width:954px;
@@ -99,5 +123,33 @@ footer{
 }
 .button a{
     text-decoration:none;
-    
+    margin: 10px;
+}
+.sort a{
+    color: #ff00cc;
+    text-decoration:none;
+    margin: 15px;
+    position:relative;
+    left: 40px;
+    font-size: 20px;
+}
+.page-container table.news_title{
+    margin-top: 20px;
+    font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", 华文细黑, STHeiti, 微软雅黑, "Microsoft YaHei", SimHei, sans-serif;
+}
+thead{
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+.page-container .right .sub_header_menu{
+    background-color: #6fba2c;
+    width: 700px;
+    height: 35px;
+    font-size: 10px;
+    color: #fff;
+}
+.sub_header_menu td{
+    border-right: 1px solid #fff;
+    font-size: 14px;
 }
