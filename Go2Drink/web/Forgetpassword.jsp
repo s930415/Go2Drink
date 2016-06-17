@@ -40,3 +40,4 @@
         </form>
     </div>
 </div>
+<jsp:include page="WEB-INF/subviews/footer.jsp"></jsp:include>

@@ -79,5 +79,5 @@
             <input type="submit" value="確定註冊">
         </form>
     </div>
-</body>
-</html>
+</div>
+<jsp:include page="WEB-INF/subviews/footer.jsp"></jsp:include>

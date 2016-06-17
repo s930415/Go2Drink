@@ -28,8 +28,6 @@
         <%
             ProductService service = new ProductService();
             List<Product> list = service.getByDrinkType(DrinkType.TEA);
-            list.addAll(service.getByDrinkType(DrinkType.DIS));
-            list.addAll(service.getByDrinkType(DrinkType.MILK));
             if (list != null && list.size() > 0) {
         %>
         <ul>            
@@ -41,10 +39,6 @@
             </li>
             <%}%>            
         </ul>
-        <div class="button">
-            <a href="product_1.jsp">1</a>
-            <a href="product_2.jsp">2</a>          
-        </div>
     </div>
     <%}%>    
 </div>

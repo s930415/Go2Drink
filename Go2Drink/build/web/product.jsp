@@ -1,13 +1,7 @@
-<%-- 
-    Document   : product_list
-    Created on : 2016/5/31, 下午 03:35:11
-    Author     : Administrator
---%>
-
-
 <%@page import="com.g2d.domain.Product"%>
 <%@page import="java.util.List"%>
 <%@page import="com.g2d.model.ProductService"%>
+<%@include file="WEB-INF/subviews/header.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" info="產品清單"%>
 <!DOCTYPE html>
 <html>
@@ -26,19 +20,14 @@
         </style>
     </head>
     <body>
-        <a href="/g2k/"><img src="image/LOGO走路.jpg" width="200"></a>
-        <hr>
-        <a href="/g2d/" title="首頁" >首頁</a> |
-        <a href="Customer.html" title="會員專區">會員專區</a>|  
-        <a href="Test.html" title="商品專區">商品專區</a> 
-        <hr>               
+                       
         <div class="page-container">
             <div class="left">
                 <img src="image/icon/1.png" width="200px"/>
                 <p><a href="Dis.html">特色飲品介紹</a></p>
                 <p><a href="product.html">所有飲品</a></p>
                 <p><a href="jelly.html">日本鮮果凍</a></p>
-                <p><a href="MENU.html">產品MENU</a></p>			
+                <p><a href="menu.html">產品MENU</a></p>			
             </div>
         </div>
         <%

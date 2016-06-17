@@ -74,5 +74,4 @@
         </form>
     </div>
 </div>
-</body>
-</html>
+<jsp:include page="WEB-INF/subviews/footer.jsp"></jsp:include>
