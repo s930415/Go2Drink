@@ -55,7 +55,7 @@ public class LoginServlet extends HttpServlet {
         if(check_code==null || (check_code = check_code.trim()).length() ==0){
             errors.add("檢查碼必須輸入!!!!!!!!");
         }else {
-            String oldcheck_code =(String)session.getAttribute("imageCheckServlet");
+            String oldcheck_code =(String)session.getAttribute("ImageCheckServlet");
             if(!check_code.equalsIgnoreCase(oldcheck_code)){
                 errors.add("驗證碼必須一樣!!!!");
             }
@@ -70,7 +70,7 @@ public class LoginServlet extends HttpServlet {
                 //3.1 forward給登入成功view: /login_ok.jsp
                 session.setAttribute("user", c);
                // request.setAttribute("customer", c);              session生命週期較久
-                RequestDispatcher dispatcher = request.getRequestDispatcher("login_ok.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("Customer.jsp");
                 dispatcher.forward(request, response);
                 return;
             } catch (Go2DrinkException ex) {
