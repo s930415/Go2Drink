@@ -27,7 +27,7 @@
                 <a href="news.jsp"><img src="image/最新資訊.jpg"width="125"></a> 
                 <a href="Dis.jsp"><img src="image/商品專區.jpg"width="125"></a>
                 <a href="Retail.jsp"><img src="image/門市專區.jpg"width="125"></a>
-                <a href="Customer.jsp"><img src="image/會員專區.jpg"width="125"></a>
+                <a href="Login.jsp"><img src="image/會員專區.jpg"width="125"></a>
                 <a href="ShoppingCart.jsp"><img src="image/car2.jpg"width="100"></a>
                 <div class="line2"></div>
             </nav>  
