@@ -39,11 +39,12 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<String> errors = new ArrayList<>();
-        
+        request.setCharacterEncoding("utf-8");
         //1.讀取並檢查表單傳來參數
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String check_code = request.getParameter("check_code");
+        String remember = request.getParameter("remember");
         
         if( email==null || (email=email.trim()).length()==0){
             errors.add("會員帳號必須輸入!!!!!!!!");
@@ -66,12 +67,32 @@ public class LoginServlet extends HttpServlet {
             try {
                 CustomerService service = new CustomerService();
                 Customer c = service.login(email, password);
+                
+                //add cookie(optional)
+                Cookie cookie = new Cookie("userid", email);
+                if(remember!=null){
+                    cookie.setMaxAge(30*24*60*60); //in seconds
+                }else{
+                    cookie.setMaxAge(0); //in seconds
+                }
+                response.addCookie(cookie);
+                
+                Cookie cookie2 = new Cookie("remember", "checked");
+                if(remember!=null){
+                    cookie2.setMaxAge(30*24*60*60); //in seconds
+                }else{
+                    cookie2.setMaxAge(0); //in seconds
+                }
+                response.addCookie(cookie2);                
+                
+                session.removeAttribute("imageCheckServlet");
 
                 //3.1 forward給登入成功view: /login_ok.jsp
                 session.setAttribute("user", c);
                // request.setAttribute("customer", c);              session生命週期較久
-                RequestDispatcher dispatcher = request.getRequestDispatcher("Customer.jsp");
-                dispatcher.forward(request, response);
+                //RequestDispatcher dispatcher = request.getRequestDispatcher("Customer.jsp");
+                //dispatcher.forward(request, response);
+                response.sendRedirect(request.getContextPath());
                 return;
             } catch (Go2DrinkException ex) {
                 errors.add(ex.getMessage());
@@ -84,7 +105,7 @@ public class LoginServlet extends HttpServlet {
         }
         //3.2forward給登入失敗view:/login_fail.jsp
         request.setAttribute("errors", errors);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("Login.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/Login.jsp");
         dispatcher.forward(request,response);  
     }
 

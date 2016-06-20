@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="java.util.List"%>
-<%@page import="java.util.Collection"%>
+<%@page import="java.util.Collection" info="登入"%>
 <%@page import="java.util.Enumeration"%>
 <%@page pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -45,7 +44,6 @@
                 }
             }
         %>
-
         <form method="POST" action="login.do">
             <p>
                 <label for="email">會員帳號:</label>

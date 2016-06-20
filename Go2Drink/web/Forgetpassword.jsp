@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@include file="WEB-INF/subviews/header.jsp"%>
+<title>忘記密碼</title>
 <div class="page-container">
     <div class="left">      
         <div class="Customer">
