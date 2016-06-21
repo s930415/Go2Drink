@@ -1,5 +1,6 @@
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.g2d.domain.Customer" info="會員專區"%>
 <!DOCTYPE html>
 <jsp:include page="WEB-INF/subviews/header.jsp">
     <jsp:param name="sub_title" value="<%=this.getServletInfo()%>"/>

@@ -3,11 +3,10 @@
     Created on : 2016/6/14, 下午 05:49:23
     Author     : Administrator
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.g2d.domain.Customer" info="會員專區"%>
 <!DOCTYPE html>
 <%@include file="WEB-INF/subviews/header.jsp"%>
-<title>忘記密碼</title>
 <div class="page-container">
     <div class="left">      
         <div class="Customer">
