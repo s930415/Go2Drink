@@ -6,7 +6,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="com.g2d.domain.Customer" info="會員專區"%>
 <!DOCTYPE html>
-<%@include file="WEB-INF/subviews/header.jsp"%>
+<jsp:include page="WEB-INF/subviews/header.jsp">
+    <jsp:param name="sub_title" value="<%=this.getServletInfo()%>"/>
+</jsp:include>
 <div class="page-container">
     <div class="left">      
         <div class="Customer">
