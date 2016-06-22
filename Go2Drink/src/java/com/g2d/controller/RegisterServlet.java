@@ -107,11 +107,10 @@ public class RegisterServlet extends HttpServlet {
                     request.setAttribute("Customer", c);
                     CustomerService service = new CustomerService();
                     service.register(c);
-                    System.out.println("123");
                     
                     
                     request.setAttribute("customer", c);
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/register_ok.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
                     dispatcher.forward(request, response);
                     return;
                 }catch(Exception ex){

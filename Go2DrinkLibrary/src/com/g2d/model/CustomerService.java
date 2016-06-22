@@ -17,7 +17,7 @@ public class CustomerService {
     private RDBCustomersDAO dao = new RDBCustomersDAO();
     
     public void register(Customer c)throws Go2DrinkException{
-
+        dao.insert(c);
     }
     
     public Customer login (String email, String pwd )throws Go2DrinkException{

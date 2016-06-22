@@ -31,7 +31,8 @@ public class TestCustomer {
             c.setName("小米德");
             c.setAddress("新北市");
             c.setEmail("adas@com.tw");
-            c.setBirthday(new GregorianCalendar(1985, 4 - 1, 28).getTime()); //月分因為是用國外的,且用陣列所以0對應一月,1對應2月,故要減1
+            c.setBirthday("1992-01-02");
+            //c.setBirthday(new GregorianCalendar(1985, 4 - 1, 28).getTime()); //月分因為是用國外的,且用陣列所以0對應一月,1對應2月,故要減1
             Product p = new Product();
             p.setName("錫蘭紅茶");
             p.setUntiPrice(25);

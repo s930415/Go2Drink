@@ -43,6 +43,10 @@
                 <input type="text" id="name" name="name" placeholder="請輸入姓名" required="">
             </p>
             <p>
+                <label>地址:</label>
+                <input type="text" id="adress" name="adress" placeholder="請輸入地址" required="">
+            </p>
+            <p>
                 <label>性別:</label>
                 <input type="radio" id="male" name="gender" value="M" required=""><label for="male">男</label>
                 <input type="radio" id="male" name="gender" value="F" required=""><label for="female">女</label>
