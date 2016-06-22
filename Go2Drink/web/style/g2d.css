@@ -133,23 +133,29 @@ footer{
     left: 40px;
     font-size: 20px;
 }
-.page-container table.news_title{
-    margin-top: 20px;
-    font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", 华文细黑, STHeiti, 微软雅黑, "Microsoft YaHei", SimHei, sans-serif;
+.error{
+    font-size: 20px;
+    color: red;
 }
-thead{
-    display: table-header-group;
-    vertical-align: middle;
-    border-color: inherit;
+.error li{
+    position:relative; 
+    top:10px;
+    text-align:center;
+    border-color:red;
+    border-style:dotted;
 }
-.page-container .right .sub_header_menu{
-    background-color: #6fba2c;
-    width: 700px;
-    height: 35px;
-    font-size: 10px;
-    color: #fff;
+table{
+    border-collapse: collapse;
+    width: 100%;
 }
-.sub_header_menu td{
-    border-right: 1px solid #fff;
-    font-size: 14px;
+th, td{
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even){
+    background-color: #f2f2f2
+}
+th{
+    background-color: #339900;
+    color: white;
 }
