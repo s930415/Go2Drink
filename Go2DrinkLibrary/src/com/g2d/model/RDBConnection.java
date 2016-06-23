@@ -70,7 +70,7 @@ public class RDBConnection {
             ctx = new InitialContext();
 //            if (ctx == null) throw new RuntimeException("JNDI Context是null!");            
             
-            ds = (DataSource) ctx.lookup("java:comp/env/jdbc/vgb");
+            ds = (DataSource) ctx.lookup("java:comp/env/jdbc/g2d");
             if (ds == null) throw new RuntimeException("無法取得DataSource.");            
             
             connection = ds.getConnection();

@@ -50,6 +50,10 @@ public class CustomerService {
         dao.delete(c);
     }
     
+    public void update(Customer c)throws Go2DrinkException{
+        dao.update(c);
+    }
+    
     
     
     

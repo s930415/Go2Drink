@@ -21,7 +21,7 @@ public class RDBCustomersDAO {
     private static final String INSERT_SQL = "INSERT INTO customer (email,name,gender,password,birthday,address,phone,status) "
             +"VALUES(?,?,?,?,?,?,?,?)";
 
-    private static final String UPDATE_SQL = "UPDATE_SQL = UPDATE customer" + "SET name = ? , gender = ?, password = ?,birthday = ?, address = ?,phone = ?,status = ? WHERE email=?";
+    private static final String UPDATE_SQL =  "UPDATE customer" + " SET name = ? , gender = ?, password = ?,birthday = ?, address = ?,phone = ?,status = ? WHERE email=?";
     private static final String DELETE_SQL = "DELETE FROM customer WHERE email = ?";
     
     //查詢單筆

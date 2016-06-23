@@ -20,12 +20,17 @@ public class TestRDBCustomerDAO {
     public static void main(String[] args) {
         try {
             RDBCustomersDAO dao = new RDBCustomersDAO();
-            Customer c = dao.get("qscesz");
-            if (c != null) {
-                System.out.println("查詢成功" + c);
-            } else {
-                System.out.println("查無此客戶!");
-            }
+            Customer c =new Customer();
+            c.setEmail("south@yahoo.com.tw");
+            c.setBirthday("2011-12-2");
+            c.setName("藍藍路");
+            c.setGender('M');
+            c.setPassword("456456");
+            c.setPhone("03221527");
+            c.setAddress("台北市");
+            
+            dao.update(c);
+            
 
         } catch (Go2DrinkException ex) {
             Logger.getLogger(TestRDBCustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
