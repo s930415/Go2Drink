@@ -18,6 +18,10 @@
         <p><a href="Login.jsp">會員登入</a></p>
         <p><a href="Register.jsp">加入會員</a></p>
         <p><a href="Forgetpassword.jsp">忘記密碼</a></p>
+        <%
+            if (user != null) {   %>
+        <p><a href="CustomerModify.jsp">會員資料修改</a></p>
+        <%}%>
     </div>
     <div class="right">
         <%

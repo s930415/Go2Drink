@@ -17,7 +17,6 @@
                         Customer user = (Customer) session.getAttribute("user");
                         if (user != null) {   %>
                     <a href="logout.do">會員登出</a>
-                    <a href="CustomerModify.jsp">會員修改</a>
                     <%} else {%>
                     <a href="Login.jsp">會員登入</a>
                     <%}%>
