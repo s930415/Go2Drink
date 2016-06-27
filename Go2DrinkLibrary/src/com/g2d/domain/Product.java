@@ -5,6 +5,8 @@
  */
 package com.g2d.domain;
 
+import java.util.Objects;
+
 /**
  *
  * @author Administrator
@@ -239,10 +241,37 @@ public class Product {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 17 * hash + this.id;
-        hash = 17 * hash + (int) (Double.doubleToLongBits(this.untiPrice) ^ (Double.doubleToLongBits(this.untiPrice) >>> 32));
+        hash = 53 * hash + Objects.hashCode(this.name);
+        hash = 53 * hash + Objects.hashCode(this.ice);
+        hash = 53 * hash + Objects.hashCode(this.sugar);
+        hash = 53 * hash + Objects.hashCode(this.topping);
         return hash;
     }
+
+
+
+//
+//
+//    @Override
+//    public boolean equals(Object obj) {
+//        if (this == obj) {
+//            return true;
+//        }
+//        if (obj == null) {
+//            return false;
+//        }
+//        if (getClass() != obj.getClass()) {
+//            return false;
+//        }
+//        final Product other = (Product) obj;
+//        if (this.id != other.id) {
+//            return false;
+//        }
+//        if (Double.doubleToLongBits(this.untiPrice) != Double.doubleToLongBits(other.untiPrice)) {
+//            return false;
+//        }
+//        return true;
+//    }
 
     @Override
     public boolean equals(Object obj) {
@@ -256,14 +285,19 @@ public class Product {
             return false;
         }
         final Product other = (Product) obj;
-        if (this.id != other.id) {
+        if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.untiPrice) != Double.doubleToLongBits(other.untiPrice)) {
+        if (!Objects.equals(this.ice, other.ice)) {
             return false;
         }
-        return true;
+        if (!Objects.equals(this.sugar, other.sugar)) {
+            return false;
+        }
+        return Objects.equals(this.topping, other.topping);
     }
+
+
     
     
     

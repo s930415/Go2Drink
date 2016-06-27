@@ -43,8 +43,11 @@
                 <img height="135"  src='<%= p.getUrl()%>'>
                 <p>價錢:<%=(int)p.getUntiPrice()%></p>
             </li>
+            <a herf='${pageContext.request.contextPath}/add_cart.do?pid=<%= p.getId() %>'  alt="加入購物車">
+                加入購物車
+            </a>
             <%}%>
-            <a herf=""  alt="加入購物車">加入購物車</a>
+            
         </ul>
         <%}%>
     </body>

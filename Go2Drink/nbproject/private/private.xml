@@ -2,6 +2,20 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Administrator/Desktop/NEw/Go2Drink/Go2Drink/web/product.jsp</file>
+            <file>file:/C:/Users/Administrator/Desktop/NEw/Go2Drink/Go2Drink/src/java/com/g2d/controller/UpdateCartServlet.java</file>
+            <file>file:/C:/Users/Administrator/Desktop/NEw/Go2Drink/Go2Drink/web/Register.jsp</file>
+            <file>file:/C:/Users/Administrator/Desktop/NEw/Go2Drink/Go2Drink/web/WEB-INF/subviews/header.jsp</file>
+            <file>file:/C:/Users/Administrator/Desktop/NEw/Go2Drink/Go2Drink/src/java/com/g2d/controller/CartServlet.java</file>
+            <file>file:/C:/Users/Administrator/Desktop/NEw/Go2Drink/Go2Drink/web/style/g2d.css</file>
+            <file>file:/C:/Users/Administrator/Desktop/NEw/Go2Drink/Go2Drink/src/java/com/g2d/controller/RegisterServlet.java</file>
+            <file>file:/C:/Users/Administrator/Desktop/NEw/Go2Drink/Go2Drink/web/CartDemoTeacher.jsp</file>
+            <file>file:/C:/Users/Administrator/Desktop/NEw/Go2Drink/Go2Drink/src/java/com/g2d/controller/SessionServlet.java</file>
+            <file>file:/C:/Users/Administrator/Desktop/NEw/Go2Drink/Go2Drink/web/CartDemo.jsp</file>
+            <file>file:/C:/Users/Administrator/Desktop/NEw/Go2Drink/Go2Drink/web/Login.jsp</file>
+            <file>file:/C:/Users/Administrator/Desktop/NEw/Go2Drink/Go2Drink/web/Forgetpassword.jsp</file>
+            <file>file:/C:/Users/Administrator/Desktop/NEw/Go2Drink/Go2Drink/web/OrderDemo.jsp</file>
+        </group>
     </open-files>
 </project-private>

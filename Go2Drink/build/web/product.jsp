@@ -44,6 +44,7 @@
                 <p>價錢:<%=(int)p.getUntiPrice()%></p>
             </li>
             <%}%>
+            <a herf=""  alt="加入購物車">加入購物車</a>
         </ul>
         <%}%>
     </body>

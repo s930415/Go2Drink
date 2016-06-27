@@ -28,8 +28,24 @@ public class RDBProductDAO {
     private static final String INSERT_SQL = "INSERT INTO product (name,price) VALUE(?,?)";
     private static final String UPDATE_SQL = "UPDATE product SET price=? WHERE name=?";
     private static final String DELETE_SQL = "DELETE FROM product WHERE name=?";
+    private static final String SELECT_ID_SQL = "SELECT " + COL_LIST + " FROM product WHERE id=?";
 
     
+    public Product get(int id)throws Go2DrinkException, SQLException{
+        try(Connection connection =  RDBConnection.getConnection();
+            PreparedStatement pstmt =connection.prepareStatement(SELECT_ID_SQL)){
+            pstmt.setInt(1, id);
+            try(ResultSet rs = pstmt.executeQuery();){  
+                Product p = new Product();
+                while (rs.next()){
+                        p.setName(rs.getString("name"));
+                        p.setUntiPrice(rs.getDouble("price"));
+                        p.setUrl(rs.getString("url"));
+                }
+            return p;
+            }   
+        }
+    }
     public Product get(String name)throws Go2DrinkException, SQLException{
         try(Connection connection =  RDBConnection.getConnection();
             PreparedStatement pstmt =connection.prepareStatement(SELECT_SQL)){

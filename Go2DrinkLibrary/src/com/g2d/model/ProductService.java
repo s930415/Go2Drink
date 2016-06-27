@@ -40,4 +40,8 @@ public class ProductService {
     public List<Product> getByDrinkType(DrinkType drinktype) throws Go2DrinkException, SQLException {
         return dao.getByDrinkType(drinktype);
     }
+    
+     public Product get(int id) throws Go2DrinkException, SQLException{
+        return dao.get(id);
+    }
 }
