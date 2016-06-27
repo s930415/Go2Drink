@@ -13,7 +13,7 @@
         <table>
             <tr>                
                 <th>2016/06/18</th>
-                <th>港式奶茶</th>
+                <th>正宗港式奶茶</th>
             </tr>            
         </table>        
         <img src="images/photo_04.jpg" style="width: 720px; height: 200px;">

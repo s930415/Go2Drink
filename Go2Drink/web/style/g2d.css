@@ -37,7 +37,11 @@ footer{
     max-width:1000px;
     margin:auto;
     background:white;
+    clear: both;
+    text-align:center; 
+    width:954px;
 }
+
 .dr{
     direction:rtl;
 }
@@ -54,12 +58,6 @@ footer{
     min-width: 980px;
     border-top: #6fba2c 1px solid;
 
-}
-footer{
-    clear: both;
-    text-align:center; 
-    width:954px;
-    margin:auto;
 }
 .outer{
     width:954px;
@@ -95,6 +93,7 @@ footer{
     width:200px;
 }
 .right {
+    min-height: 1050px;
     margin: 20px;
     float: left;
     width: 720px;
@@ -105,7 +104,7 @@ footer{
 }
 .page-container {
     width: 1000px;
-    height: 1050px;
+    height: 100%;
     background-color: white;
     margin: auto;
 }
@@ -159,4 +158,13 @@ tr:nth-child(even){
 th{
     background-color: #339900;
     color: white;
+}
+.Order_left table{
+   width: max-content;
+}
+.Order_left table, th, td {
+   border: 1px solid black;
+}
+.Set_up .Like{
+    color: blue;
 }
