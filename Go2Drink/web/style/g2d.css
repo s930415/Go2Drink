@@ -87,6 +87,7 @@ footer{
 }
 .left a{
     text-decoration:none;
+    color: blue;
 }
 .left p{
     border-bottom-style: solid; 
