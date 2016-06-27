@@ -18,7 +18,11 @@ public class Product {
     private String descripition;//敘述
     private char size; //大小 M & L
     private DrinkType drinktype;
-    
+    private String ice;
+    private String sugar;
+    private String topping;
+    private int amount;
+
     public static final char MIDDLE = 'M';
     public static final char LARGE = 'L';
 
@@ -28,7 +32,7 @@ public class Product {
     public Product(int id, String name, double untiPrice) {
         this.setId(id);
         this.setName(name);
-        this. setUntiPrice(untiPrice);
+        this.setUntiPrice(untiPrice);
     }
 
     /**
@@ -153,6 +157,41 @@ public class Product {
             System.err.println("請輸入M(中)orL(大)");
         }
     }
+
+    public String getIce() {
+        return ice;
+    }
+
+    public void setIce(String ice) {
+        this.ice = ice;
+    }
+
+    public String getSugar() {
+        return sugar;
+    }
+
+    public void setSugar(String sugar) {
+        this.sugar = sugar;
+    }
+
+    public String getTopping() {
+        return topping;
+    }
+
+    public void setTopping(String topping) {
+        this.topping = topping;
+    }
+    
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    
+    
     
     @Override
     public Product clone(){
@@ -169,7 +208,8 @@ public class Product {
         return this.getClass().getName()+
                 "產品編號: " + id + " , 產品名稱: " + name + 
                 " , 產品單價: " + untiPrice + " , 產品圖片: " 
-                + url + " , 產品描述: " + descripition;
+                + url + " , 產品描述: " + descripition +", 冰塊 " + ice 
+                + ", 甜度" + sugar +" , 數量" + amount +", 配料"+topping;
     }
 /*
     @Override

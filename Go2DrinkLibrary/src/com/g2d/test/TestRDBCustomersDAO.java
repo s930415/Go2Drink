@@ -50,14 +50,14 @@ public class TestRDBCustomersDAO {
             }*/
     
             //測試 insert 方法，請先建立一個新的客戶
-           /* Customer c3 = new Customer("BOB", "128588");
-            c3.setEmail("1234abcb@gmail.com");
+            Customer c3 = new Customer("BOBB", "128588");
+            c3.setEmail("1239abcb@gmail.com");
             c3.setGender(Customer.MALE);
-            c3.setBirthday("1968/1/11");
+            c3.setBirthday("1968-1-11");
             c3.setAddress("台北市復興北路99號16F");
             c3.setPhone("0985963521");
            
-            dao.insert(c3);*/
+            dao.insert(c3);
   
             //測試 getAll 方法
           //  System.out.println(dao.getAll());

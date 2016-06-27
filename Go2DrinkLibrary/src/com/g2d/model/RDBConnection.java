@@ -37,14 +37,14 @@ public class RDBConnection {
             if (ur != null) {
                 url = ur;
             } else {
-                url = "jdbc:mysql://lotmods.ddns.net:23144/go_2_drink?zeroDateTimeBehavior=convertToNull";
+                url = "jdbc:mysql://go2drink.ddns.net:23144/go_2_drink?zeroDateTimeBehavior=convertToNull";
             }
 
             String us = bundle.getString("jdbc.userid");
             if (us != null) {
                 userid = us;
             } else {
-                userid = "root";
+                userid = "s930415";
             }
 
             String pw = bundle.getString("jdbc.password");
@@ -55,8 +55,8 @@ public class RDBConnection {
             }
         } else {
             driver = "com.mysql.jdbc.Driver";
-            url = "jdbc:mysql://lotmods.ddns.net:23144/go_2_drink?zeroDateTimeBehavior=convertToNull";
-            userid = "root";
+            url = "jdbc:mysql://go2drink.ddns.net:23144/go_2_drink?zeroDateTimeBehavior=convertToNull";
+            userid = "s930415";
             pwd = "1234";
         }
     }
