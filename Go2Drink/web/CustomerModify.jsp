@@ -1,3 +1,4 @@
+<%@page import="com.g2d.model.CustomerService"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="com.g2d.domain.Customer" info="會員專區"%>
@@ -15,13 +16,15 @@
 <div class="page-container">
     <div class="left">            
         <img src="image/icon/會員.png" width="200px"/>
+                <%
+            if (user != null) {   %>
+        <p><a href="CustomerModify.jsp">會員資料修改</a></p>
+        <%}else{%>
+        <img src="image/icon/會員.png" width="200px"/>
         <p><a href="Login.jsp">會員登入</a></p>
         <p><a href="Register.jsp">加入會員</a></p>
         <p><a href="Forgetpassword.jsp">忘記密碼</a></p>
-        <%
-            if (user != null) {   %>
-        <p><a href="CustomerModify.jsp">會員資料修改</a></p>
-        <%}%>
+<%}%>
     </div>
     <div class="right">
         <%
@@ -39,23 +42,27 @@
         <form method="POST" action="Update.do">
             <p>
                 <label>會員帳號:</label>
-                <input type="email" id="email" name="email" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$+?\.[a-zA-Z]{2,3}$" placeholder="請輸入信箱" value=" ${not empty param.name?param.name:sessionScope.user.email}">
+                <input type="email" id="email" name="email" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$+?\.[a-zA-Z]{2,3}$" placeholder="請輸入信箱" value="<%= user.getEmail()%> " readonly>
             </p>
             <p>
-                <label>會員密碼:</label>
-                <input type="password" id="pwd1" name="password1" minlength="6" maxlength="20" placeholder="請輸入密碼" >
+                <label>舊密碼:</label>
+                <input type="password" id="oldpwd" name="oldpassword" minlength="6" maxlength="20" placeholder="請輸入密碼"  required>
+            </p>
+            <p>
+                <label>新密碼:</label>
+                <input type="password" id="pwd1" name="newpassword" minlength="6" maxlength="20" placeholder="請輸入密碼" >
             </p>
             <p>
                 <label>確認密碼:</label>
-                <input type="password" id="pwd2" name="password2" minlength="6" maxlength="20" placeholder="請確認密碼" >
+                <input type="password" id="pwd2" name="newpassword1" minlength="6" maxlength="20" placeholder="請確認密碼" >
             </p>
             <p>
                 <label>會員姓名:</label>
-                <input type="text" id="name" name="name" placeholder="請輸入姓名" required value=" ${not empty param.name?param.name:sessionScope.user.name} ">
+                <input type="text" id="name" name="name" placeholder="請輸入姓名" required value=" <%=user.getName() %>">
             </p>
             <p>
                 <label>地址:</label>
-                <input type="text" id="adress" name="adress" placeholder="請輸入地址" required value="${not empty param.name?param.name:sessionScope.user.address}">
+                <input type="text" id="adress" name="adress" placeholder="請輸入地址" required value="<%=user.getAddress()%>">
             </p>
             <p>
                 <label>性別:</label>
@@ -70,7 +77,7 @@
             </p>
             <p>
                 <label>出生日期:</label>
-                <input type="date" id="birthday" name="birthday" required value="${not empty param.name?param.name:sessionScope.user.birthday}">
+                <input type="date" id="birthday" name="birthday" required value="<%=user.getBirthday()%>">
             </p>
             <!--<p>
                  <label>出生年月日</label>
@@ -82,7 +89,7 @@
              </p>-->
             <p>
                 <label for="phone">聯絡電話:</label>
-                <input type="tel" id="phone" name="phone" value="${not empty param.name?param.name:sessionScope.user.phone}">
+                <input type="tel" id="phone" name="phone" value="<%=user.getPhone()%>">
             </p>
             <p>
                 <img src="images/Register_check.jpg" id="check_code_image">
@@ -97,7 +104,7 @@
                 <label for="check_code">驗證碼:</label>
                 <input type="text" id="check_code" name="check_code" placeholder="請依據圖片上的文字keyin">
             </p>
-
+            
             <input type="submit" value="確定修改">
         </form>
     </div>

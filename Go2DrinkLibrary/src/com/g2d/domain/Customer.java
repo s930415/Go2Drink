@@ -145,8 +145,11 @@ public class Customer {
      * @return the birthday
      */
     public Date getBirthday() {
+        
         return birthday;
+        
     }
+    
 
     /**
      * @param birthday the birthday to set

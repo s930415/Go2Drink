@@ -12,13 +12,14 @@
 <div class="page-container">
     <div class="left">
         <img src="image/icon/會員.png" width="200px"/>
+        <%
+                    Customer user = (Customer) session.getAttribute("user");
+                    if (user != null) {   %>
+        <p><a href="CustomerModify.jsp">會員資料修改</a></p>
+        <%} else{%>
         <p><a href="Login.jsp">會員登入</a></p>
         <p><a href="Register.jsp">加入會員</a></p>
         <p><a href="Forgetpassword.jsp">忘記密碼</a></p>
-        <%
-            Customer user = (Customer) session.getAttribute("user");
-            if (user != null) {   %>
-        <p><a href="CustomerModify.jsp">會員資料修改</a></p>
         <%}%>
     </div>
     <div class="right">        
@@ -44,7 +45,10 @@
             String remember = "";
 
             Cookie[] cookies = request.getCookies();
-            for (Cookie c : cookies) {
+            for (Cookie c : cookies
+
+            
+                ) {
                 if (c.getName().equals("userid")) {
                     userid = c.getValue();
                 } else if (c.getName().equals("remember")) {

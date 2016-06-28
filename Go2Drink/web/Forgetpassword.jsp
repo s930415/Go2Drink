@@ -13,14 +13,15 @@
     <div class="left">      
         <div class="Customer">
         <img src="image/icon/會員.png" width="200px"/>
-        <p><a href="Login.jsp">會員登入</a></p>
-        <p><a href="Register.jsp">加入會員</a></p>
-        <p><a href="Forgetpassword.jsp">忘記密碼</a></p>
-        <%
+                <%
             Customer user = (Customer) session.getAttribute("user");
             if (user != null) {   %>
         <p><a href="CustomerModify.jsp">會員資料修改</a></p>
-        <%}%>
+        <%}else{%>
+        <p><a href="Login.jsp">會員登入</a></p>
+        <p><a href="Register.jsp">加入會員</a></p>
+        <p><a href="Forgetpassword.jsp">忘記密碼</a></p>
+<%}%>
     </div>
         </div>
     <div class="right">

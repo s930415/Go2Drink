@@ -92,7 +92,7 @@ public class LoginServlet extends HttpServlet {
                // request.setAttribute("customer", c);              session生命週期較久
                 //RequestDispatcher dispatcher = request.getRequestDispatcher("Customer.jsp");
                 //dispatcher.forward(request, response);
-                response.sendRedirect(request.getContextPath());
+                response.sendRedirect("CustomerModify.jsp");
                 return;
             } catch (Go2DrinkException ex) {
                 errors.add(ex.getMessage());
