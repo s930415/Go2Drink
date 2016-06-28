@@ -10,7 +10,7 @@
         <p><a href="product_1.jsp">門市訊息</a></p>
     </div>
     <div class="right">
-        <table>
+        <table class="news_table">
             <tr>                
                 <th>2016/06/17</th>
                 <th>100%台灣茶</th>

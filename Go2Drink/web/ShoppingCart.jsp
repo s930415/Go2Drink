@@ -12,11 +12,10 @@
     <div class="right">
         <div class="sort">
             <a href="Tea.jsp">茶類</a>
-            <a href="Milk.jsp">奶茶</a>
             <a href="Feature.jsp">特調</a>
             <a href="Smoothies.jsp">冰沙</a>
             <a href="Coffee.jsp">咖啡</a>            
-        </div>        
+        </div>
     </div>
 <jsp:include page="WEB-INF/subviews/footer.jsp"></jsp:include>
 </div>
