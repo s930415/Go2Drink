@@ -10,7 +10,7 @@
         <p><a href="product_1.jsp">門市訊息</a></p>
     </div>
     <div class="right">
-        <table>
+        <table class="news_table">
             <tr>                
                 <th>2016/06/16</th>
                 <th>完美濃郁咖啡</th>

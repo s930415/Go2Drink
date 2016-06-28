@@ -10,7 +10,7 @@
         <p><a href="product_1.jsp">門市訊息</a></p>
     </div>
     <div class="right">
-        <table>
+        <table class="news_table">
             <tr>
                 <th>編號</th>
                 <th>標題</th>
