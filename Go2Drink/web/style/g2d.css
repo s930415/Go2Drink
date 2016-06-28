@@ -163,6 +163,9 @@ footer{
 .Order_left ~ table, ~th, ~td {
     border-style:ridge;
 }
+.Order_left_input{
+    width: 100%;
+}
 .Ordertitle{
     background-color: #99ff99;
 }

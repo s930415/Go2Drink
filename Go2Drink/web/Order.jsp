@@ -214,12 +214,16 @@
                 <td>
                     <input type="number" min="0" max="20">
                 </td>
-                <td>
+                
+                <td >                    
                     <input type="submit" value="加入">
                 </td>
                 </tr>
 
                 <%}%>
+                <td class="Order_left_input">
+                    <input type="submit" value="加入">
+                </td>
             </form>
             <%}%>
         </table>
