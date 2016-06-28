@@ -7,15 +7,10 @@
     <div class="left">
         <img src="image/Cart.png" width="200">
         <p><a href="Order.jsp">訂購</a></p>
-        <p><a href="management.jsp">訂單管理</a></p>	
+        <p><a href="management.jsp">訂單修改</a></p>
+        <p><a href="settle.jsp">結帳</a></p>	
     </div>
-    <div class="right">
-        <div class="sort">
-            <a href="Tea.jsp">茶類</a>
-            <a href="Feature.jsp">特調</a>
-            <a href="Smoothies.jsp">冰沙</a>
-            <a href="Coffee.jsp">咖啡</a>            
-        </div>
+    <div class="right">        
     </div>
-<jsp:include page="WEB-INF/subviews/footer.jsp"></jsp:include>
+    <jsp:include page="WEB-INF/subviews/footer.jsp"></jsp:include>
 </div>

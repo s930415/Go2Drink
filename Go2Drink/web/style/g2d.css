@@ -160,7 +160,7 @@ footer{
     margin-left: 20px;
     float: left;
 }
-.Order_left table, th, td {
+.Order_left ~ table, ~th, ~td {
     border-style:ridge;
 }
 .Ordertitle{
