@@ -156,6 +156,13 @@ footer{
     background-color: #339900;
     color: white;
 }
+.News_button{    
+    text-align: center;
+}
+.News_button a{
+    color: black;
+    text-decoration:none;
+}
 .Order_left{
     margin-left: 20px;
     float: left;
