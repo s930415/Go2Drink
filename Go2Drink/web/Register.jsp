@@ -24,11 +24,11 @@
             if (errors != null && errors.size() > 0) {
 
         %>
-        <ul>
+        <div class="error">
             <% for (String msg : errors) {%>
             <li><%=msg%></li>
                 <% } %>
-        </ul>
+        </div>
         <% }%>
         <h1>加入會員</h1>
         <form method="POST" action="register.do">

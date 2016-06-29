@@ -22,7 +22,7 @@
         <p><a href="Forgetpassword.jsp">忘記密碼</a></p>
         <%}%>
     </div>
-    <div class="right">        
+    <div class="right">
         <div class="error">
             <c:forEach items="${requestScope.errors}" var="msg">
                 <li>${msg}</li>
