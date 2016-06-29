@@ -23,10 +23,9 @@
                 <th>冰塊</th>
                 <th>加料</th>
                 <th>數量</th>
-                <th>訂購</th>
             </tr>
             <tr>
-            <form>
+            <form method="POST" action="AddCart.do">
                 <% for (Product p : list) {%>
                 <td>
                     <%= p.getName()%>
@@ -71,9 +70,6 @@
                 <td>
                     <input type="number" min="0" max="20">
                 </td>
-                <td>
-                    <input type="submit" value="加入">
-                </td>
                 </tr>
                 <%}%>
             </form>
@@ -89,7 +85,6 @@
                 <th>冰塊</th>
                 <th>加料</th>
                 <th>數量</th>
-                <th>訂購</th>
             </tr>
             <tr>
             <form>
@@ -120,9 +115,6 @@
                 <td></td>
                 <td>
                     <input type="number" min="0" max="20">
-                </td>
-                <td>
-                    <input type="submit" value="加入">
                 </td>
                 </tr>
                 <%}%>
@@ -139,7 +131,6 @@
                 <th>冰塊</th>
                 <th>加料</th>
                 <th>數量</th>
-                <th>訂購</th>
             </tr>
             <tr>
             <form>
@@ -164,9 +155,6 @@
                 <td>
                     <input type="number" min="0" max="20">
                 </td>
-                <td>
-                    <input type="submit" value="加入">
-                </td>
                 </tr>
                 <%}%>
             </form>
@@ -182,7 +170,6 @@
                 <th>冰塊</th>
                 <th>加料</th>
                 <th>數量</th>
-                <th>訂購</th>
             </tr>
             <tr>
             <form>
@@ -214,15 +201,16 @@
                 <td>
                     <input type="number" min="0" max="20">
                 </td>
-                
-                <td >                    
-                    <input type="submit" value="加入">
-                </td>
                 </tr>
-
                 <%}%>
-                <td class="Order_left_input">
-                    <input type="submit" value="加入">
+                <td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <input class="Order_left_input" type="submit" value="加入">
+                </td>
                 </td>
             </form>
             <%}%>

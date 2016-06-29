@@ -55,7 +55,7 @@ public class ShoppingCart {
         }
     }
 
-    public void removw(Product p) {
+    public void remove(Product p) {
         cart.remove(p);
     }
 
@@ -79,10 +79,6 @@ public class ShoppingCart {
             totalAmount = p.getUntiPrice() * (q == null ? 0 : q);
         }
         return totalAmount;
-    }
-
-    public void remove(Product p) {
-        cart.remove(p);
     }
 
 }
