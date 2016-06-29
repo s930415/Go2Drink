@@ -4,13 +4,21 @@
  * and open the template in the editor.
  */
 
+import com.g2d.domain.Go2DrinkException;
+import com.g2d.domain.Product;
+import com.g2d.domain.ShoppingCart;
+import com.g2d.model.ProductService;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import sun.security.pkcs11.wrapper.Functions;
 
 /**
  *
@@ -29,20 +37,41 @@ public class AddCart extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Go2DrinkException, SQLException, IllegalAccessException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AddCart</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AddCart at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+
+            String name= request.getParameter("pname");
+            ProductService service = new ProductService();
+            Product p = service.get(name);
+            ShoppingCart cart = (ShoppingCart) request.getSession().getAttribute("cart");
+            if(cart == null){
+                
+                cart = new ShoppingCart();
+                request.getSession().setAttribute("cart", cart);
+            }
+            cart.add(p);
+            
+            
+//            if(name != null ){
+//                String pname = name;
+//                try{
+//                    ProductService service = new ProductService();
+//                    Product p = service.get(pname);
+//                    if(p!=null){
+//                        ShoppingCart cart = (ShoppingCart) request.getSession().getAttribute("cart");
+//                        if(cart == null){
+//                            cart = new ShoppingCart();
+//                            request.getSession().setAttribute("cart", cart);
+//                         }
+//                        cart.add(p);
+//                    }
+//                }catch (Exception ex){
+//                    System.out.println("加入購物車失敗!");
+//                }
+//            }
+            
+         response.sendRedirect(request.getContextPath() + "/Order.jsp");
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -57,7 +86,15 @@ public class AddCart extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Go2DrinkException ex) {
+            Logger.getLogger(AddCart.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AddCart.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(AddCart.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -71,7 +108,15 @@ public class AddCart extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Go2DrinkException ex) {
+            Logger.getLogger(AddCart.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AddCart.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(AddCart.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

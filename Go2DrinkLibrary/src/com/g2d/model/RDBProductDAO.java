@@ -21,7 +21,7 @@ import java.util.List;
  * @author Administrator
  */
 public class RDBProductDAO {
-    private static final String COL_LIST = "name , price , ice , sugar , url , type";
+    private static final String COL_LIST = "id , name , price , ice , sugar , url , type ";
     private static final String SELECT_BYDRINKTYPE_SQL = "SELECT " + COL_LIST + " FROM product WHERE type=?";
     private static final String SELECT_SQL = "SELECT " + COL_LIST + " FROM product WHERE name=?";
     private static final String SELECT_ALL_SQL = "SELECT * FROM product";
@@ -53,6 +53,7 @@ public class RDBProductDAO {
             try(ResultSet rs = pstmt.executeQuery();){  
                 Product p = new Product();
                 while (rs.next()){
+                        p.setId(rs.getInt("id"));
                         p.setName(rs.getString("name"));
                         p.setUntiPrice(rs.getDouble("price"));
                         p.setUrl(rs.getString("url"));
@@ -69,6 +70,7 @@ public class RDBProductDAO {
                 List<Product> list = new ArrayList<>();
                 while (rs.next()){
                         Product p = new Product();
+                        p.setId(rs.getInt("id"));
                         p.setName(rs.getString("name"));
                         p.setUntiPrice(rs.getDouble("price"));
                         p.setUrl(rs.getString("url"));

@@ -44,10 +44,17 @@ public class TestRDBProductDAO {
 //            RDBProductDAO dao = new RDBProductDAO();
 //            dao.update(p);
         try{
-            List<Product> list =new ArrayList<>();
             RDBProductDAO dao = new RDBProductDAO();
-            list = dao.getByDrinkType(DrinkType.MILK);
-            System.out.println(list);
+            Product p1 = dao.get("紅茶");
+            System.out.println(p1.getId());
+            
+            
+          List<Product> list =new ArrayList<>();
+         list.add(dao.get("綠茶"));
+         for(Product p : list){
+            System.out.println(p);  
+         }
+          
         }catch(Go2DrinkException ex){
             System.out.println("錯誤" + ex);
         }

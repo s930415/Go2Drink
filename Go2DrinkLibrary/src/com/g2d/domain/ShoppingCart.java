@@ -81,4 +81,10 @@ public class ShoppingCart {
         return totalAmount;
     }
 
+    @Override
+    public String toString() {
+        return "購物車{" +  " user=" + user + ",\ncart=" + cart + "}\n共有" + cart.size() + "種商品,"
+                + ",實際總金額: " + getTotalAmount() +".\n";
+    }
+    
 }
