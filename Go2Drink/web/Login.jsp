@@ -13,16 +13,17 @@
     <div class="left">
         <img src="image/icon/會員.png" width="200px"/>
         <%
-                    Customer user = (Customer) session.getAttribute("user");
-                    if (user != null) {   %>
+            Customer user = (Customer) session.getAttribute("user");
+            if (user != null) {   %>
         <p><a href="CustomerModify.jsp">會員資料修改</a></p>
-        <%} else{%>
+        <%} else {%>
         <p><a href="Login.jsp">會員登入</a></p>
         <p><a href="Register.jsp">加入會員</a></p>
         <p><a href="Forgetpassword.jsp">忘記密碼</a></p>
         <%}%>
     </div>
     <div class="right">
+        <img src="image/會員.jpg" width="750px">
         <div class="error">
             <c:forEach items="${requestScope.errors}" var="msg">
                 <li>${msg}</li>
@@ -45,10 +46,7 @@
             String remember = "";
 
             Cookie[] cookies = request.getCookies();
-            for (Cookie c : cookies
-
-            
-                ) {
+            for (Cookie c : cookies) {
                 if (c.getName().equals("userid")) {
                     userid = c.getValue();
                 } else if (c.getName().equals("remember")) {
@@ -83,6 +81,7 @@
             </p>
             <input type="submit" value="確定登入">
         </form>
+        <img src="image/底線.jpg" width="750px">
     </div>
 </div>
 <jsp:include page="WEB-INF/subviews/footer.jsp"></jsp:include>

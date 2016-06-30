@@ -19,6 +19,7 @@
 <%}%>
     </div>
     <div class="right">
+        <img src="image/會員.jpg" width="750px">
         <%
             List<String> errors = (List<String>) request.getAttribute("errors");
             if (errors != null && errors.size() > 0) {
@@ -89,6 +90,7 @@
 
             <input type="submit" value="確定註冊">
         </form>
+        <img src="image/底線.jpg" width="750px">
     </div>
 </div>
 <jsp:include page="WEB-INF/subviews/footer.jsp"></jsp:include>

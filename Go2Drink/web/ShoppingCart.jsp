@@ -10,12 +10,9 @@
         <p><a href="management.jsp">訂單管理</a></p>	
     </div>
     <div class="right">
-        <div class="sort">
-            <a href="Tea.jsp">茶類</a>
-            <a href="Feature.jsp">特調</a>
-            <a href="Smoothies.jsp">冰沙</a>
-            <a href="Coffee.jsp">咖啡</a>            
-        </div>
+        <img src="image/訂單線.jpg" width="750px">
+        
+        <img src="image/底線.jpg" width="750px">
     </div>
 <jsp:include page="WEB-INF/subviews/footer.jsp"></jsp:include>
 </div>

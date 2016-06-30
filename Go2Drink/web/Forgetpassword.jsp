@@ -25,6 +25,7 @@
     </div>
         </div>
     <div class="right">
+        <img src="image/找回密碼.jpg" width="750px"/>
         <h1>忘記密碼</h1>
         <form id="forgetpassword">
             <p>
@@ -46,6 +47,7 @@
             
             <input type="submit" value="送出資料">
         </form>
+        <img src="image/底線.jpg" width="750px">
     </div>
 </div>
 <jsp:include page="WEB-INF/subviews/footer.jsp"></jsp:include>

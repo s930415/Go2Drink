@@ -125,14 +125,6 @@ footer{
     text-decoration:none;
     margin: 10px;
 }
-.sort a{
-    color: #ff00cc;
-    text-decoration:none;
-    margin: 15px;
-    position:relative;
-    left: 40px;
-    font-size: 20px;
-}
 .error{
     font-size: 20px;
     color: red;
@@ -157,6 +149,10 @@ footer{
 .news_table th{
     background-color: #339900;
     color: white;
+}
+.news_table td a{
+    text-decoration:none;
+    color: #ff0066;
 }
 .News_button{    
     text-align: center;
@@ -188,4 +184,28 @@ footer{
 }
 .Order_right_input input{
     margin-left: 50px
+}
+.Retailtitle{
+    background-color: #00cc99;
+}
+.sort a{
+    color: #ff00cc;
+    text-decoration:none;
+    margin: 15px;
+    position:relative;
+    left: 40px;
+    font-size: 20px;
+}
+.North_menu a{
+    color: blue;
+    margin: 15px;
+    position:relative;
+    font-size: 15px;
+    text-decoration:none;
+}
+.North_menu border{
+    border-style:ridge;
+}
+.North_menu p{
+    color: #cc0033;
 }
