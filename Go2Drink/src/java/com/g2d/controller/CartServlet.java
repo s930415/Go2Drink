@@ -36,30 +36,38 @@ public class CartServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String id = request.getParameter("pid");
-        if(id!=null && id.matches("\\d+")){
-            int pid = Integer.parseInt(id);
-        try{
-            ProductService service = new ProductService();
-            Product p = service.get(pid);
+        for (int i = 0; i < 32; i++) {
+            String amount = Integer.toString(i) + "amount";
+            String id = Integer.toString(i);
             ShoppingCart cart = (ShoppingCart) request.getSession().getAttribute("cart");
-            if(cart == null){
+            if (cart == null) {
                 cart = new ShoppingCart();
                 request.getSession().setAttribute("cart", cart);
             }
             Customer user = (Customer) request.getSession().getAttribute("user");
-            if(user != null){
-                cart .setUser(user);
+            if (user != null) {
+                cart.setUser(user);
             }
-            
-            cart.add(p);
-        }catch (Exception ex){
-            System.out.println("失敗");
+            if (request.getParameter(amount) != null) {
+
+                request.getParameter(id);
+
+                try {
+                    ProductService service = new ProductService();
+                    Product p = service.get(id);
+
+                    cart.add(p);
+                } catch (Exception ex) {
+                    System.out.println("失敗");
+                }
+
+            }
+
         }
-        }
+        response.sendRedirect(request.getContextPath() + "/Order.jsp");
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

@@ -38,6 +38,7 @@ public class RDBProductDAO {
             try(ResultSet rs = pstmt.executeQuery();){  
                 Product p = new Product();
                 while (rs.next()){
+                        p.setId(rs.getInt("id"));
                         p.setName(rs.getString("name"));
                         p.setUntiPrice(rs.getDouble("price"));
                         p.setUrl(rs.getString("url"));

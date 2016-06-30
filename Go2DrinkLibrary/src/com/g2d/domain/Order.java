@@ -11,4 +11,24 @@ package com.g2d.domain;
  */
 public class Order {
     
+    public static Customer customer;
+    public static String getCustome;
+
+    public static Customer getCustomer() {
+        return customer;
+    }
+
+    public static void setCustomer(Customer customer) {
+        Order.customer = customer;
+    }
+    
+    public void add(ShoppingCart cart) throws Go2DrinkException{
+        
+        if (customer == null){
+            throw new Go2DrinkException("請先指派客戶資料");
+        }
+        
+        
+    }
+    
 }
