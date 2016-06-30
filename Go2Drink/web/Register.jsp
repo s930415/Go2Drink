@@ -34,7 +34,7 @@
         <form method="POST" action="register.do">
             <p>
                 <label>會員帳號:</label>
-                <input type="email" id="email" name="email" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$+?\.[a-zA-Z]{2,3}$" placeholder="請輸入信箱" required="">
+                <input type="email" id="email" name="email" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$+?\.[a-zA-Z]{2,3}$" placeholder="請輸入信箱" value="<% request.getParameter("email"); %>" required="">
             </p>
             <p>
                 <label>會員密碼:</label>
@@ -46,11 +46,11 @@
             </p>
             <p>
                 <label>會員姓名:</label>
-                <input type="text" id="name" name="name" placeholder="請輸入姓名" required="">
+                <input type="text" id="name" name="name" placeholder="請輸入姓名"value="<% request.getParameter("name"); %>" required="">
             </p>
             <p>
                 <label>地址:</label>
-                <input type="text" id="adress" name="adress" placeholder="請輸入地址" required="">
+                <input type="text" id="adress" name="adress" placeholder="請輸入地址"value="<% request.getParameter("adress"); %>" required="">
             </p>
             <p>
                 <label>性別:</label>
@@ -59,7 +59,7 @@
             </p>
             <p>
                 <label>出生日期:</label>
-                <input type="date" id="birthday" name="birthday" required="">
+                <input type="date" id="birthday" name="birthday"value="<% request.getParameter("birthday"); %>" required="">
             </p>
             <!--<p>
                  <label>出生年月日</label>
@@ -71,7 +71,7 @@
              </p>-->
             <p>
                 <label for="phone">聯絡電話:</label>
-                <input type="tel" id="phone" name="phone" placeholder="請輸入聯絡電話">
+                <input type="tel" id="phone" name="phone"value="<% request.getParameter("phone"); %>" placeholder="請輸入聯絡電話">
             </p>
             <p>
                 <img src="images/Register_check.jpg" id="check_code_image">
