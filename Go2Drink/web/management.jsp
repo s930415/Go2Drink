@@ -7,8 +7,7 @@
     <div class="left">
         <img src="image/Cart.png" width="200">
         <p><a href="Order.jsp">訂購</a></p>
-        <p><a href="management.jsp">訂單修改</a></p>
-        <p><a href="settle.jsp">結帳</a></p>	
+        <p><a href="management.jsp">歷史訂單查詢</a></p>
     </div>
     <div class="right">        
     </div>

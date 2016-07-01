@@ -15,7 +15,7 @@ public class Product {
  
     private int id; //編號  //Pkey
     private String name; //名稱
-    private double untiPrice; //價錢
+    private double unitPrice; //價錢
     private String url; //圖片
     private String descripition;//敘述
     private char size; //大小 M & L
@@ -31,10 +31,10 @@ public class Product {
     public Product(){
     }
 
-    public Product(int id, String name, double untiPrice) {
+    public Product(int id, String name, double unitPrice) {
         this.setId(id);
         this.setName(name);
-        this.setUntiPrice(untiPrice);
+        this.setUntiPrice(unitPrice);
     }
 
     /**
@@ -75,18 +75,18 @@ public class Product {
     }
 
     /**
-     * @return the untiPrice
+     * @return the unitPrice
      */
     public double getUntiPrice() {
-        return untiPrice;
+        return unitPrice;
     }
 
     /**
-     * @param untiPrice the untiPrice to set
+     * @param unitPrice the unitPrice to set
      */
-    public void setUntiPrice(double untiPrice) {
-        if(untiPrice != 0 && untiPrice > 0){
-        this.untiPrice = untiPrice;
+    public void setUntiPrice(double unitPrice) {
+        if(unitPrice != 0 && unitPrice > 0){
+        this.unitPrice = unitPrice;
         }else{
             System.out.println("產品單價不得為負數");
         }
@@ -200,16 +200,16 @@ public class Product {
         Product p=new Product();
         p.setId(this.id);
         p.setName(this.name);
-        p.setUntiPrice(this.untiPrice);
+        p.setUntiPrice(this.unitPrice);
         
         return p;
     }
 
     @Override
-    public String toString() {//id:產品編號 name:產品名稱 untiPrice:單價  url:圖片 descripition:描述
+    public String toString() {//id:產品編號 name:產品名稱 unitPrice:單價  url:圖片 descripition:描述
         return this.getClass().getName()+
                 "產品編號: " + id + " , 產品名稱: " + name + 
-                " , 產品單價: " + untiPrice + " , 產品圖片: " 
+                " , 產品單價: " + unitPrice + " , 產品圖片: " 
                 + url + " , 產品描述: " + descripition +", 冰塊 " + ice 
                 + ", 甜度" + sugar +" , 數量" + amount +", 配料"+topping;
     }
@@ -221,7 +221,7 @@ public class Product {
         }
         if(obj instanceof Product){
             Product p = (Product)obj;
-            if(this.id == p.id && this.untiPrice == p.untiPrice){
+            if(this.id == p.id && this.unitPrice == p.unitPrice){
                 return true;
             }
         }
@@ -232,7 +232,7 @@ public class Product {
     @Override
     public int hashCode() {
         int rtn ;
-        rtn = id * new Double(untiPrice).hashCode();
+        rtn = id * new Double(unitPrice).hashCode();
         
         return rtn; 
     }
@@ -267,7 +267,7 @@ public class Product {
 //        if (this.id != other.id) {
 //            return false;
 //        }
-//        if (Double.doubleToLongBits(this.untiPrice) != Double.doubleToLongBits(other.untiPrice)) {
+//        if (Double.doubleToLongBits(this.unitPrice) != Double.doubleToLongBits(other.unitPrice)) {
 //            return false;
 //        }
 //        return true;

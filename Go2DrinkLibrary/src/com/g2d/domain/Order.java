@@ -1,34 +1,182 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.g2d.domain;
+import java.util.*;
 
-/**
- *
- * @author Administrator
- */
 public class Order {
-    
-    public static Customer customer;
-    public static String getCustome;
+    private int id;
+    private Customer customer;
+    private Date createdTime;
+    private String receiverName;
+    private String receiverEmail;
+    private String shippingAddress;
+    private String receiverPhone;
 
-    public static Customer getCustomer() {
+    private double totalAmount;
+    
+    private int status;//{0:新訂單, 1:已通知...}
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+    
+    private List<OrderItem> orderItemList;
+    public void add(OrderItem item) {
+        if(orderItemList==null){
+            orderItemList = new ArrayList<>();
+        }
+        orderItemList.add(item);
+    }
+
+    public void add(ShoppingCart cart) throws Go2DrinkException {
+        if(customer==null){
+            throw new Go2DrinkException("請先指派客戶資料");            
+        }
+        
+        for(Product p:cart.keySet()){
+            OrderItem item = new OrderItem();
+            item.setProduct(p);
+            item.setQuantity(cart.getQuantity(p));
+            
+            if(customer instanceof VIP && !(p instanceof Outlet)){
+                item.setPrice(
+                        p.getUnitPrice()*(100-((VIP)customer).getDiscount())/100);
+            }else{
+                item.setPrice(p.getUntiPrice());
+            }
+            
+            this.add(item);
+        }
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the customer
+     */
+    public Customer getCustomer() {
         return customer;
     }
 
-    public static void setCustomer(Customer customer) {
-        Order.customer = customer;
+    /**
+     * @param customer the customer to set
+     */
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
-    
-    public void add(ShoppingCart cart) throws Go2DrinkException{
-        
-        if (customer == null){
-            throw new Go2DrinkException("請先指派客戶資料");
+
+    /**
+     * @return the createdTime
+     */
+    public Date getCreatedTime() {
+        return createdTime;
+    }
+
+    /**
+     * @param createdTime the createdTime to set
+     */
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
+    }
+
+
+    /**
+     * @return the receiverName
+     */
+    public String getReceiverName() {
+        return receiverName;
+    }
+
+    /**
+     * @param receiverName the receiverName to set
+     */
+    public void setReceiverName(String receiverName) {
+        this.receiverName = receiverName;
+    }
+
+    /**
+     * @return the receiverEmail
+     */
+    public String getReceiverEmail() {
+        return receiverEmail;
+    }
+
+    /**
+     * @param receiverEmail the receiverEmail to set
+     */
+    public void setReceiverEmail(String receiverEmail) {
+        this.receiverEmail = receiverEmail;
+    }
+
+    /**
+     * @return the shippingAddress
+     */
+    public String getShippingAddress() {
+        return shippingAddress;
+    }
+
+    /**
+     * @param shippingAddress the shippingAddress to set
+     */
+    public void setShippingAddress(String shippingAddress) {
+        this.shippingAddress = shippingAddress;
+    }
+
+    /**
+     * @return the receiverPhone
+     */
+    public String getReceiverPhone() {
+        return receiverPhone;
+    }
+
+    /**
+     * @param receiverPhone the receiverPhone to set
+     */
+    public void setReceiverPhone(String receiverPhone) {
+        this.receiverPhone = receiverPhone;
+    }
+
+    /**
+     * @return the totalAmount
+     */
+    public double getTotalAmount() {
+        if(orderItemList==null || orderItemList.isEmpty()){
+            return totalAmount;
+        }else{
+            double sum=0;
+            for(OrderItem item:orderItemList){
+                sum += item.getPrice() * item.getQuantity();
+            }
+            return sum;
         }
-        
-        
     }
-    
+
+    /**
+     * @param totalAmount the totalAmount to set
+     */
+    public void setTotalAmount(double totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    /**
+     * @return the orderItemList
+     */
+    public List<OrderItem> getOrderItemList() {
+        return Collections.unmodifiableList(orderItemList);
+    }
+
+
 }

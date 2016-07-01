@@ -21,7 +21,7 @@ import javax.servlet.annotation.WebInitParam;
  */
 @WebFilter(filterName = "CharSetFilter", 
         urlPatterns = {"*.jsp","*.view","*.do","*.php","*.asp"}, initParams = {
-    @WebInitParam(name = "charset", value = "big5")})
+    @WebInitParam(name = "charset", value = "utf-8")})
 public class CharSetFilter implements Filter {
     private FilterConfig filterConfig;
     private String charset = "UTF-8";

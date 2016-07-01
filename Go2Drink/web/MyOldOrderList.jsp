@@ -7,7 +7,7 @@
     <div class="left">
         <img src="image/Cart.png" width="200">
         <p><a href="Order.jsp">訂購</a></p>
-        <p><a href="management.jsp">訂單管理</a></p>	
+        <p><a href="MyOldOrderList.jsp">歷史訂單查詢</a></p>	
     </div>
     <div class="right">
         <img src="image/訂單線.jpg" width="750px">

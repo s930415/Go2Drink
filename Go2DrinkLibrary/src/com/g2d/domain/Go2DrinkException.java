@@ -5,6 +5,8 @@
  */
 package com.g2d.domain;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author Administrator
@@ -30,5 +32,9 @@ public class Go2DrinkException extends Exception {
 
     public Go2DrinkException(String message, Throwable cause) {
         super(message, cause);
+    }
+
+    public Go2DrinkException(SQLException ex) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

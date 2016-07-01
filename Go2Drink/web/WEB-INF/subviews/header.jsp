@@ -31,7 +31,7 @@
                     <%} else {%>
                 <a href="Login.jsp"><img src="image/會員專區.jpg"width="125"></a>
                     <%}%>
-                <a href="ShoppingCart.jsp"><img src="image/car2.jpg"width="100"></a>
+                <a href="MyOldOrderList.jsp"><img src="image/car2.jpg"width="100"></a>
                 <div class="line2"></div>
             </nav>  
         </header>

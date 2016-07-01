@@ -16,16 +16,16 @@
 <div class="page-container">    
     <div class="Order_left">
         <table>
-                <tr class="Ordertitle">
-                    <th>茶類</th>
-                    <th>價錢</th>
-                    <th>甜度</th>
-                    <th>冰塊</th>
-                    <th>加料</th>
-                    <th>數量</th>
-                </tr>
-                <% for (Product p : list) {%>
-                <form method="GET" action="AddCart.do">
+            <tr class="Ordertitle">
+                <th>茶類</th>
+                <th>價錢</th>
+                <th>甜度</th>
+                <th>冰塊</th>
+                <th>加料</th>
+                <th>數量</th>
+            </tr>
+            <% for (Product p : list) {%>
+            <form method="POST" action="add_cart.do">
                 <tr>
                     <td hidden>
                         <input name="id" value="<%= p.getId()%>">
@@ -38,19 +38,19 @@
                     </td>
                     <td>
                         <select name="Sugar">
-                            <option value="0">正常</option>
-                            <option value="1">少糖</option>
-                            <option value="2">半糖</option>
-                            <option value="3">微糖</option>
-                            <option value="4">無糖</option>
+                            <option value="正常">正常</option>
+                            <option value="半糖">半糖</option>
+                            <option value="少糖">少糖</option>
+                            <option value="微糖">微糖</option>
+                            <option value="無糖">無糖</option>
                         </select>
                     </td>
                     <td>
                         <select name="Ice">
-                            <option value="Normal">正常</option>
-                            <option value="Less">少冰</option>
-                            <option value="Trace">微冰</option>
-                            <option value="Removal">去冰</option>
+                            <option value="正常">正常</option>
+                            <option value="少冰">少冰</option>
+                            <option value="微冰">微冰</option>
+                            <option value="去冰">去冰</option>
                         </select>
                     </td>
                     <td>
@@ -75,27 +75,27 @@
                         <input type="number" min="0" max="20" name="amount">
                     </td>
                     <td>
-                    <input type="submit" value="加入">
+                        <input type="submit" value="加入">
                     </td>
                 </tr>
-                </form>
-                <%}%>
-                
-                <%
-                    list = service.getByDrinkType(DrinkType.DIS);
-                %>
-                <tr class="Ordertitle">
-                    <th>特調</th>
-                    <th>價錢</th>
-                    <th>甜度</th>
-                    <th>冰塊</th>
-                    <th>加料</th>
-                    <th>數量</th>
-                </tr>
+            </form>
+            <%}%>
+
+            <%
+                list = service.getByDrinkType(DrinkType.DIS);
+            %>
+            <tr class="Ordertitle">
+                <th>特調</th>
+                <th>價錢</th>
+                <th>甜度</th>
+                <th>冰塊</th>
+                <th>加料</th>
+                <th>數量</th>
+            </tr>
 
 
-                <% for (Product p : list) {%>
-                <form method="GET" action="AddCart.do">
+            <% for (Product p : list) {%>
+            <form method="POST" action="add_cart.do">
                 <tr>
                     <td hidden>
                         <input name="id" value="<%= p.getId()%>">
@@ -107,20 +107,20 @@
                         <%=(int) p.getUntiPrice()%>$
                     </td>
                     <td>
-                        <select name="YourLocation">
-                            <option value="General">正常</option>
-                            <option value="Half">半糖</option>
-                            <option value="Few">少糖</option>
-                            <option value="Micro">微糖</option>
-                            <option value="No">無糖</option>
+                        <select name="Sugar">
+                            <option value="正常">正常</option>
+                            <option value="半糖">半糖</option>
+                            <option value="少糖">少糖</option>
+                            <option value="微糖">微糖</option>
+                            <option value="無糖">無糖</option>
                         </select>
                     </td>
                     <td>
-                        <select name="YourLocation">
-                            <option value="Normal">正常</option>
-                            <option value="Less">少冰</option>
-                            <option value="Trace">微冰</option>
-                            <option value="Removal">去冰</option>
+                        <select name="Ice">
+                            <option value="正常">正常</option>
+                            <option value="少冰">少冰</option>
+                            <option value="微冰">微冰</option>
+                            <option value="去冰">去冰</option>
                         </select>
                     </td>
                     <td></td>
@@ -128,25 +128,25 @@
                         <input type="number" min="0" max="20" name="amount">
                     </td>
                     <td>
-                    <input type="submit" value="加入">
+                        <input type="submit" value="加入">
                     </td>
                 </tr>
-                </form>
-                <%}%>
-                <%
-                    list = service.getByDrinkType(DrinkType.ICE);
-                %>
-                <tr class="Ordertitle">
-                    <th>冰沙</th>
-                    <th>價錢</th>
-                    <th>甜度</th>
-                    <th>冰塊</th>
-                    <th>加料</th>
-                    <th>數量</th>
-                </tr>
+            </form>
+            <%}%>
+            <%
+                list = service.getByDrinkType(DrinkType.ICE);
+            %>
+            <tr class="Ordertitle">
+                <th>冰沙</th>
+                <th>價錢</th>
+                <th>甜度</th>
+                <th>冰塊</th>
+                <th>加料</th>
+                <th>數量</th>
+            </tr>
 
-                <% for (Product p : list) {%>
-                <form method="GET" action="AddCart.do">
+            <% for (Product p : list) {%>
+            <form method="POST" action="add_cart.do">
                 <tr>
                     <td hidden>
                         <input name="id" value="<%= p.getId()%>">
@@ -158,12 +158,12 @@
                         <%=(int) p.getUntiPrice()%>$
                     </td>
                     <td>
-                        <select name="YourLocation">
-                            <option value="General">正常</option>
-                            <option value="Half">半糖</option>
-                            <option value="Few">少糖</option>
-                            <option value="Micro">微糖</option>
-                            <option value="No">無糖</option>
+                        <select name="Sugar">
+                            <option value="正常">正常</option>
+                            <option value="半糖">半糖</option>
+                            <option value="少糖">少糖</option>
+                            <option value="微糖">微糖</option>
+                            <option value="無糖">無糖</option>
                         </select>
                     </td>
                     <td></td>
@@ -172,24 +172,24 @@
                         <input type="number" min="0" max="20" name="amount">
                     </td>
                     <td>
-                    <input type="submit" value="加入">
+                        <input type="submit" value="加入">
                     </td>
                 </tr>
-                </form>
-                <%}%>
-                <%
-                    list = service.getByDrinkType(DrinkType.COFFEE);
-                %>
-                <tr class="Ordertitle">
-                    <th>咖啡</th>
-                    <th>價錢</th>
-                    <th>甜度</th>
-                    <th>冰塊</th>
-                    <th>加料</th>
-                    <th>數量</th>
-                </tr>
-                <% for (Product p : list) {%>
-                <form method="GET" action="AddCart.do">
+            </form>
+            <%}%>
+            <%
+                list = service.getByDrinkType(DrinkType.COFFEE);
+            %>
+            <tr class="Ordertitle">
+                <th>咖啡</th>
+                <th>價錢</th>
+                <th>甜度</th>
+                <th>冰塊</th>
+                <th>加料</th>
+                <th>數量</th>
+            </tr>
+            <% for (Product p : list) {%>
+            <form method="POST" action="add_cart.do">
                 <tr>
                     <td hidden>
                         <input name="id" value="<%= p.getId()%>">
@@ -201,20 +201,20 @@
                         <%=(int) p.getUntiPrice()%>$
                     </td>
                     <td>
-                        <select name="YourLocation">
-                            <option value="General">正常</option>
-                            <option value="Half">半糖</option>
-                            <option value="Few">少糖</option>
-                            <option value="Micro">微糖</option>
-                            <option value="No">無糖</option>
+                        <select name="Sugar">
+                            <option value="正常">正常</option>
+                            <option value="半糖">半糖</option>
+                            <option value="少糖">少糖</option>
+                            <option value="微糖">微糖</option>
+                            <option value="無糖">無糖</option>
                         </select>
                     </td>
                     <td>
-                        <select name="YourLocation">
-                            <option value="Normal">正常</option>
-                            <option value="Less">少冰</option>
-                            <option value="Trace">微冰</option>
-                            <option value="Removal">去冰</option>
+                        <select name="Ice">
+                            <option value="正常">正常</option>
+                            <option value="少冰">少冰</option>
+                            <option value="微冰">微冰</option>
+                            <option value="去冰">去冰</option>
                         </select>
                     </td>
                     <td></td>
@@ -222,11 +222,11 @@
                         <input type="number" min="0" max="20" name="amount">
                     </td>
                     <td>
-                    <input type="submit" value="加入">
+                        <input type="submit" value="加入">
                     </td>
                 </tr>
-                </form>
-                <%}%>
+            </form>
+            <%}%>
         </table>
     </div>
     <div class="Order_right">
@@ -246,15 +246,23 @@
                 }
             %>
             <table>
-                <td>
-                    <%
-                        request.getSession().getAttribute("cart").toString();
-                    %> 
-                </td>
+                <%
+                    for (Product p : cart.keySet()) {
+                %>
+                <tr>
+                    <th><h6><%= p.getName()%></h6></th>
+                    <td><h6><%= p.getIce()%></h6></td>
+                    <td><h6><%= p.getSugar()%></h6></td>
+                    <td><h6><%= cart.getQuantity(p)%></h6></td>
+                    <td><h6><%= p.getUntiPrice()%></h6></td>
+                </tr>
+                <%}%>
             </table>
         </div>
         <div class="Order_right_input">
-            <input type="submit" value="確認加入訂單">
+            <a href="settle.jsp">
+            <input type="submit" value="確認加入訂單" >
+            </a>
         </div>
     </div>
 </div>
