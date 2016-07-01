@@ -50,7 +50,7 @@ public class RDBCOrdersDAO implements DAOInterface<Integer, Order> {
     public void create(Order c) throws Go2DrinkException {
         try (Connection connection = RDBConnection.getConnection();
                 PreparedStatement pstmt = connection.prepareStatement(INSERT_ORDER_SQL);) {
-            pstmt.setString(1, Order.getCustomer().getName());
+
 
         } catch (SQLException ex) {
             Logger.getLogger(RDBCOrdersDAO.class.getName()).log(Level.SEVERE, null, ex);

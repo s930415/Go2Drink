@@ -39,13 +39,7 @@ public class Order {
             item.setProduct(p);
             item.setQuantity(cart.getQuantity(p));
             
-            if(customer instanceof VIP && !(p instanceof Outlet)){
-                item.setPrice(
-                        p.getUnitPrice()*(100-((VIP)customer).getDiscount())/100);
-            }else{
-                item.setPrice(p.getUntiPrice());
-            }
-            
+                       
             this.add(item);
         }
     }

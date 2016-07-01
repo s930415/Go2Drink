@@ -36,7 +36,7 @@ public class CheckOutServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         ShoppingCart cart = (ShoppingCart)request.getSession().getAttribute("cart");
         Customer user = (Customer)request.getSession().getAttribute("user");
-        cart.
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
