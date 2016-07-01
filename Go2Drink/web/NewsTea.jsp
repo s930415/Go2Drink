@@ -12,17 +12,14 @@
     <div class="right">
         <table class="news_table">
             <tr>                
-                <th>2016/06/17</th>
                 <th>100%台灣茶</th>
             </tr>            
         </table>        
         <img src="images/photo_03.jpg" style="width: 720px; height: 200px;">
         <br>
-        <p>親愛的顧客您好：</p>
-        <p></p>
-        <p>Go2Drink新品上市，高朝魁總監帶來100%台灣茶，</p>            
-        <p>如遇門市售完請至其他分店購買，</p>
-        <p>不便之處，敬請見諒。</p>
+        <p>Go2Drink堅持使用100%台灣茶，</p>            
+        <p>百分百在地小農契作，</p>
+        <p>讓您每一口都回甘。</p>
         <div class="News_button">
             <p><button><a href="news.jsp">回到上一頁</a></button></p>
         </div>

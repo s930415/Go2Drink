@@ -12,7 +12,6 @@
     <div class="right">
         <table class="news_table">
             <tr>                
-                <th>2016/06/18</th>
                 <th>正宗港式奶茶</th>
             </tr>            
         </table>        
@@ -20,9 +19,9 @@
         <br>
         <p>親愛的顧客您好：</p>
         <p></p>
-        <p>Go2Drink新品上市，高朝魁總監帶來超越正宗a港式奶茶，</p>            
-        <p>如遇門市售完請至其他分店購買，</p>
-        <p>不便之處，敬請見諒。</p>
+        <p>Go2Drink新品上市!!</p>
+        <p>高某魁總監帶來正宗a港式奶茶，</p>            
+        <p>陪您度過每一天的下午茶時光。</p>
         <div class="News_button">
             <p><button><a href="news.jsp">回到上一頁</a></button></p>
         </div>

@@ -9,7 +9,8 @@
         <p><a href="Retail.jsp">搜尋店家</a></p>
         <p><a href="Taipei.jsp">北區</a></p>
     </div>
-    <div class="right">
+    <div class="Retail_right">
+        
         <form>
             搜尋店家
             <input type="text" placeholder="請輸入關鍵字">
@@ -19,7 +20,7 @@
         <br>
         <form>
             鄰近店家
-            <input type="button" value="點此搜尋">
+            <input type="submit" value="點此搜尋">
         </form>
     </div>
 </div>

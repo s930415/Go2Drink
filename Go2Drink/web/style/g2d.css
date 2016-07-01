@@ -97,7 +97,7 @@ footer{
     background-color: white;
 }
 .customer_right{
-    
+
 }
 #main_content img{
     width: 100%;
@@ -136,15 +136,18 @@ footer{
 
 }
 .news_table{
-    border-collapse: collapse;
     width: 100%;
+    background-color: #99ff99;
 }
 .news_table th, td{
     text-align: left;
-    padding: 8px;
+    padding: 8px;    
 }
 .news_table tr:nth-child(even){
-    background-color: #f2f2f2
+    background-color: #cccccc;
+}
+.news_table tr{
+    background-color: #f2f2f2;
 }
 .news_table th{
     background-color: #339900;
@@ -153,6 +156,9 @@ footer{
 .news_table td a{
     text-decoration:none;
     color: #ff0066;
+}
+.news_td{
+   
 }
 .News_button{    
     text-align: center;
@@ -208,4 +214,15 @@ footer{
 }
 .North_menu p{
     color: #cc0033;
+}
+.Retail_right {
+    min-height: 1050px;
+    margin: 20px;
+    float: left;
+    width: 720px;
+}
+.Retail_right{
+    background-image: url("../image/map.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
 }

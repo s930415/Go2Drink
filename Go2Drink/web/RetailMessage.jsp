@@ -18,24 +18,14 @@
             </tr>
             <tr>
                 <td>01</td>
-                <td style="width: 500px;"><a href="NewsFruit.jsp"><img src="images/photo_01.jpg" style="height: 100px; width: 500px;"></a></td>
+                <td style="width: 500px" class="news_td"><a href="#.jsp"><img src="images/門市訊息.jpg" style="height: 100px; width: 80px;"></a>【基隆廟口店】06/22(三)新鮮試賣</td>
                 <td>2016/06/15</td>
             </tr>
             <tr>
                 <td>02</td>
-                <td><a href="NewsCoffee.jsp"><img src="images/photo_02.jpg" style="height: 100px; width: 500px;"></a></td>
+                <td style="width: 500px"><a href="#.jsp"><img src="images/門市訊息2.jpg" style="height: 100px; width: 80px;"></a>【龍潭東龍店】11/18(三)新鮮試賣</td>
                 <td>2016/06/16</td>
-            </tr>
-            <tr>
-                <td>03</td>
-                <td><a href="NewsTea.jsp"><img src="images/photo_03.jpg" style="height: 100px; width: 500px;"></a></td>
-                <td>2016/06/17</td>
-            </tr>
-            <tr>
-                <td>04</td>
-                <td><a href="NewsMilk.jsp"><img src="images/photo_04.jpg" style="height: 100px; width: 500px;"></a></td>
-                <td>2016/06/18</td>
-            </tr>
+            </tr>            
         </table>
     </div>
 </div>
