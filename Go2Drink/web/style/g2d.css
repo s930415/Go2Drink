@@ -137,7 +137,7 @@ footer{
 }
 .news_table{
     width: 100%;
-    background-color: #99ff99;
+    background-color: #999999;
 }
 .news_table th, td{
     text-align: left;
@@ -156,9 +156,6 @@ footer{
 .news_table td a{
     text-decoration:none;
     color: #ff0066;
-}
-.news_td{
-   
 }
 .News_button{    
     text-align: center;
@@ -190,6 +187,9 @@ footer{
 }
 .Order_right_input input{
     margin-left: 50px
+}
+.Order_right_data tr{
+    height: 20px;
 }
 .Retailtitle{
     background-color: #00cc99;
