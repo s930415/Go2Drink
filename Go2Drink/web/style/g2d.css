@@ -82,7 +82,10 @@ footer{
 }
 .left a{
     text-decoration:none;
-    color: blue;
+    color: #000000;
+}
+.left a:hover{    
+    color: #666666;
 }
 .left p{
     border-bottom-style: solid; 
