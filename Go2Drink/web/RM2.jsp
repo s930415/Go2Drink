@@ -15,7 +15,7 @@
                 <th>【龍潭東龍店】11/18(三)新鮮試賣</th>
             </tr>            
         </table>
-        <img src="images/門市訊息2.jpg" style="width: 720px; height: 800px;">
+        <img src="images/龍潭.jpg" style="width: 720px; height: 800px;">
         <br>
         <h2><p>【龍潭東龍店】</p></h2>
         <p>11/18(三)搶先試賣</p>

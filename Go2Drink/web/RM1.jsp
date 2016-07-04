@@ -15,7 +15,7 @@
                 <th>【基隆廟口店】06/22(三)新鮮試賣</th>
             </tr>            
         </table>
-        <img src="images/門市訊息.jpg" style="width: 720px; height: 800px;">
+        <img src="images/基隆.jpg" style="width: 720px; height: 800px;">
         <br>
         <h2><p>【基隆廟口店】</p></h2>
         <p>06/22(三)搶先試賣</p>

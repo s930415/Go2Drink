@@ -15,7 +15,7 @@
     $(document).ready(init);
     function init() {
         for (var i = 1; i <= photoNum; i++) {
-            $(".outer").append("<a href=index.jsp><img src='images/photo_0" + i + ".jpg'></a>");
+            $(".outer").append("<a href=news.jsp><img src='images/photo_0" + i + ".jpg'></a>");
             $(".dots").append("<img src='images/light.png' class='dot'>");
         }
         $(".outer img:gt(0)").animate({"opacity": 0}, 0);
