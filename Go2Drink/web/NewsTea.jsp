@@ -7,7 +7,7 @@
     <div class="left">
         <img src="image/icon/最新資訊.png" width="200">
         <p><a href="news.jsp">最新消息</a></p>
-        <p><a href="product_1.jsp">門市訊息</a></p>
+        <p><a href="RetailMessage.jsp">門市訊息</a></p>
     </div>
     <div class="right">
         <table class="news_table">

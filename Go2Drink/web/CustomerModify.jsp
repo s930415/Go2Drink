@@ -14,7 +14,7 @@
     <jsp:param name="sub_title" value="<%=this.getServletInfo()%>"/>
 </jsp:include>
 <div class="page-container">
-    <div class="left">            
+    <div class="left">
         <img src="image/icon/會員.png" width="200px"/>
                 <%
             if (user != null) {   %>
@@ -32,11 +32,11 @@
             if (errors != null && errors.size() > 0) {
 
         %>
-        <ul>
+        <div class="error">
             <% for (String msg : errors) {%>
             <li><%=msg%></li>
                 <% } %>
-        </ul>
+        </div>
         <% }%>
         <h1>會員修改</h1>
         <form method="POST" action="Update.do">
