@@ -56,19 +56,19 @@
                     <td>
                         <select name="Topping">
                             <option value="0">無</option>
-                            <option value="Five">珍珠</option>
-                            <option value="Five">小紫蘇</option>
-                            <option value="Ten">小芋圓</option>
-                            <option value="Ten">寒天晶球</option>
-                            <option value="Ten">荔枝凍</option>
-                            <option value="Ten">仙草凍</option>
-                            <option value="Ten">愛玉</option>
-                            <option value="Ten">紅豆</option>
-                            <option value="Ten">蘆薈</option>
-                            <option value="Ten">椰果</option>
-                            <option value="Ten">焦糖糖漿</option>
-                            <option value="Ten">北海道糖漿</option>
-                            <option value="Fifteen">布丁</option>
+                            <option value="珍珠">珍珠</option>
+                            <option value="小紫蘇">小紫蘇</option>
+                            <option value="小芋圓">小芋圓</option>
+                            <option value="寒天晶球">寒天晶球</option>
+                            <option value="荔枝凍">荔枝凍</option>
+                            <option value="仙草凍">仙草凍</option>
+                            <option value="愛玉">愛玉</option>
+                            <option value="紅豆">紅豆</option>
+                            <option value="蘆薈">蘆薈</option>
+                            <option value="椰果">椰果</option>
+                            <option value="焦糖糖漿">焦糖糖漿</option>
+                            <option value="北海道糖漿">北海道糖漿</option>
+                            <option value="布丁">布丁</option>
                         </select>
                     </td>
                     <td>
@@ -249,19 +249,23 @@
                 <%
                     for (Product p : cart.keySet()) {
                 %>
-                <tr>
-                    <th><h6><%= p.getName()%></h6></th>
-                    <td><h6><%= p.getIce()%></h6></td>
-                    <td><h6><%= p.getSugar()%></h6></td>
-                    <td><h6><%= cart.getQuantity(p)%></h6></td>
-                    <td><h6><%= p.getUntiPrice()%></h6></td>
-                </tr>
+                <form method="POST" action="UpdateCart.do">
+                    <tr>
+                        <th><h6><%= p.getName()%></h6></th>
+                        <td><h6><%= p.getIce()%></h6></td>
+                        <td><h6><%= p.getSugar()%></h6></td>
+                        <td><h6><%= cart.getQuantity(p)%></h6></td>
+                        <td><h6><%= p.getUntiPrice()%></h6></td>
+                    <input hidden name="delete_<%=p.hashCode()%>" type="text" value="<%=p.hashCode()%>">
+                    <td><input type="image" src="image/icon/20159241292753.png" width="10px" alt="submit"></td>
+                    </tr>
+                </form>
                 <%}%>
             </table>
         </div>
         <div class="Order_right_input">
             <a href="settle.jsp">
-            <input type="submit" value="確認加入訂單" >
+                <input type="button" value="確認加入訂單" >
             </a>
         </div>
     </div>

@@ -19,7 +19,8 @@ public class Customer {
     
     public static final char MALE = 'M';
     public static final char FEMALE = 'F';
-
+    
+    private int id;
     private String email;
     private String name;
     private char gender;
@@ -38,7 +39,7 @@ public class Customer {
    }
 
     //提供方便
-    
+   
    public Customer(String name,String password,String email,char gender) throws Go2DrinkException{
         this(name,password);
         this.setEmail(email);
@@ -48,7 +49,14 @@ public class Customer {
     public Customer(String 李四方, String string, char c) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+   
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
     public void setName(String name) throws Go2DrinkException{
         if (name != null && (name = name.trim()).length() > 0) {
             this.name = name;

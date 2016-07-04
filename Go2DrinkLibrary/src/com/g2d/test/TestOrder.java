@@ -22,8 +22,6 @@ public class TestOrder {
         
         OrderService totoal = new OrderService();
         
-        System.out.println(totoal.total(allPrice));
-        
     }
     
 }

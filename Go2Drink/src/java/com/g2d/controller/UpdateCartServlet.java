@@ -35,35 +35,27 @@ public class UpdateCartServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, IllegalAccessException {
+            throws ServletException, IOException {
         ShoppingCart cart = (ShoppingCart) request.getSession().getAttribute("cart");
 
         if (cart != null && !cart.isEmpty()) {
             Set<Product> deleteSet = new HashSet<>();
             Set<Product> keySet = cart.keySet();
             for (Product p : keySet) {
-
-                String quantity = request.getParameter("quantity_" + p.getId());
-                String delete = request.getParameter("delete_" + p.getId());
-                if (delete != null) {
+                String delete = request.getParameter("delete_" + p.hashCode());
+                if (delete != null && Integer.parseInt(delete) == p.hashCode()) {
+                    //cart.remove(p); //Runtime會發生ConcurrentModificationException
                     deleteSet.add(p);
-                } else if (quantity != null && quantity.matches("\\d+")) {
-                    int q = Integer.parseInt(quantity);
-                    if (q > 0) {
-                        cart.update(p, q);
-                    }
-
-                } else {
-                    System.out.println("修改產品數量失敗" + p + quantity);
                 }
-
             }
-
-            for (Product p : deleteSet) {
-                cart.remove(p);
+            for (Product delep : deleteSet) {
+                System.out.println(delep);
+                cart.remove(delep);
             }
+            deleteSet.clear();
+
         }
-
+        response.sendRedirect(request.getContextPath() + "/Order.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -78,11 +70,9 @@ public class UpdateCartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(UpdateCartServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+        processRequest(request, response);
+
     }
 
     /**
@@ -96,11 +86,9 @@ public class UpdateCartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(UpdateCartServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+        processRequest(request, response);
+
     }
 
     /**

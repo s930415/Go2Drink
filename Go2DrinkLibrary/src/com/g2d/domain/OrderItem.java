@@ -5,7 +5,6 @@ public class OrderItem {
     private Product product;
     private double price;
     private int quantity;
-    private boolean free;
 
     /**
      * @return the orderId
@@ -63,18 +62,5 @@ public class OrderItem {
         this.quantity = quantity;
     }
 
-    /**
-     * @return the free
-     */
-    public boolean isFree() {
-        return free;
-    }
-
-    /**
-     * @param free the free to set
-     */
-    public void setFree(boolean free) {
-        this.free = free;
-    }
 
 }

@@ -7,7 +7,7 @@ public class Order {
     private Date createdTime;
     private String receiverName;
     private String receiverEmail;
-    private String shippingAddress;
+    private String receiverAddress;
     private String receiverPhone;
 
     private double totalAmount;
@@ -115,23 +115,14 @@ public class Order {
         this.receiverEmail = receiverEmail;
     }
 
-    /**
-     * @return the shippingAddress
-     */
-    public String getShippingAddress() {
-        return shippingAddress;
+    public String getReceiverAddress() {
+        return receiverAddress;
     }
 
-    /**
-     * @param shippingAddress the shippingAddress to set
-     */
-    public void setShippingAddress(String shippingAddress) {
-        this.shippingAddress = shippingAddress;
+    public void setReceiverAddress(String receiverAddress) {
+        this.receiverAddress = receiverAddress;
     }
 
-    /**
-     * @return the receiverPhone
-     */
     public String getReceiverPhone() {
         return receiverPhone;
     }

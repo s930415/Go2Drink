@@ -23,7 +23,7 @@ public class Product {
     private String ice;
     private String sugar;
     private String topping;
-    private int amount;
+//    private int amount;
 
     public static final char MIDDLE = 'M';
     public static final char LARGE = 'L';
@@ -165,7 +165,12 @@ public class Product {
     }
 
     public void setIce(String ice) {
+        if(ice != null){
+        
         this.ice = ice;
+        }else{
+            this.ice = "正常";
+        }
     }
 
     public String getSugar() {
@@ -173,7 +178,13 @@ public class Product {
     }
 
     public void setSugar(String sugar) {
+        if(sugar != null){
+            
+
         this.sugar = sugar;
+        }else{
+            this.sugar = "正常";
+        }
     }
 
     public String getTopping() {
@@ -181,16 +192,20 @@ public class Product {
     }
 
     public void setTopping(String topping) {
+        if(topping != null){
         this.topping = topping;
+        }else{
+            this.topping = "無";
+        }
     }
     
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
+//    public int getAmount() {
+//        return amount;
+//    }
+//
+//    public void setAmount(int amount) {
+//        this.amount = amount;
+//    }
 
     
     
@@ -211,7 +226,7 @@ public class Product {
                 "產品編號: " + id + " , 產品名稱: " + name + 
                 " , 產品單價: " + unitPrice + " , 產品圖片: " 
                 + url + " , 產品描述: " + descripition +", 冰塊 " + ice 
-                + ", 甜度" + sugar +" , 數量" + amount +", 配料"+topping;
+                + ", 甜度" + sugar +", 配料"+topping;
     }
 /*
     @Override

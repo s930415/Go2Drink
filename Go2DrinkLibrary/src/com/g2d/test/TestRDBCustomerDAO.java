@@ -28,9 +28,8 @@ public class TestRDBCustomerDAO {
             c.setPassword("456456");
             c.setPhone("03221527");
             c.setAddress("台北市");
-            
-            dao.update(c);
-            
+            Customer d = dao.get("south@yahoo.com.tw");
+            System.out.println(d);
 
         } catch (Go2DrinkException ex) {
             Logger.getLogger(TestRDBCustomerDAO.class.getName()).log(Level.SEVERE, null, ex);

@@ -2,14 +2,8 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
-            <file>file:/C:/Users/Administrator/Desktop/NEw/Go2Drink/Go2Drink/web/CartDemoTeacher.jsp</file>
-            <file>file:/C:/Users/Administrator/Desktop/NEw/Go2Drink/Go2Drink/web/Order.jsp</file>
-            <file>file:/C:/Users/Administrator/Desktop/NEw/Go2Drink/Go2Drink/src/java/com/g2d/controller/CartServlet.java</file>
+            <file>file:/C:/Users/Administrator/Desktop/NEw/Go2Drink/Go2Drink/src/java/com/g2d/controller/CheckOutServlet.java</file>
         </group>
->>>>>>> 4926e7afa41eb2bab16d57f18556aebac931d4d7
     </open-files>
 </project-private>

@@ -60,6 +60,7 @@ public class RDBCustomersDAO {
                     c.setAddress(rs.getString("address"));
                     c.setPhone(rs.getString("phone"));      
                     c.setStatus(rs.getInt("status"));
+                    c.setId(rs.getInt("id"));
                     
                     list.add(c);
                 } catch (Go2DrinkException ex) {

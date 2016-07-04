@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Administrator
  */
 @WebServlet(name = "CartServlet", urlPatterns = {"/add_cart.do"})
-public class CartServlet extends HttpServlet {
+public class AddCartServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

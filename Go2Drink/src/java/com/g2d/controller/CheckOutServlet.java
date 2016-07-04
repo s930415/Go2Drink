@@ -6,14 +6,19 @@
 package com.g2d.controller;
 
 import com.g2d.domain.Customer;
+import com.g2d.domain.Order;
+import com.g2d.domain.PaymentType;
 import com.g2d.domain.ShoppingCart;
+import com.g2d.model.OrderService;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,11 +37,65 @@ public class CheckOutServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException{
         response.setContentType("text/html;charset=UTF-8");
-        ShoppingCart cart = (ShoppingCart)request.getSession().getAttribute("cart");
-        Customer user = (Customer)request.getSession().getAttribute("user");
-
+      List<String> errors = new ArrayList<>();
+        //1.1 取得session中的user, cart
+        HttpSession session = request.getSession(false);
+        Customer user = null;
+        ShoppingCart cart = null;
+        if (session == null || session.isNew()) {
+            errors.add("找不到購物車，請重新登入後繼續購物!");
+            request.setAttribute("errors", errors);
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            return;
+        } else {
+            user = (Customer) session.getAttribute("user");
+            cart = (ShoppingCart) session.getAttribute("cart");
+            if (user == null || cart == null) {
+                errors.add("找不到購物車，請重新登入後繼續購物!");
+                request.setAttribute("errors", errors);
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
+                return;
+            }
+        }
+        String name = request.getParameter("receiver_name");
+        if (name == null || (name = name.trim()).length() == 0) {
+            errors.add("請輸入收件人姓名!");
+        }
+        String email = request.getParameter("receiver_email");
+        if (email == null || (email = email.trim()).length() == 0) {
+            errors.add("請輸入收件人電郵!");
+        }
+        String phone = request.getParameter("receiver_phone");
+        if (phone == null || (phone = phone.trim()).length() == 0) {
+            errors.add("請輸入收件人電話!");
+        }
+        String address = request.getParameter("receiver_address");
+        if (address == null || (address = address.trim()).length() == 0) {
+            errors.add("請輸入收件地址!");
+        }
+        
+        if (errors.isEmpty()) {
+            //2.呼叫商業邏輯
+            try {
+                OrderService service = new OrderService();
+                Order order = service.makeOrder(user, cart);
+                
+                order.setReceiverName(name);
+                order.setReceiverEmail(email);
+                order.setReceiverPhone(phone);
+                order.setReceiverAddress(address);
+                        
+                service.insert(order);                
+                session.removeAttribute("cart");
+                //3.1 redirect to "/user/orders_history.jsp"
+                response.sendRedirect(request.getContextPath() + "/MyOldOrderList.jsp");
+                return;                
+            } catch (Exception ex) {
+                errors.add(ex.toString());
+            }            
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
