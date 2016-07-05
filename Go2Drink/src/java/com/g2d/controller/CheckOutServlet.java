@@ -41,7 +41,7 @@ public class CheckOutServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
       List<String> errors = new ArrayList<>();
         //1.1 取得session中的user, cart
-        HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession();
         Customer user = null;
         ShoppingCart cart = null;
         if (session == null || session.isNew()) {
@@ -96,6 +96,9 @@ public class CheckOutServlet extends HttpServlet {
                 errors.add(ex.toString());
             }            
         }
+        //3.2 errors: forward to "/user/check_out.jsp"
+        request.setAttribute("errors", errors);
+        request.getRequestDispatcher("/settle.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

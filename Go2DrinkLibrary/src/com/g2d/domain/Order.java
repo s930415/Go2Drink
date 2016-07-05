@@ -37,8 +37,11 @@ public class Order {
         for(Product p:cart.keySet()){
             OrderItem item = new OrderItem();
             item.setProduct(p);
+            item.setIce(p.getIce());
+            item.setSugar(p.getSugar());
+            item.setTopping(p.getTopping());
             item.setQuantity(cart.getQuantity(p));
-            
+            item.setPrice(p.getUntiPrice());
                        
             this.add(item);
         }

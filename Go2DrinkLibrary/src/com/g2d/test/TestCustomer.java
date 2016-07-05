@@ -8,6 +8,7 @@ package com.g2d.test;
 import com.g2d.domain.Customer;
 import com.g2d.domain.Go2DrinkException;
 import com.g2d.domain.Product;
+import com.g2d.domain.ToppingEnum;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;

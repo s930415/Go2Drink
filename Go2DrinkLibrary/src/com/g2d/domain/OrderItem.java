@@ -1,10 +1,14 @@
 package com.g2d.domain;
 
 public class OrderItem {
+
     private int orderId;
     private Product product;
     private double price;
     private int quantity;
+    private String topping;
+    private String sugar;
+    private String ice;
 
     /**
      * @return the orderId
@@ -62,5 +66,40 @@ public class OrderItem {
         this.quantity = quantity;
     }
 
+    public String getTopping() {
+        return topping;
+    }
+
+    public void setTopping(String topping) {
+        if (topping == null) {
+            this.topping = "無";
+        } else {
+            this.topping = topping;
+        }
+    }
+
+    public String getSugar() {
+        return sugar;
+    }
+
+    public void setSugar(String sugar) {
+        if (sugar == null) {
+            this.sugar = "正常";
+        } else {
+            this.sugar = sugar;
+        }
+    }
+
+    public String getIce() {
+        return ice;
+    }
+
+    public void setIce(String ice) {
+        if (ice == null) {
+            this.ice = "正常";
+        } else {
+            this.ice = ice;
+        }
+    }
 
 }

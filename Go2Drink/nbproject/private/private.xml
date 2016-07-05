@@ -4,6 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Administrator/Desktop/NEw/Go2Drink/Go2Drink/src/java/com/g2d/controller/CheckOutServlet.java</file>
+            <file>file:/C:/Users/Administrator/Desktop/NEw/Go2Drink/Go2Drink/src/java/com/g2d/controller/AddCartServlet.java</file>
+            <file>file:/C:/Users/Administrator/Desktop/NEw/Go2Drink/Go2Drink/src/java/com/g2d/controller/UpdateCartServlet.java</file>
+            <file>file:/C:/Users/Administrator/Desktop/NEw/Go2Drink/Go2Drink/web/settle.jsp</file>
+            <file>file:/C:/Users/Administrator/Desktop/NEw/Go2Drink/Go2Drink/web/Order.jsp</file>
+            <file>file:/C:/Users/Administrator/Desktop/NEw/Go2Drink/Go2Drink/web/style/g2d.css</file>
         </group>
     </open-files>
 </project-private>

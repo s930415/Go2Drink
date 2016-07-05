@@ -24,11 +24,10 @@ import java.util.logging.Logger;
  */
 public class RDBOrdersDAO implements DAOInterface<Integer, Order> {
 
-    private static final String COL_LIST = "customer_name , receiver_address , receiver_name, receiver_phone , create_time , status ";
-    private static final String INSERT_ORDER_SQL = "INSERT INTO order(" + COL_LIST + ")VALUE(?,?,?,?,?,?)";
-    private static final String INSERT_ORDER_ITEN_SQL = "INSERT INTO order(" + COL_LIST + ")VALUE(?,?,?,?,?,?)";
-    private static final String SELECT_ORDERS_HISTORY_BY_CUSTOMER_NAME
-            = "SELECT id, created_time, order.status,"
+    private static final String COL_LIST = "customer_email,receiver_address,receiver_name,receiver_phone,status,create_time";
+    private static final String INSERT_ORDER_SQL = "INSERT INTO orders (customer_email,receiver_address,receiver_name,receiver_phone,status,create_time) VALUES (?,?,?,?,?,?)";
+    private static final String INSERT_ORDER_ITEN_SQL = "INSERT INTO order_items (order_id , product_id , price , quantity , product_ice , product_topping , product_sugar) VALUES (?,?,?,?,?,?,?)";
+    private static final String SELECT_ORDER_ITEMS_BY_ORDER_EMAIL = "SELECT id, created_time, order.status,"
             + "receiver_address,receiver_name,receiver_email, receiver_phone,"
             + "SUM(price*quantity) as total_amount FROM orders "
             + "INNER JOIN order_items ON orders.id = order_items.order_id "
@@ -63,12 +62,13 @@ public class RDBOrdersDAO implements DAOInterface<Integer, Order> {
             connection.setAutoCommit(false);
             try {
                 //新增訂單主檔
-                pstmt.setString(1, order.getCustomer().getName());
+                pstmt.setString(1, order.getCustomer().getEmail());
                 pstmt.setString(2, order.getReceiverAddress());
                 pstmt.setString(3, order.getReceiverName());
                 pstmt.setString(4, order.getReceiverPhone());
-                pstmt.setTimestamp(5, new java.sql.Timestamp(order.getCreatedTime().getTime()));
-                pstmt.setInt(6, order.getStatus());
+                pstmt.setInt(5, order.getStatus());
+                pstmt.setTimestamp(6, new java.sql.Timestamp(order.getCreatedTime().getTime()));
+                
 
                 pstmt.executeUpdate();
 
@@ -83,12 +83,15 @@ public class RDBOrdersDAO implements DAOInterface<Integer, Order> {
                     pstmt2.setInt(2, item.getProduct().getId());
                     pstmt2.setDouble(3, item.getPrice());
                     pstmt2.setInt(4, item.getQuantity());
+                    pstmt2.setString(5, item.getIce());
+                    pstmt2.setString(6, item.getSugar());
+                    pstmt2.setString(7, item.getTopping());
                     pstmt2.executeUpdate();
                 }
                 connection.commit();
             } catch (SQLException ex) {
                 connection.rollback();
-                throw ex;
+                throw  ex;
             } finally {
                 connection.setAutoCommit(true);
             }
@@ -99,19 +102,18 @@ public class RDBOrdersDAO implements DAOInterface<Integer, Order> {
 
     }
 
-    public List<Order> getByCustomer(String customerName) throws Go2DrinkException{
+    public List<Order> getByCustomer(String customerEmail) throws Go2DrinkException{
         List<Order> list = new ArrayList<>();
         try (Connection connection = RDBConnection.getConnection();
-                PreparedStatement pstmt = connection.prepareStatement(SELECT_ORDERS_HISTORY_BY_CUSTOMER_NAME);) {
-            pstmt.setString(1, customerName);
+                PreparedStatement pstmt = connection.prepareStatement(SELECT_ORDER_ITEMS_BY_ORDER_EMAIL);) {
+            pstmt.setString(1, customerEmail);
             try (ResultSet rs = pstmt.executeQuery();) {
                 while (rs.next()) {
                     Order o = createOrderObject(null);
 
                     o.setId(rs.getInt("id"));
-                    o.setCreatedTime(rs.getDate("created_time")); //TimeStamp
+                    o.setCreatedTime(rs.getDate("create_time")); //TimeStamp
                     o.setStatus(rs.getInt("status"));
-
                     o.setReceiverName(rs.getString("receiver_name"));
                     o.setReceiverEmail(rs.getString("receiver_email"));
                     o.setReceiverPhone(rs.getString("receiver_phone"));

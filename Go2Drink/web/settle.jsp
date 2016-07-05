@@ -64,7 +64,7 @@
                 </table>
             </fieldset> 
         </div>
-                <form method="POST" action="checkout.do">
+        <form method="POST" action="checkout.do">
             <div style="width:50%;float:left">
                 <fieldset>
                     <legend>訂貨人</legend>
@@ -88,8 +88,16 @@
                     <input id="receiver_phone" name="receiver_phone" value="${user.phone}" required><br>
                 </fieldset>    
                 <h5><input type="submit" value="確定送出"></h5>
+                
             </div>
         </form>
     </div>
+                <div style="clear: none ;height: 20px;">
+                <ul>
+                    <c:forEach items="${requestScope.errors}" var="msg">
+                        <li>${msg}</li>
+                    </c:forEach>
+                    </ul>
+                    </div>
     <jsp:include page="WEB-INF/subviews/footer.jsp"></jsp:include>
 </div>

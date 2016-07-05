@@ -22,6 +22,7 @@ import com.g2d.domain.Go2DrinkException;
  */
 public class OrderService {
     private final RDBOrdersDAO dao = new RDBOrdersDAO();
+    //private final TestOrderDAO dao1 = new TestOrderDAO();
     
     public Order makeOrder(Customer user, ShoppingCart cart) throws Go2DrinkException{
         Order order = new Order();
@@ -47,8 +48,8 @@ public class OrderService {
         return dao.get(id);
     }
 
-    public List<Order> getByCustomer(String customerName) throws Go2DrinkException {
-        return dao.getByCustomer(customerName);
+    public List<Order> getByCustomer(String customerEmail) throws Go2DrinkException {
+        return dao.getByCustomer(customerEmail);
     }
     
     //OCPJP mod09課程範例，目前不需要
