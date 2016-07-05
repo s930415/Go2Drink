@@ -265,7 +265,7 @@
                 <%}%>
             </table>
         </div>
-            
+
         <div class="Order_right_input">
             <a href="settle.jsp">
                 <input type="submit" value="確認加入訂單" >

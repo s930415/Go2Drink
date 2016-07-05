@@ -32,13 +32,17 @@
         <ul>            
             <% for (Product p : list) {%>
             <li >
-                <h2><%= p.getName()%></h2>
-                <img   src='<%= p.getUrl()%>'>
-                <h2>價錢:<%=(int) p.getUntiPrice()%></h2>
+                <div class="pa">
+                    <div class="pu"><h2><%= p.getName()%></h2></div>
+                    <div class="pi"><img  src='<%= p.getUrl()%>'></div>
+                    <div class="pu">
+                        <h2>價錢.<%=(int) p.getUntiPrice()%></h2>
+                    </div>
+                </div>
             </li>
-            <%}%>            
+            <%}%>
         </ul>
     </div>
-    <%}%>    
+    <%}%>
 </div>
 <jsp:include page="WEB-INF/subviews/footer.jsp"></jsp:include>

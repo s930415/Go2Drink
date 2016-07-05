@@ -14,7 +14,7 @@
         <p><a href="Dis.jsp">特色飲品介紹</a></p>
         <p><a href="product_1.jsp">所有飲品</a></p>
         <p><a href="jelly.jsp">日本鮮果凍</a></p>
-        <p><a href="menu.jsp">產品MENU</a></p>			
+        <p><a href="menu.jsp">產品MENU</a></p>
     </div>
 
     <div class="right">
@@ -33,9 +33,13 @@
         <ul>            
             <% for (Product p : list) {%>
             <li >
-                <h2><%= p.getName()%></h2>
-                <img  src='<%= p.getUrl()%>'>
-                <h2>價錢:<%=(int) p.getUntiPrice()%></h2>
+                <div class="pa">
+                    <div class="pu"><h2><%= p.getName()%></h2></div>
+                    <div class="pi"><img  src='<%= p.getUrl()%>'></div>
+                    <div class="pu">
+                        <h2>價錢.<%=(int) p.getUntiPrice()%></h2>
+                    </div>
+                </div>
             </li>
             <%}%>            
         </ul>

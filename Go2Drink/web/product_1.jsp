@@ -19,10 +19,10 @@
 
     <div class="right">
         <div class="sort">
-        <a href="Tea.jsp">茶類</a>
-        <a href="Feature.jsp">特調</a>
-        <a href="Smoothies.jsp">冰沙</a>
-        <a href="Coffee.jsp">咖啡</a>
+            <a href="Tea.jsp">茶類</a>
+            <a href="Feature.jsp">特調</a>
+            <a href="Smoothies.jsp">冰沙</a>
+            <a href="Coffee.jsp">咖啡</a>
         </div>
         <%
             ProductService service = new ProductService();
@@ -33,10 +33,14 @@
         %>
         <ul>            
             <% for (Product p : list) {%>
-            <li >
-                <h2><%= p.getName()%></h2>
-                <img   src='<%= p.getUrl()%>'>
-                <h2>價錢:<%=(int) p.getUntiPrice()%></h2>
+            <li>
+                <div class="pa">
+                    <div class="pu"><h2><%= p.getName()%></h2></div>
+                    <div class="pi"><img  src='<%= p.getUrl()%>'></div>
+                    <div class="pu">
+                        <h2>價錢.<%=(int) p.getUntiPrice()%></h2>
+                    </div>
+                </div>
             </li>
             <%}%>            
         </ul>

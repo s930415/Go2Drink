@@ -115,10 +115,49 @@ footer{
     height:135px;
 }
 .right ul li{
-    width: 170px;
-    display:  inline;
+    display: inline;
     float: left;
+    margin-left: 5px;
+    margin-bottom: 5px;
 }
+.pa{
+    border-right:2px #99cc00 solid;
+    border-left:2px #99cc00 solid;
+}
+.pi{
+    margin-top: 10px;
+    text-align: center;
+}
+.pu{
+    width: 150px;
+    background-color: #99cc00;
+    text-align: center;
+}
+
+
+.carpa{
+    border-right:2px #99cc00 solid;
+    border-left:2px #99cc00 solid;
+}
+.carpi{
+    margin-top: 10px;
+    text-align: center;
+}
+.carpu{
+    width: 150px;
+    background-color: #99cc00;
+    text-align: center;
+}
+.carpu button{
+    width: 70px;
+    position:relative; top:-5px; left:1px;
+}
+
+
+
+
+
+
 .button{
     width: 80px;
     clear: both;
@@ -198,12 +237,15 @@ footer{
     background-color: #00cc99;
 }
 .sort a{
-    color: #ff00cc;
+    color: #ff3333;
     text-decoration:none;
     margin: 15px;
     position:relative;
     left: 40px;
-    font-size: 20px;
+    font-size: 20px;    
+}
+.sort a:hover{
+    color: black;
 }
 .North_menu a{
     color: blue;
@@ -282,3 +324,4 @@ ul { /* 取消ul預設的內縮及樣式 */
 .drop-down-menu li:hover > ul { /* 滑鼠滑入展開次選單*/
     display: block;
 }
+
