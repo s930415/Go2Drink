@@ -27,12 +27,12 @@ public class RDBOrdersDAO implements DAOInterface<Integer, Order> {
     private static final String COL_LIST = "customer_email,receiver_address,receiver_name,receiver_phone,status,create_time";
     private static final String INSERT_ORDER_SQL = "INSERT INTO orders (customer_email,receiver_address,receiver_name,receiver_phone,status,create_time) VALUES (?,?,?,?,?,?)";
     private static final String INSERT_ORDER_ITEN_SQL = "INSERT INTO order_items (order_id , product_id , price , quantity , product_ice , product_topping , product_sugar) VALUES (?,?,?,?,?,?,?)";
-    private static final String SELECT_ORDER_ITEMS_BY_ORDER_EMAIL = "SELECT id, created_time, order.status,"
-            + "receiver_address,receiver_name,receiver_email, receiver_phone,"
+    private static final String SELECT_ORDER_ITEMS_BY_ORDER_EMAIL = "SELECT id, create_time, orders.status,"
+            + "receiver_address,receiver_name,receiver_phone,"
             + "SUM(price*quantity) as total_amount FROM orders "
             + "INNER JOIN order_items ON orders.id = order_items.order_id "
-            + "WHERE customer_name=? AND order_items.free=false "
-            + "GROUP BY orders.id";
+            + "WHERE customer_email=? GROUP BY orders.id";
+    private static final String SELECT_ORDER_BY_ID = "SELECT FROM orders WHERE id = ?";
 
     @Override
     public void delete(Order c) throws Go2DrinkException {
@@ -41,7 +41,17 @@ public class RDBOrdersDAO implements DAOInterface<Integer, Order> {
 
     @Override
     public Order get(Integer id) throws Go2DrinkException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Order o = new Order();
+//      try(Connection connection = RDBConnection.getConnection());
+//      PreparedStatement pstmt = connection.prepareStatement(SELECT_ORDER_BY_ID);){
+//          pstmt.setInt(1, id);
+//          try(ResultSet rs=pstmt.executeQuery();){
+//              o.setId(rs.getInt("id"));
+//              o.setCustomer(rs.customer);
+
+//          }
+//      }
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
@@ -68,7 +78,6 @@ public class RDBOrdersDAO implements DAOInterface<Integer, Order> {
                 pstmt.setString(4, order.getReceiverPhone());
                 pstmt.setInt(5, order.getStatus());
                 pstmt.setTimestamp(6, new java.sql.Timestamp(order.getCreatedTime().getTime()));
-                
 
                 pstmt.executeUpdate();
 
@@ -91,7 +100,7 @@ public class RDBOrdersDAO implements DAOInterface<Integer, Order> {
                 connection.commit();
             } catch (SQLException ex) {
                 connection.rollback();
-                throw  ex;
+                throw ex;
             } finally {
                 connection.setAutoCommit(true);
             }
@@ -102,7 +111,7 @@ public class RDBOrdersDAO implements DAOInterface<Integer, Order> {
 
     }
 
-    public List<Order> getByCustomer(String customerEmail) throws Go2DrinkException{
+    public List<Order> getByCustomer(String customerEmail) throws Go2DrinkException {
         List<Order> list = new ArrayList<>();
         try (Connection connection = RDBConnection.getConnection();
                 PreparedStatement pstmt = connection.prepareStatement(SELECT_ORDER_ITEMS_BY_ORDER_EMAIL);) {
@@ -112,10 +121,9 @@ public class RDBOrdersDAO implements DAOInterface<Integer, Order> {
                     Order o = createOrderObject(null);
 
                     o.setId(rs.getInt("id"));
-                    o.setCreatedTime(rs.getDate("create_time")); //TimeStamp
+                    o.setCreatedTime(rs.getTime("create_time")); //TimeStamp
                     o.setStatus(rs.getInt("status"));
                     o.setReceiverName(rs.getString("receiver_name"));
-                    o.setReceiverEmail(rs.getString("receiver_email"));
                     o.setReceiverPhone(rs.getString("receiver_phone"));
                     o.setReceiverAddress(rs.getString("receiver_address"));
                     o.setTotalAmount(rs.getDouble("total_amount"));
@@ -127,8 +135,9 @@ public class RDBOrdersDAO implements DAOInterface<Integer, Order> {
         } catch (SQLException ex) {
             throw new Go2DrinkException("查詢客戶歷史訂單失敗!", ex);
         }
-        
+
     }
+
     private Order createOrderObject(String type) {
         return new Order();
     }

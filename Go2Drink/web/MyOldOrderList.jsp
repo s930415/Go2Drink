@@ -25,10 +25,27 @@
             <%
                 OrderService service = new OrderService();
                 List<Order> list = service.getByCustomer(user.getEmail());
-            %>    
+            %>
+            <table>
+                <tr>
+                    <th>送貨地址</th>
+                    <th>收貨人</th>
+                    <th>總價</th>
+                    <th>日期</th>
+                </tr>
 
-            <%= list%>
-
+                <%for (Order o : list) {
+                %>
+                <tr>
+                    <td><%=o.getReceiverAddress()%> </td>
+                    <td> <%=o.getReceiverName()%> </td>
+                    <td> <%= o.getTotalAmount()%></td>
+                    <td><%=o.getCreatedTime()%> </td>
+                <input name="<%=o.getId()%>"hidden="">
+                <td><a href="${pageContext.request.contextPath}/MyOldOrderListDetail.jsp?oid=<%=o.getId()%>"><input type="button" value="查詢"></a></td>
+                </tr>
+                <%}%>
+            </table>
         </div>
 
         <img src="image/底線.jpg" width="750px">
