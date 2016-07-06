@@ -23,7 +23,6 @@ public class RDBCustomersDAO {
 
     private static final String UPDATE_SQL =  "UPDATE customer" + " SET name = ? , gender = ?, password = ?,birthday = ?, address = ?,phone = ?,status = ? WHERE email=?";
     private static final String DELETE_SQL = "DELETE FROM customer WHERE email = ?";
-    
     //查詢單筆
     public void insert(Customer c) throws Go2DrinkException{
         try (Connection connection = RDBConnection.getConnection();
@@ -135,5 +134,4 @@ public class RDBCustomersDAO {
             throw new Go2DrinkException("刪除客戶失敗", ex);
         }
     }
-    
 }

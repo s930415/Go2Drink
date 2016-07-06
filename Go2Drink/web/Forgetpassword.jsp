@@ -27,7 +27,7 @@
     <div class="right">
         <img src="image/找回密碼.jpg" width="750px"/>
         <h1>忘記密碼</h1>
-        <form id="forgetpassword">
+        <form method="POST" action="forgetpassword.do">
             <p>
                 <label>會員帳號:</label>
                 <input type="email" id="email" name="email" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$+?\.[a-zA-Z]{2,3}$" placeholder="請輸入信箱" required="">

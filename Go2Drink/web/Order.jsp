@@ -9,7 +9,13 @@
 <jsp:include page="WEB-INF/subviews/header.jsp">
     <jsp:param name="sub_title" value="<%=this.getServletInfo()%>"/>
 </jsp:include>
+<%session.setAttribute("url", request.getRequestURI());%>
 <%
+    Customer user = (Customer) session.getAttribute("user");
+    if (user == null) {
+        response.sendRedirect(request.getContextPath() + "/Login.jsp");
+        return;
+    }
     ProductService service = new ProductService();
     List<Product> list = service.getByDrinkType(DrinkType.TEA);
 %>
@@ -240,7 +246,7 @@
             <img src="image/底線.jpg" width="400px">
             <%
                 } else {
-                    Customer user = (Customer) request.getSession().getAttribute("user");
+                    user = (Customer) request.getSession().getAttribute("user");
                     if (user != null && !user.equals(cart.getUser())) {
                         cart.setUser(user);
                     }

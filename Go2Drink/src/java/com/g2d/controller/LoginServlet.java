@@ -41,6 +41,7 @@ public class LoginServlet extends HttpServlet {
         List<String> errors = new ArrayList<>();
         request.setCharacterEncoding("utf-8");
         //1.讀取並檢查表單傳來參數
+        String url =(String) request.getSession().getAttribute("url");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String check_code = request.getParameter("check_code");
@@ -91,8 +92,14 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("user", c);
                // request.setAttribute("customer", c);              session生命週期較久
                 //RequestDispatcher dispatcher = request.getRequestDispatcher("Customer.jsp");
-                //dispatcher.forward(request, response);
-                response.sendRedirect("CustomerModify.jsp");
+                //dispatcher.forward(request, response); 
+                System.out.println(url);
+                if(url!=null){
+                    session.removeAttribute("url");
+                response.sendRedirect(url);
+                }else {
+                  response.sendRedirect("CustomerModify.jsp");  
+                }
                 return;
             } catch (Go2DrinkException ex) {
                 errors.add(ex.getMessage());

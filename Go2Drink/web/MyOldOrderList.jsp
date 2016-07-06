@@ -6,6 +6,7 @@
 <jsp:include page="WEB-INF/subviews/header.jsp">
     <jsp:param name="sub_title" value="<%=this.getServletInfo()%>"/>
 </jsp:include>
+<%session.setAttribute("url", request.getRequestURI());%>
 <%
     Customer user = (Customer) session.getAttribute("user");
     if (user == null) {
@@ -13,6 +14,7 @@
         return;
     }
 %>
+
 <div class="page-container">
     <div class="left">
         <img src="image/Cart.png" width="200">

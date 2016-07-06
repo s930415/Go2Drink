@@ -1,10 +1,11 @@
-package com.g2d.test;
+package com.g2d.model;
+import com.g2d.domain.Customer;
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 
-public class TestMail {
-    public static void main(String[] args) {
+public class MailService {
+    public void sendPassword(Customer c){
         String host = "smtp.gmail.com";
         int port = 587;
         final String username = "com.go2drink@gmail.com";
@@ -24,9 +25,9 @@ public class TestMail {
         try {
             Message message = new MimeMessage(session);
             //message.setFrom(new InternetAddress("admin@uuu.com.tw"));//虛擬寄件人
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("sead000003@gmail.com")); //收件人
-            message.setSubject("測試寄信.");
-            message.setText("Dear Levin, \n\n 測試 測試 測試 測試 測試 測試 email !");
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(c.getEmail())); //收件人
+            message.setSubject("Your Go2Drink Information!!");
+            message.setText("Dear"+c.getName()+" \n\n 你查詢密碼的結果如下: \n\n " + c.getPassword());
 
             Transport transport = session.getTransport("smtp");
             transport.connect(host, port, username, password);
