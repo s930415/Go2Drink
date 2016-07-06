@@ -48,7 +48,7 @@ public class RDBOrdersDAO implements DAOInterface<Integer, Order> {
 //          try(ResultSet rs=pstmt.executeQuery();){
 //              o.setId(rs.getInt("id"));
 //              o.setCustomer(rs.customer);
-
+//
 //          }
 //      }
         throw new UnsupportedOperationException("Not supported yet.");
@@ -93,8 +93,8 @@ public class RDBOrdersDAO implements DAOInterface<Integer, Order> {
                     pstmt2.setDouble(3, item.getPrice());
                     pstmt2.setInt(4, item.getQuantity());
                     pstmt2.setString(5, item.getIce());
-                    pstmt2.setString(6, item.getSugar());
-                    pstmt2.setString(7, item.getTopping());
+                    pstmt2.setString(6, item.getTopping());
+                    pstmt2.setString(7, item.getSugar());
                     pstmt2.executeUpdate();
                 }
                 connection.commit();
