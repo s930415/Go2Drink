@@ -52,7 +52,7 @@ header{
 .drop-down-menu a:hover { /* 滑鼠滑入按鈕變色*/
     color: #3333ff;
 }
-.drop-down-menu ul {
+.drop-down-menu ul{
     border: #ccc 1px solid;
     position: absolute;
     z-index: 99;
@@ -61,6 +61,7 @@ header{
     min-width: 150px;
 }
 .drop-down-menu ul li {
+    top: -30px;
     border-bottom: #ccc 1px solid;
     font-family: "Microsoft JhengHei";
 }

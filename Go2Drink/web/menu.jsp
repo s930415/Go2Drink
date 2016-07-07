@@ -13,7 +13,7 @@
     </div>
     <div class="right">
         <div id="main_content"> 							
-            <img src="image/MENU.jpg">		
+            <img src="image/MENU.png">		
         </div>  
     </div>
 </div>
