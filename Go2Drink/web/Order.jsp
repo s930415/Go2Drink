@@ -275,7 +275,7 @@
 
         <div class="Order_right_input">
             <a href="settle.jsp">
-                <input type="submit" value="確認加入訂單" >
+                <input type="submit" value="確認送出" >
             </a>
         </div>
         <img src="image/底線.jpg" width="400px">
