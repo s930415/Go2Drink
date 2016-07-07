@@ -6,7 +6,7 @@
 <div class="page-container">
     <div class="left">
         <img src="image/icon/門市專區.png" width="200">
-        <p><a href="Retail.jsp">搜尋鄰近店家</a></p>
+        <p><a href="Retail.jsp">查看鄰近店家</a></p>
         <p><a href="Taipei.jsp">北區</a></p>
     </div>
     <div class="right">
@@ -22,7 +22,9 @@
                 text-shadow: 0px 2px 0px #FFF;
             }   
         </style>
-        <link rel="stylesheet" href="css/jquery.mobile.css" />
+        <!--        <script 
+                    src="http://maps.googleapis.com/maps/api/js?key=&sensor=true">
+                </script>-->
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOx-SVZy9Ecy98A5FxNChFRUGELTH5uzM"></script>
         <script src="js/jquery.js"></script>
         <script>
@@ -101,6 +103,7 @@
                 $("#location").val("Latitude: " + position.coords.latitude
                         + ", Longitude: " + position.coords.longitude);
                 latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
             }
             function errorHandler() {}
             function stopButtonHandler() {}
@@ -189,19 +192,21 @@
             }
         </script>
         <script src="js/jquery.mobile.js"></script>
-        <div data-role="page" id="home" style='width:5%;padding:1em;background-color: #99ff00;'>
-            <div data-role="content" id="content">
-                <label for="location">您的位置 :</label>
-                <input type="text" id="location" readonly></input>
-                <a href="#" id="watchButton"><button>開始定位</button></a>
-                <a href="#mapview" id="watchMapButton"><button>查看地圖</button></a>
-            </div>
-        </div>
-        <div data-role="page" id= "mapview" >
-            <div data-role="content">
-                <div id="googlemap"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<jsp:include page="WEB-INF/subviews/footer.jsp"></jsp:include>
+        <h3 style="color: #cc3300;">查看鄰近店家 :<h3>
+                <div data-role="page" id="home" style='width:90%;'>
+                    <div data-role="content" id="content">
+                        <label for="location">您的位置 :</label>
+                        <input style='width:400px;' type="text" id="location" readonly>
+                        <a href="#" id="watchButton" data-role="button"><button>開始定位</button></a>
+                        <a href="#" id="stopButton" data-role="button"><button>停止定位</button></a>
+                        <a href="#mapview" id="watchMapButton" data-role="button"><button>顯示地圖</button></a>
+                    </div>
+                </div>
+                <div data-role="page" id= "mapview" >
+                    <div data-role="content">
+                        <div id="googlemap"></div>
+                    </div>
+                </div>
+                </div>
+                </div>
+                <jsp:include page="WEB-INF/subviews/footer.jsp"></jsp:include>
