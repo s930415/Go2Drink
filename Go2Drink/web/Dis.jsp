@@ -13,7 +13,7 @@
     </div>
     <div class="right">        
         <div id="main_content"> 							
-            <p><img src="image/特色飲品.jpg"> </p>			
+            <p><img src="image/特色飲品.png"> </p>			
         </div>  
     </div>
 </div>
