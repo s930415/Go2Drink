@@ -15,23 +15,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
  * @author Administrator
  */
-public class RDBOrdersDAO implements DAOInterface<Integer, Order> {
+public class RDBOrdersDAO implements DAOInterface<Integer, Order>{
 
     private static final String COL_LIST = "customer_email,receiver_address,receiver_name,receiver_phone,status,create_time";
     private static final String INSERT_ORDER_SQL = "INSERT INTO orders (customer_email,receiver_address,receiver_name,receiver_phone,status,create_time) VALUES (?,?,?,?,?,?)";
     private static final String INSERT_ORDER_ITEN_SQL = "INSERT INTO order_items (order_id , product_id , price , quantity , product_ice , product_topping , product_sugar) VALUES (?,?,?,?,?,?,?)";
-    private static final String SELECT_ORDER_ITEMS_BY_ORDER_EMAIL = "SELECT id, create_time, orders.status,"
-            + "receiver_address,receiver_name,receiver_phone,"
-            + "SUM(price*quantity) as total_amount FROM orders "
-            + "INNER JOIN order_items ON orders.id = order_items.order_id "
-            + "WHERE customer_email=? GROUP BY orders.id";
+    private static final String SELECT_ORDER_ITEMS_BY_ORDER_EMAIL = "SELECT orders.id , orders.customer_email , orders.receiver_address , orders.receiver_name, orders.receiver_phone , orders.create_time , order_items.product_id,SUM(order_items.price*order_items.quantity) AS total_amount,order_items.product_topping,order_items.product_ice,order_items.product_sugar FROM orders INNER JOIN order_items ON orders.id = order_items.order_id WHERE customer_email = ? GROUP BY orders.id";
     private static final String SELECT_ORDER_BY_ID = "SELECT FROM orders WHERE id = ?";
 
     @Override
@@ -119,10 +114,9 @@ public class RDBOrdersDAO implements DAOInterface<Integer, Order> {
             try (ResultSet rs = pstmt.executeQuery();) {
                 while (rs.next()) {
                     Order o = createOrderObject(null);
-
                     o.setId(rs.getInt("id"));
                     o.setCreatedTime(rs.getTime("create_time")); //TimeStamp
-                    o.setStatus(rs.getInt("status"));
+                    //o.setStatus(rs.getInt("status"));
                     o.setReceiverName(rs.getString("receiver_name"));
                     o.setReceiverPhone(rs.getString("receiver_phone"));
                     o.setReceiverAddress(rs.getString("receiver_address"));

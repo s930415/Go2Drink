@@ -1,7 +1,9 @@
 package com.g2d.domain;
+
 import java.util.*;
 
 public class Order {
+
     private int id;
     private Customer customer;
     private Date createdTime;
@@ -11,8 +13,9 @@ public class Order {
     private String receiverPhone;
 
     private double totalAmount;
-    
+
     private int status;//{0:新訂單, 1:已通知...}
+
     public int getStatus() {
         return status;
     }
@@ -20,29 +23,34 @@ public class Order {
     public void setStatus(int status) {
         this.status = status;
     }
-    
+
     private List<OrderItem> orderItemList;
+
     public void add(OrderItem item) {
-        if(orderItemList==null){
+        if (orderItemList == null) {
             orderItemList = new ArrayList<>();
         }
         orderItemList.add(item);
     }
 
     public void add(ShoppingCart cart) throws Go2DrinkException {
-        if(customer==null){
-            throw new Go2DrinkException("請先指派客戶資料");            
+        if (customer == null) {
+            throw new Go2DrinkException("請先指派客戶資料");
         }
-        
-        for(Product p:cart.keySet()){
+
+        for (Product p : cart.keySet()) {
             OrderItem item = new OrderItem();
             item.setProduct(p);
             item.setIce(p.getIce());
             item.setSugar(p.getSugar());
-            item.setTopping(p.getTopping());
+            if (p.getTopping() != null) {
+                item.setTopping(p.getTopping());
+            } else {
+                item.setTopping("無");
+            }
             item.setQuantity(cart.getQuantity(p));
             item.setPrice(p.getUntiPrice());
-                       
+
             this.add(item);
         }
     }
@@ -88,7 +96,6 @@ public class Order {
     public void setCreatedTime(Date createdTime) {
         this.createdTime = createdTime;
     }
-
 
     /**
      * @return the receiverName
@@ -141,11 +148,11 @@ public class Order {
      * @return the totalAmount
      */
     public double getTotalAmount() {
-        if(orderItemList==null || orderItemList.isEmpty()){
+        if (orderItemList == null || orderItemList.isEmpty()) {
             return totalAmount;
-        }else{
-            double sum=0;
-            for(OrderItem item:orderItemList){
+        } else {
+            double sum = 0;
+            for (OrderItem item : orderItemList) {
                 sum += item.getPrice() * item.getQuantity();
             }
             return sum;
@@ -165,6 +172,5 @@ public class Order {
     public List<OrderItem> getOrderItemList() {
         return Collections.unmodifiableList(orderItemList);
     }
-
 
 }
