@@ -1,3 +1,5 @@
+<%@page import="com.g2d.model.OrderItemService"%>
+<%@page import="com.g2d.domain.OrderItem"%>
 <%@page import="com.g2d.domain.Order"%>
 <%@page import="java.util.List"%>
 <%@page import="com.g2d.model.OrderService"%>
@@ -6,7 +8,6 @@
 <jsp:include page="WEB-INF/subviews/header.jsp">
     <jsp:param name="sub_title" value="<%=this.getServletInfo()%>"/>
 </jsp:include>
-<%session.setAttribute("url", request.getRequestURI());%>
 <%
     Customer user = (Customer) session.getAttribute("user");
     if (user == null) {
@@ -14,7 +15,6 @@
         return;
     }
 %>
-
 <div class="page-container">
     <div class="left">
         <img src="image/Cart.png" width="200">
@@ -25,26 +25,32 @@
         <img src="image/訂單線.jpg" width="750px">
         <div id="article">
             <%
-                OrderService service = new OrderService();
-                List<Order> list = service.getByCustomer(user.getEmail());
+                OrderItemService service = new OrderItemService();
             %>
             <table>
                 <tr>
-                    <th>送貨地址</th>
-                    <th>收貨人</th>
-                    <th>總價</th>
-                    <th>日期</th>
+                    <th>產品</th>
+                    <th>冰塊</th>
+                    <th>甜度</th>
+                    <th>加料</th>
+                    <th>單價</th>
+                    <th>數量</th>
                 </tr>
 
-                <%for (Order o : list) {
+                <% 
+                   String id = request.getParameter("oid");
+                int oid = Integer.parseInt(id);
+                List<OrderItem> list = service.getAll(oid);
+  
+                for(OrderItem oi : list){
                 %>
                 <tr>
-                    <td><%=o.getReceiverAddress()%> </td>
-                    <td> <%=o.getReceiverName()%> </td>
-                    <td> <%= o.getTotalAmount()%></td>
-                    <td><%=o.getCreatedTime()%> </td>
-                <input name="<%=o.getId()%>"hidden="">
-                <td><a href="${pageContext.request.contextPath}/MyOldOrderListDetail.jsp?oid=<%=o.getId()%>"><input type="button" value="查詢"></a></td>
+                    <td><%=oi.getProduct().getName()%></td>
+                    <td> <%=oi.getIce()%> </td>
+                    <td> <%=oi.getSugar()%> </td>
+                    <td><%=oi.getTopping()%> </td>
+                    <td><%=oi.getPrice()%></td> 
+                    <td><%=oi.getQuantity()%></td> 
                 </tr>
                 <%}%>
             </table>

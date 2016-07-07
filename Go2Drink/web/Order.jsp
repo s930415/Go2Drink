@@ -9,7 +9,13 @@
 <jsp:include page="WEB-INF/subviews/header.jsp">
     <jsp:param name="sub_title" value="<%=this.getServletInfo()%>"/>
 </jsp:include>
+<%session.setAttribute("url", request.getRequestURI());%>
 <%
+    Customer user = (Customer) session.getAttribute("user");
+    if (user == null) {
+        response.sendRedirect(request.getContextPath() + "/Login.jsp");
+        return;
+    }
     ProductService service = new ProductService();
     List<Product> list = service.getByDrinkType(DrinkType.TEA);
 %>
@@ -55,7 +61,7 @@
                     </td>
                     <td>
                         <select name="Topping">
-                            <option value="0">無</option>
+                            <option value="無">無</option>
                             <option value="珍珠">珍珠</option>
                             <option value="小紫蘇">小紫蘇</option>
                             <option value="小芋圓">小芋圓</option>
@@ -240,7 +246,7 @@
             <img src="image/底線.jpg" width="400px">
             <%
                 } else {
-                    Customer user = (Customer) request.getSession().getAttribute("user");
+                    user = (Customer) request.getSession().getAttribute("user");
                     if (user != null && !user.equals(cart.getUser())) {
                         cart.setUser(user);
                     }
@@ -251,12 +257,13 @@
                     for (Product p : cart.keySet()) {
                 %>
                 <form method="POST" action="UpdateCart.do">
-                    <tr>
-                        <th><h6><%= p.getName()%></h6></th>
-                        <td><h6><%= p.getIce()%></h6></td>
-                        <td><h6><%= p.getSugar()%></h6></td>
-                        <td><h6><%= cart.getQuantity(p)%></h6></td>
-                        <td><h6><%= p.getUntiPrice()%></h6></td>
+                    <tr class="orders_products">
+                        <th><h5><%= p.getName()%></h5></th>
+                        <td><h5><%= p.getIce()%></h5></td>
+                        <td><h5><%= p.getSugar()%></h5></td>
+                        <td><h5><%= p.getTopping()%></h5></td>
+                        <td><h5><%= cart.getQuantity(p)%></h5></td>
+                        <td><h5><%= p.getUntiPrice()%></h5></td>
                     <input hidden name="delete_<%=p.hashCode()%>" type="text" value="<%=p.hashCode()%>">
                     <td><input type="image" src="image/icon/20159241292753.png" width="10px" alt="submit"></td>
                     </tr>
