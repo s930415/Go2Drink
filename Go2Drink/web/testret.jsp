@@ -9,7 +9,7 @@
         <p><a href="Retail.jsp">搜尋鄰近店家</a></p>
         <p><a href="Taipei.jsp">北區</a></p>
     </div>
-    <div class="Retail_right">
+    <div class="right">
         <style>
             #googlemap {
                 background: #CCC;
@@ -189,7 +189,7 @@
             }
         </script>
         <script src="js/jquery.mobile.js"></script>
-        <div data-role="page" id="home" style='width:35%;padding:1em;background-color: #99ff00;'>
+        <div data-role="page" id="home" style='width:5%;padding:1em;background-color: #99ff00;'>
             <div data-role="content" id="content">
                 <label for="location">您的位置 :</label>
                 <input type="text" id="location" readonly></input>
