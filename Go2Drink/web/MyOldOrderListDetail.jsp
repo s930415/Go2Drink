@@ -8,6 +8,7 @@
 <jsp:include page="WEB-INF/subviews/header.jsp">
     <jsp:param name="sub_title" value="<%=this.getServletInfo()%>"/>
 </jsp:include>
+<%session.setAttribute("url", request.getRequestURI());%>
 <%
     Customer user = (Customer) session.getAttribute("user");
     if (user == null) {

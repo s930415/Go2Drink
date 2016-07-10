@@ -36,6 +36,7 @@ public class RDBOrderItemDAO {
                     ot.setTopping(rs.getString("product_topping"));
                     ot.setSugar(rs.getString("product_sugar"));
                     ot.setIce(rs.getString("product_ice"));
+                    
                     ot.setPrice(rs.getDouble("price"));
                     p.setName(rs.getString("name"));
                     ot.setProduct(p);

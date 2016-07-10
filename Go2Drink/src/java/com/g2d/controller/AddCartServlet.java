@@ -9,6 +9,7 @@ import com.g2d.domain.Customer;
 import com.g2d.domain.ShoppingCart;
 import com.g2d.domain.Product;
 import com.g2d.model.ProductService;
+import com.g2d.model.ToppingService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -42,6 +43,7 @@ public class AddCartServlet extends HttpServlet {
             try {
                 ProductService service = new ProductService();
                 Product p = service.get(pid);
+                ToppingService tservice = new ToppingService();
                 if (p != null) {
                     ShoppingCart cart = (ShoppingCart) request.getSession().getAttribute("cart");
                     if (cart == null) {
@@ -51,6 +53,8 @@ public class AddCartServlet extends HttpServlet {
                     p.setIce(request.getParameter("Ice"));
                     p.setSugar(request.getParameter("Sugar"));
                     p.setTopping(request.getParameter("Topping"));
+                    double price = tservice.get(request.getParameter("Topping")).getPrice();
+                    p.setUntiPrice(p.getUntiPrice()+price);
                     int amount = Integer.parseInt(request.getParameter("amount"));
                     
                     cart.add(p ,amount);

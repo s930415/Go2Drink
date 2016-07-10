@@ -14,10 +14,12 @@ import java.sql.SQLException;
  * @author Administrator
  */
 public class ToppingService {
+    
+    RDBToppingDAO dao = new RDBToppingDAO();
 
     public Topping get(int id) throws SQLException, Go2DrinkException {
 
-        RDBToppingDAO dao = new RDBToppingDAO();
+        
         Topping t = dao.get(id);
         return t;
 
@@ -25,7 +27,6 @@ public class ToppingService {
 
     public Topping get(String name) throws SQLException, Go2DrinkException {
 
-        RDBToppingDAO dao = new RDBToppingDAO();
         Topping t = dao.get(name);
         return t;
 

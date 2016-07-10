@@ -18,34 +18,42 @@ import java.sql.SQLException;
  */
 public class RDBToppingDAO {
 
-    private final String SELECT_TOPPING_BY_ID = "SELECT id FROM topping WHERE id = ?";
-    private final String SELECT_TOPPING_BY_NAME = "SELECT name FROM topping WHERE name = ?";
+    private final String SELECT_TOPPING_BY_ID = "SELECT * FROM topping WHERE id = ?";
+    private final String SELECT_TOPPING_BY_NAME = "SELECT * FROM topping WHERE name = ?";
 
     public Topping get(int id) throws SQLException, Go2DrinkException {
         try (Connection connection = RDBConnection.getConnection();
-                PreparedStatement pstmt = connection.prepareStatement(SELECT_TOPPING_BY_ID);) {
-            Topping t = new Topping();
+                PreparedStatement pstmt = connection.prepareStatement(SELECT_TOPPING_BY_ID)) {
             pstmt.setInt(1, id);
             try (ResultSet rs = pstmt.executeQuery();) {
-                t.setId(rs.getInt("id"));
-                t.setName(rs.getString("name"));
-                t.setPrice(rs.getDouble("price"));
+                Topping t = new Topping();
+                while (rs.next()) {
+                    t.setId(rs.getInt("id"));
+                    t.setName(rs.getString("name"));
+                    t.setPrice(rs.getDouble("price"));
+                }
+                System.out.println(t);
+                return t;
             }
-            return t;
-        }
 
+        }
     }
+
     public Topping get(String name) throws SQLException, Go2DrinkException {
         try (Connection connection = RDBConnection.getConnection();
-                PreparedStatement pstmt = connection.prepareStatement(SELECT_TOPPING_BY_ID);) {
-            Topping t = new Topping();
+                PreparedStatement pstmt = connection.prepareStatement(SELECT_TOPPING_BY_NAME);) {
             pstmt.setString(1, name);
             try (ResultSet rs = pstmt.executeQuery();) {
-                t.setId(rs.getInt("id"));
-                t.setName(rs.getString("name"));
-                t.setPrice(rs.getDouble("price"));
+                Topping t = new Topping();
+                while (rs.next()) {
+                    
+                    t.setId(rs.getInt("id"));
+                    t.setName(rs.getString("name"));
+                    t.setPrice(rs.getDouble("price"));
+
+                }
+                 return t;
             }
-            return t;
         }
 
     }

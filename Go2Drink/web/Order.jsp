@@ -62,19 +62,19 @@
                     <td>
                         <select name="Topping">
                             <option value="無">無</option>
-                            <option value="珍珠">珍珠</option>
-                            <option value="小紫蘇">小紫蘇</option>
-                            <option value="小芋圓">小芋圓</option>
-                            <option value="寒天晶球">寒天晶球</option>
-                            <option value="荔枝凍">荔枝凍</option>
-                            <option value="仙草凍">仙草凍</option>
-                            <option value="愛玉">愛玉</option>
-                            <option value="紅豆">紅豆</option>
-                            <option value="蘆薈">蘆薈</option>
-                            <option value="椰果">椰果</option>
-                            <option value="焦糖糖漿">焦糖糖漿</option>
-                            <option value="北海道糖漿">北海道糖漿</option>
-                            <option value="布丁">布丁</option>
+                            <option value="珍珠">珍珠+$5</option>
+                            <option value="小紫蘇">小紫蘇 +$5</option>
+                            <option value="小芋圓">小芋圓 +$5</option>
+                            <option value="寒天晶球">寒天晶球+$10</option>
+                            <option value="荔枝凍">荔枝凍+$10</option>
+                            <option value="仙草凍">仙草凍+$10</option>
+                            <option value="愛玉">愛玉+$10</option>
+                            <option value="紅豆">紅豆+$10</option>
+                            <option value="蘆薈">蘆薈+$10</option>
+                            <option value="椰果">椰果+$10</option>
+                            <option value="焦糖糖漿">焦糖糖漿+$10</option>
+                            <option value="北海道糖漿">北海道糖漿+$10</option>
+                            <option value="布丁">布丁+$15</option>
                         </select>
                     </td>
                     <td>
@@ -161,7 +161,7 @@
                         <%= p.getName()%>
                     </td>
                     <td>
-                        <%=(int) p.getUntiPrice()%>$
+                        $<%=(int)p.getUntiPrice()%>
                     </td>
                     <td>
                         <select name="Sugar">
@@ -243,18 +243,17 @@
                 if (cart == null || cart.isEmpty()) {
             %>
             <h3>尚無產品</h3>
-            <img src="image/底線.jpg" width="400px">
+<!--            <img src="image/底線.jpg" width="400px">-->
             <%
-                } else {
-                    user = (Customer) request.getSession().getAttribute("user");
-                    if (user != null && !user.equals(cart.getUser())) {
-                        cart.setUser(user);
-                    }
+            } else {
+                user = (Customer) request.getSession().getAttribute("user");
+                if (user != null && !user.equals(cart.getUser())) {
+                    cart.setUser(user);
                 }
+
             %>
             <table>
-                <%
-                    for (Product p : cart.keySet()) {
+                <%                    for (Product p : cart.keySet()) {
                 %>
                 <form method="POST" action="UpdateCart.do">
                     <tr class="orders_products">
@@ -268,8 +267,10 @@
                     <td><input type="image" src="image/icon/20159241292753.png" width="10px" alt="submit"></td>
                     </tr>
                 </form>
-
-                <%}%>
+                <%
+                        }
+                    }
+                %>
             </table>
         </div>
 
