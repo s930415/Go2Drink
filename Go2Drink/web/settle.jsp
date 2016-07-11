@@ -59,8 +59,13 @@
                         <td>
                             <%=  p.getUntiPrice() * cart.getQuantity(p)%>
                         </td>
+                        <%}%>
                     </tr>
-                    <%}%>
+                    <tr>
+                        <td>總價</td>
+                        <td colspan="5"></td>
+                        <td> <%= cart.getTotalAmount()%> </td>
+                    </tr>
                 </table>
             </fieldset> 
         </div>
@@ -88,16 +93,16 @@
                     <input id="receiver_phone" name="receiver_phone" value="${user.phone}" required><br>
                 </fieldset>    
                 <h5><input type="submit" value="確定送出"></h5>
-                
+
             </div>
         </form>
     </div>
-                <div style="clear: none ;height: 20px;">
-                <ul>
-                    <c:forEach items="${requestScope.errors}" var="msg">
-                        <li>${msg}</li>
-                    </c:forEach>
-                    </ul>
-                    </div>
+    <div style="clear: none ;height: 20px;">
+        <ul>
+            <c:forEach items="${requestScope.errors}" var="msg">
+                <li>${msg}</li>
+            </c:forEach>
+        </ul>
+    </div>
     <jsp:include page="WEB-INF/subviews/footer.jsp"></jsp:include>
 </div>

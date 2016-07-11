@@ -76,7 +76,7 @@ public class ShoppingCart {
         double totalAmount = 0;
         for (Product p : cart.keySet()) {
             Integer q = cart.get(p);
-            totalAmount = p.getUntiPrice() * (q == null ? 0 : q);
+            totalAmount =  totalAmount+(p.getUntiPrice() * (q == null ? 0 : q));
         }
         return totalAmount;
     }

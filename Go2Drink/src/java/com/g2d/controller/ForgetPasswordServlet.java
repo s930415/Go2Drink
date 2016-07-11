@@ -12,6 +12,7 @@ import com.g2d.model.MailService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +22,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,29 +41,51 @@ public class ForgetPasswordServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, Go2DrinkException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         List<String> errors = new ArrayList<>();
-        try {
-            Customer c = new Customer();
-            c.setBirthday(request.getParameter("birthday"));
-            c.setName(request.getParameter("name"));
-            c.setEmail(request.getParameter("email"));
-            c.setPhone(request.getParameter("phone"));
 
-            CustomerService service = new CustomerService();
-            Customer c_origin = service.getPassword(c);
-//            if (c_origin.getPassword() != null) {
-//                MailService mail = new MailService();
-//                mail.sendPassword(c_origin);
-//            } else {
-//                errors.add("輸入資料有誤");
-//            }
-        } catch (Go2DrinkException ex) {
-            throw new Go2DrinkException("資料有誤" + ex);
+        String email = request.getParameter("email");
+        String name = request.getParameter("name");
+        String phone = request.getParameter("phone");
+        String birthday = request.getParameter("birthday");
+        if (email == null || (email = email.trim()).length() == 0) {
+            errors.add("郵件為帳號,必須輸入正確!!");
+        }
+        if (name == null || (name = name.trim()).length() == 0) {
+            errors.add("名字必須輸入!!");
+        }
+        if (birthday == null || (birthday = birthday.trim()).length() == 0) {
+            errors.add("生日必須輸入正確!!");
+        }
+        if (phone == null || (phone = phone.trim()).length() == 0) {
+            errors.add("電話必須輸入!!");
+        }
+        if (errors.isEmpty()) {
+            try {
+                Customer c = new Customer();
+                c.setBirthday(request.getParameter("birthday"));
+                c.setName(request.getParameter("name"));
+                c.setEmail(request.getParameter("email"));
+                c.setPhone(request.getParameter("phone"));
+
+                CustomerService service = new CustomerService();
+                Customer c_origin = service.getPassword(c);
+                if (c_origin.getPassword() != null) {
+                    MailService mail = new MailService();
+                    mail.sendPassword(c_origin);
+                    response.sendRedirect("CustomerModify.jsp");
+
+                } else {
+                    throw new Exception("資料有誤");
+                }
+            } catch (Exception ex) {
+                errors.add("資料有誤");
+
+            }
         }
         request.setAttribute("errors", errors);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/forgetpassword.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/Forgetpassword.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -77,11 +101,9 @@ public class ForgetPasswordServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Go2DrinkException ex) {
-            Logger.getLogger(ForgetPasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+        processRequest(request, response);
+
     }
 
     /**
@@ -95,11 +117,9 @@ public class ForgetPasswordServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Go2DrinkException ex) {
-            Logger.getLogger(ForgetPasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+        processRequest(request, response);
+
     }
 
     /**

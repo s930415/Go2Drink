@@ -27,6 +27,13 @@
     <div class="right">
         <img src="image/找回密碼.jpg" width="750px"/>
         <h1>忘記密碼</h1>
+        <div class="error">
+                        <%
+                            if (request.getAttribute("errors") !=  null){
+                                %><%=request.getAttribute("errors")%><%
+                            }else{
+    }%>
+        </div>
         <form method="POST" action="forgetpassword.do">
             <p>
                 <label>會員帳號:</label>
