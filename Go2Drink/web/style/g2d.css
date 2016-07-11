@@ -152,8 +152,8 @@ footer{
     width: 720px;
     background-color: white;
 }
-.customer_right{
-
+.right form input{
+    text-align: center;
 }
 #main_content img{
     width: 100%;
@@ -291,7 +291,7 @@ footer{
     background-color: #00cc99;
 }
 .sort a{
-    color: #ff3333;
+    color: black;
     text-decoration:none;
     margin: 15px;
     position:relative;
@@ -299,7 +299,7 @@ footer{
     font-size: 20px;    
 }
 .sort a:hover{
-    color: black;
+    color: #999999;
 }
 .North_menu a{
     color: blue;
@@ -308,24 +308,9 @@ footer{
     font-size: 15px;
     text-decoration:none;
 }
-.North_menu border{
-    border-style:ridge;
-}
 .North_menu p{
     color: #cc0033;
 }
-.Retail_right {
-    min-height: 1050px;
-    margin: 20px;
-    float: left;
-    width: 720px;
-}
-.Retail_right{
-    background-image: url("../image/map.jpg");
-    background-size: 100%;
-    background-repeat: no-repeat;
-}
-
 ul { /* 取消ul預設的內縮及樣式 */ 
     margin: 0;
     padding: 0;
@@ -362,8 +347,7 @@ ul { /* 取消ul預設的內縮及樣式 */
 }
 .news_left{
     width: 285px;
-    background-color: #99cc00;
-    text-align: center;
+    background-color: #99cc00;   
     font-family: "Microsoft JhengHei";
 }
 .news_right{

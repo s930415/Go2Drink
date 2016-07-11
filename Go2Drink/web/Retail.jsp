@@ -9,29 +9,19 @@
         <p><a href="Retail.jsp">搜尋鄰近店家</a></p>
         <p><a href="Taipei.jsp">北區</a></p>
     </div>
-    <div class="Retail_right">
-        <style>
-            #googlemap {
-                background: #CCC;
-                height: 85vh;
-                border: 1px solid black;
-                padding: 10px;
-                -webkit-box-shadow: 0px 5px 5px #999;
-                -moz-box-shadow: 0px 5px 5px #999;
-                box-shadow: 0px 5px 5px #999;
-                text-shadow: 0px 2px 0px #FFF;
-            }   
-        </style>
-        <link rel="stylesheet" href="css/jquery.mobile.css" />
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOx-SVZy9Ecy98A5FxNChFRUGELTH5uzM"></script>
-        <script src="js/jquery.js"></script>
-        <script>
-            var times = 0; //紀錄watchPosition的次數
-            var watchID = undefined; //記錄定位服務的參考
-            var latlng = undefined;  //記錄google.maps.LatLng, 經緯度
-            var map = undefined; //地圖
-            var mapMarker = undefined; //大頭針
-            var image = '使用者旗子.png';
+    <div class="right">
+        <h2>查看鄰近店家</h2>
+        <form>
+            <button>開始定位</button>
+            <input type="text" style="width: 380px;" placeholder="您的座標"></input>
+            <button>顯示地圖</button>
+            <button>清除定位</button>
+        </form>
+        <br>
+        <div id="map" style="width: 620px;height: 600px;"></div>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7d9b0wI4dGKIGfuEcE7A7y7nLU0cc1T0&callback=initMap"async defer></script>
+        <script type="text/javascript">
+            var myLatLng = {lat: -25.363, lng: 131.044};
             var attrList = [
                 {attr_id: 1, address: "台北市中山區合江街113號", note: "台北合江店", lat: 25.0601, lng: 121.539},
                 {attr_id: 2, address: "台北市中山區伊通街127-4號", note: "台北長春店", lat: 25.0542, lng: 121.535},
@@ -58,150 +48,23 @@
                 {attr_id: 23, address: "桃園市中壢區健行路153號", note: "中壢健行店", lat: 24.9491, lng: 121.228},
                 {attr_id: 24, address: "桃園市楊梅區大成路162號", note: "楊梅大成店", lat: 24.9108, lng: 121.146}
             ];
-            $(document).on("pageinit", "#home", pageInitHandler);
-            $(document).on("pageinit", "#mapview", mapInitHandler);
-            /*home page init...*/
-            function pageInitHandler() {
-                $("#watchButton").on("click", watchButtonHandler);
-                $("#stopButton").on("click", stopButtonHandler);
-                prepareAttrListData();
-            }
-            function prepareAttrListData() {
+            function initMap() {
+                var myLatLng = {lat: 25.0601, lng: 121.539};
+                // Create a map object and specify the DOM element for display.
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    center: myLatLng,
+                    scrollwheel: false,
+                    zoom: 13
+                });
+                // Create a marker and set its position.
                 for (i = 0; i < attrList.length; i++) {
-                    var urlPath = "http://maps.googleapis.com/maps/api/geocode/json?address=" +
-                            attrList[i].address + "&sensor=false";
-                    var myXhr = $.ajax({
-                        url: urlPath,
-                        type: "GET",
-                        dataType: "json"}
-                    ).done(function (jsonData, textStatus, jqXHR) {
-                        var addrData = jsonData.results[0].formatted_address;
-                        var latlngData = jsonData.results[0].geometry.location.lat
-                                + "," + jsonData.results[0].geometry.location.lng;
-                        //alert(addrData + "\n" + latlngData + "\n" + jqXHR.attraction.address);
-                        var infowindow = new google.maps.InfoWindow(
-                                {content: "<div>" + addrData + "</div>", maxWidth: 180});
-                        jqXHR.attraction.infowindow = infowindow;
-                        jqXHR.attraction.latlng = new google.maps.LatLng(jsonData.results[0].geometry.location.lat
-                                , jsonData.results[0].geometry.location.lng);
-                    }).fail(function (jqXHR, textStatus, err) {
-                        alert("Error: " + err);
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: {lat: attrList[i].lat, lng: attrList[i].lng},
+                        title: 'Hello World!'
                     });
-                    myXhr.attraction = attrList[i];
-                }
-            }
-            function watchButtonHandler() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(successHandler);
-                } else {
-                    $("#location").val("Geolocation is not supported by this browser.");
-                }
-            }
-            function successHandler(position) {
-                $("#location").val("Latitude: " + position.coords.latitude
-                        + ", Longitude: " + position.coords.longitude);
-                latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            }
-            function errorHandler() {}
-            function stopButtonHandler() {}
-            /*map View init...*/
-            function mapInitHandler() {
-                $("#mapview").on("pageshow", mapViewShowHandler);
-            }
-            function mapViewShowHandler() {
-                if (latlng == undefined) {
-                    var msg = "沒有啟動GPS定位, 無法取得現在位置!";
-                    if (navigator.notification) {
-                        navigator.notification.alert(msg, null, "Warning");
-                    } else {
-                        alert(msg);
-                    }
-                    //return;
-                    try {
-                        latlng = new google.maps.LatLng(25.052848, 121.5443515);
-                    } catch (err) {
-                        alert("There was an error: " + err.message + "!\n");
-                    }
-                } else {
-                    if (watchID) {
-                        stopButtonHandler();
-                    }
-                }
-                try {
-                    var addr = undefined;
-                    var urlPath = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" +
-                            latlng.lat() + "," + latlng.lng() + "&sensor=false";
-                    //alert(urlPath);
-                    $.ajax({
-                        url: urlPath,
-                        type: "GET",
-                        dataType: "json",
-                        success: function (jsonData) {
-                            addr = jsonData.results[0].formatted_address;
-                            var infowindow = new google.maps.InfoWindow(
-                                    {content: "<div>" + addr + "</div>", maxWidth: 180});
-                            google.maps.event.clearListeners(mapMarker, 'click');
-                            google.maps.event.addListener(mapMarker, 'click',
-                                    function () {
-                                        infowindow.open(map, mapMarker);
-                                    }
-                            );
-                        },
-                        error: function (err) {
-                            alert("Error: " + err);
-                        }
-                    });
-                } catch (err) {
-                    console.log("There was an error to geocode: " + err.message + "!");
-                }
-                if (map && mapMarker) {
-                    map.panTo(latlng);
-                    mapMarker.setPosition(latlng);
-                } else {
-                    var mapOptions = {
-                        zoom: 15,
-                        center: latlng,
-                        mapTypeId: google.maps.MapTypeId.ROADMAP
-                    };
-                    map = new google.maps.Map($("#googlemap").get(0), mapOptions);
-                    mapMarker = new google.maps.Marker({
-                        position: latlng,
-                        map: map, icon: image
-                    });
-                    for (i = 0; i < attrList.length; i++) {
-                        if (!attrList[i].marker) {
-                            attrList[i].marker = new google.maps.Marker({
-                                position: attrList[i].latlng,
-                                map: map
-
-                            });
-                            attrList[i].marker.attrObj = attrList[i];
-                            google.maps.event.clearListeners(attrList[i].marker, 'click');
-                            google.maps.event.addListener(attrList[i].marker, 'click',
-                                    function (e) {
-                                        //alert(e);
-                                        this.attrObj.infowindow.open(map, this);
-                                    }
-                            );
-                        }
-                    }
                 }
             }
         </script>
-        <script src="js/jquery.mobile.js"></script>
-        <div data-role="page" id="home" style='width:35%;padding:1em;background-color: #99ff00;'>
-            <div data-role="content" id="content">
-                <label for="location">您的位置 :</label>
-                <input type="text" id="location" readonly></input>
-                <a href="#" id="watchButton"><button>開始定位</button></a>
-                <a href="#mapview" id="watchMapButton"><button>查看地圖</button></a>
-            </div>
-        </div>
-        <div data-role="page" id= "mapview" >
-            <div data-role="content">
-                <div id="googlemap"></div>
-            </div>
-        </div>
     </div>
-</div>
-<jsp:include page="WEB-INF/subviews/footer.jsp"></jsp:include>
+    <jsp:include page="WEB-INF/subviews/footer.jsp"></jsp:include>
