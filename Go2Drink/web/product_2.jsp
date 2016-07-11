@@ -37,7 +37,7 @@
                     <div class="pu"><h2><%= p.getName()%></h2></div>
                     <div class="pi"><img  src='<%= p.getUrl()%>'></div>
                     <div class="pu">
-                        <h2>價錢.<%=(int) p.getUntiPrice()%></h2>
+                        <h2>$<%=(int) p.getUntiPrice()%></h2>
                     </div>
                 </div>
             </li>

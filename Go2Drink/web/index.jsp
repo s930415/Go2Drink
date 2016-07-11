@@ -39,10 +39,25 @@
         $(".outer img:eq(" + index + ")").animate({"opacity": 1}, 500);
     }
 </script>
-<div class="left_a"> 
+<div class="left_a">
 </div>
 <div class="outer">
     <div class="photo1"></div>
 </div>
 <div class="dots"></div>
+<div class="index_massage">
+    <div class="index_left">
+        <p class="news_left">最新消息</p>
+        <ul class="news">
+            <li><a href="NewsFruit.jsp">水果茶新上市<img src="images/photo_01.jpg" width="285px"></a></li>
+            <li><a href="NewsMilk.jsp">港式奶茶新上市<img src="images/photo_04.jpg" width="285px"></a></li>
+        </ul>
+    </div>
+    <div class="index_right">
+        <p class="news_right">門市訊息</p>
+        <ul class="news">
+            <li><a href="RM2.jsp">【龍潭東龍店】7/13(三)新鮮試賣<img src="images/龍潭.jpg" width="285px"></a></li>            
+        </ul>
+    </div>
+</div>
 <jsp:include page="WEB-INF/subviews/footer.jsp"></jsp:include>

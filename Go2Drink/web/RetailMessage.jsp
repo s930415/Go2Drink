@@ -26,7 +26,7 @@
             <tr>
                 <td>02</td>
                 <td style="width: 80px"><a href="RM2.jsp"><img src="images/龍潭.jpg" style="height: 100px; width: 80px;"></a></td>
-                <td><a href="RM2.jsp">【龍潭東龍店】11/18(三)新鮮試賣</a></td>
+                <td><a href="RM2.jsp">【龍潭東龍店】7/13(三)新鮮試賣</a></td>
                 <td>2016/06/16</td>
             </tr>            
         </table>
