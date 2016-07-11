@@ -12,12 +12,12 @@
     <div class="right">
         <div class="North_menu">
             <h2><p><img src="image/北區.jpg" width="40px">北區</p></h2>
-            <border><a href="Taipei.jsp">台北市</a></border>
-            <border><a href="NewTaipei.jsp">新北市</a></border>
-            <border><a href="Keelong.jsp">基隆市</a></border>
-            <border><a href="Yilan.jsp">宜蘭縣</a></border>
-            <border><a href="Hsinchu.jsp">新竹縣市</a></border>
-            <border><a href="Taoyuan.jsp">桃園市</a></border>
+            <a href="Taipei.jsp"><button>台北市</button></a>
+            <a href="NewTaipei.jsp"><button>新北市</button></a></border>
+            <a href="Keelong.jsp"><button>基隆市</button></a>
+            <a href="Yilan.jsp"><button>宜蘭縣</button></a>
+            <a href="Hsinchu.jsp"><button>新竹縣市</button></a>
+            <a href="Taoyuan.jsp"><button>桃園市</button></a>
         </div>
         <br>
         <table class="news_table">
