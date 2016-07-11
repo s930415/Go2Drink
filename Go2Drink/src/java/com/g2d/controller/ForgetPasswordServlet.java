@@ -64,18 +64,16 @@ public class ForgetPasswordServlet extends HttpServlet {
         if (errors.isEmpty()) {
             try {
                 Customer c = new Customer();
-                c.setBirthday(request.getParameter("birthday"));
-                c.setName(request.getParameter("name"));
-                c.setEmail(request.getParameter("email"));
-                c.setPhone(request.getParameter("phone"));
+                c.setBirthday(birthday);
+                c.setName(name);
+                c.setEmail(email);
+                c.setPhone(phone);
 
                 CustomerService service = new CustomerService();
                 Customer c_origin = service.getPassword(c);
                 if (c_origin.getPassword() != null) {
-                    MailService mail = new MailService();
-                    mail.sendPassword(c_origin);
-                    response.sendRedirect("CustomerModify.jsp");
-
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/Forgetpassword.jsp");
+                    dispatcher.forward(request, response);
                 } else {
                     throw new Exception("資料有誤");
                 }
