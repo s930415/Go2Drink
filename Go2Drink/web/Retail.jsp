@@ -13,7 +13,7 @@
         <h2><p><img src="image/地區原圖.jpg" width="40px">查看鄰近店家</p></h2>
         <br>
         <div id="map" style="width: 620px;height: 600px;"></div>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7d9b0wI4dGKIGfuEcE7A7y7nLU0cc1T0&callback=initMap"async defer></script>
+        
         <script type="text/javascript">
 
             $(function () {
@@ -76,5 +76,6 @@
                 }
             });
         </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7d9b0wI4dGKIGfuEcE7A7y7nLU0cc1T0&callback=initMap"async defer></script>
     </div>
     <jsp:include page="WEB-INF/subviews/footer.jsp"></jsp:include>

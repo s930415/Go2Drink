@@ -277,6 +277,7 @@
                 <input type="submit" value="確認送出" >
             </a>
             <%} else if (cart.getTotalQuantity() > 20) {%>
+            
             <h2>數量過多請以電話訂購!!</h2>
             <%}%>
         </div>

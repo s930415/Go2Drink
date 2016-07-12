@@ -4,7 +4,7 @@
 <jsp:include page="WEB-INF/subviews/header.jsp">
     <jsp:param name="sub_title" value="<%=this.getServletInfo()%>"/>
 </jsp:include>
-<script type="text/javascript" src="jquery.js">
+<script type="text/javascript" src="js/jquery.js">
 </script>
 <script type="text/javascript">
     var photoArray = ["a.jpg"];
