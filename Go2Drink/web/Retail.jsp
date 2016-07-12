@@ -35,7 +35,7 @@
                     {attr_id: 10, address: "基隆市仁愛區愛三路40號", note: "基隆廟口店", lat: 25.1278, lng: 121.742},
                     {attr_id: 11, address: "基隆市中正區義二路27號", note: "基隆義二店", lat: 25.1311, lng: 121.745},
                     {attr_id: 12, address: "宜蘭市神農路1段142號", note: "宜蘭神農店", lat: 24.7476, lng: 121.75},
-                    {attr_id: 13, address: "新竹市東區林森路12號", note: "新竹站前店", lat: 24.8022, lng: 120.791},
+                    {attr_id: 13, address: "新竹市東區林森路12號", note: "新竹站前店", lat: 24.8022, lng: 120.971},
                     {attr_id: 14, address: "新竹市東區食品路187號", note: "新竹食品店", lat: 24.7965, lng: 120.976},
                     {attr_id: 15, address: "新竹縣竹北市文興路1段80號", note: "竹北六家店", lat: 24.812, lng: 121.025},
                     {attr_id: 16, address: "新竹縣湖口鄉中正路1段12號", note: "湖口站前店", lat: 24.9024, lng: 121.045},
@@ -58,18 +58,23 @@
                         scrollwheel: true,
                         zoom: 13
                     });
-                    mapMarker = new google.maps.Marker({position: latlng, title: "I am here!", animation: google.maps.Animation.BOUNCE});
+                    mapMarker = new google.maps.Marker({
+                        position: latlng, 
+                        title: "您的位置", 
+                        animation: google.maps.Animation.BOUNCE,
+                        icon: "使用者旗子.png"
+        });
                     mapMarker.setMap(map);
                     // Create a marker and set its position.
                     for (i = 0; i < attrList.length; i++) {
                         var marker = new google.maps.Marker({
                             map: map,
-                            position: {lat: attrList[i].lat, lng: attrList[i].lng, },
-                            title: 'Hello World!'
+                            position: {lat: attrList[i].lat, lng: attrList[i].lng },
+                            title: attrList[i].note
                         });
                     }
                 }
-            })
+            });
         </script>
     </div>
     <jsp:include page="WEB-INF/subviews/footer.jsp"></jsp:include>
