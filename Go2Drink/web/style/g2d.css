@@ -305,9 +305,6 @@ footer{
     font-size: 15px;
     text-decoration:none;
 }
-.North_menu p{
-    color: #cc0033;
-}
 ul { /* 取消ul預設的內縮及樣式 */ 
     margin: 0;
     padding: 0;

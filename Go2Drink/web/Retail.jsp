@@ -6,17 +6,11 @@
 <div class="page-container">
     <div class="left">
         <img src="image/icon/門市專區.png" width="200">
-        <p><a href="Retail.jsp">搜尋鄰近店家</a></p>
+        <p><a href="Retail.jsp">查看鄰近店家</a></p>
         <p><a href="Taipei.jsp">北區</a></p>
     </div>
     <div class="right">
-        <h2>查看鄰近店家</h2>
-        <form>
-            <button>開始定位</button>
-            <input type="text" style="width: 380px;" placeholder="您的座標"></input>
-            <button>顯示地圖</button>
-            <button>清除定位</button>
-        </form>
+        <h2><p><img src="image/地區原圖.jpg" width="40px">查看鄰近店家</p></h2>
         <br>
         <div id="map" style="width: 620px;height: 600px;"></div>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7d9b0wI4dGKIGfuEcE7A7y7nLU0cc1T0&callback=initMap"async defer></script>
