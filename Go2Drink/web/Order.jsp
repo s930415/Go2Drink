@@ -267,22 +267,23 @@
                     <td><input type="image" src="image/icon/20159241292753.png" width="10px" alt="submit"></td>
                     </tr>
                 </form>
-                <%
-                        }
-                    }
-                %>
+                <%}%>
             </table>
         </div>
 
         <div class="Order_right_input">
-            <% if (cart.getTotalQuantity() <=20) {%>
+            <%if (cart.getTotalQuantity() > 0 && cart.getTotalQuantity() <= 20) {%>
             <a href="settle.jsp">
                 <input type="submit" value="確認送出" >
             </a>
-            <%} else if (cart.getTotalQuantity() > 20){%>
-            <p>數量過多請以電話訂購</p>
+            <%} else if (cart.getTotalQuantity() > 20) {%>
+            <h2>數量過多請以電話訂購!!</h2>
             <%}%>
         </div>
+        <%
+
+            }
+        %>
         <img src="image/底線.jpg" width="400px">
     </div>
 </div>
