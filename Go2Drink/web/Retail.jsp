@@ -20,7 +20,7 @@
                 var geo;
                 var map;
                 var mapMarker;
-                navigator.geolocation.getCurrentPosition(initMap);
+                navigator.geolocation.watchPosition(initMap);
 
                 var attrList = [
                     {attr_id: 1, address: "台北市中山區合江街113號", note: "台北合江店", lat: 25.0601, lng: 121.539},
