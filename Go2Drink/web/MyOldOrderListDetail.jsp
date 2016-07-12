@@ -38,12 +38,12 @@
                     <th>數量</th>
                 </tr>
 
-                <% 
-                   String id = request.getParameter("oid");
-                int oid = Integer.parseInt(id);
-                List<OrderItem> list = service.getAll(oid);
-  
-                for(OrderItem oi : list){
+                <%
+                    String id = request.getParameter("oid");
+                    int oid = Integer.parseInt(id);
+                    List<OrderItem> list = service.getAll(oid);
+
+                    for (OrderItem oi : list) {
                 %>
                 <tr>
                     <td><%=oi.getProduct().getName()%></td>
@@ -51,13 +51,15 @@
                     <td> <%=oi.getSugar()%> </td>
                     <td><%=oi.getTopping()%> </td>
                     <td><%=oi.getPrice()%></td> 
-                    <td><%=oi.getQuantity()%></td> 
+                    <td><%=oi.getQuantity()%></td>
                 </tr>
                 <%}%>
             </table>
         </div>
-
-        <img src="image/底線.jpg" width="750px">
+        <img src="image/底線.jpg" width="750px"> 
+        <div class="orderbutton">
+            <button><a href="MyOldOrderList.jsp">回到上一頁</a></button>
+        </div>
     </div>
     <jsp:include page="WEB-INF/subviews/footer.jsp"></jsp:include>
 </div>

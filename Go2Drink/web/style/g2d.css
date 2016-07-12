@@ -275,11 +275,12 @@ footer{
     float: left;
     margin-top: 20px;
     width: max-content;
-    background-color: #ffffcc;
+
     font-size: 15px;
 }
 .Order_right_input input{
-    margin-left: 50px
+    margin-top: 10px;
+    margin-left: 160px
 }
 .Order_right_data tr{
     height: 20px;
@@ -363,6 +364,10 @@ ul { /* 取消ul預設的內縮及樣式 */
 .news li a:hover{
     color: #999999;
 } 
-
-
-
+.orderbutton{
+    text-align: center;
+}
+.orderbutton a{
+    color: black;
+    text-decoration:none;
+}
