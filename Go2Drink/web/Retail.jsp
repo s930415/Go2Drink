@@ -13,7 +13,7 @@
         <h2><p><img src="image/地區原圖.jpg" width="40px">查看鄰近店家</p></h2>
         <br>
         <div id="map" style="width: 620px;height: 600px;"></div>
-        
+
         <script type="text/javascript">
 
             $(function () {
@@ -59,23 +59,23 @@
                         zoom: 13
                     });
                     mapMarker = new google.maps.Marker({
-                        position: latlng, 
-                        title: "您的位置", 
+                        position: latlng,
+                        title: "您的位置",
                         animation: google.maps.Animation.BOUNCE,
                         icon: "使用者旗子.png"
-        });
+                    });
                     mapMarker.setMap(map);
                     // Create a marker and set its position.
                     for (i = 0; i < attrList.length; i++) {
                         var marker = new google.maps.Marker({
                             map: map,
-                            position: {lat: attrList[i].lat, lng: attrList[i].lng },
+                            position: {lat: attrList[i].lat, lng: attrList[i].lng},
                             title: attrList[i].note
                         });
                     }
                 }
             });
         </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7d9b0wI4dGKIGfuEcE7A7y7nLU0cc1T0&callback=initMap"async defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7d9b0wI4dGKIGfuEcE7A7y7nLU0cc1T0"  type="text/javascript"></script>
     </div>
     <jsp:include page="WEB-INF/subviews/footer.jsp"></jsp:include>
