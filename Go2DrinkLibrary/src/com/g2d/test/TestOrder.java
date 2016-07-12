@@ -5,7 +5,10 @@
  */
 package com.g2d.test;
 
+import com.g2d.domain.Go2DrinkException;
+import com.g2d.domain.Order;
 import com.g2d.model.OrderService;
+import java.util.List;
 
 /**
  *
@@ -13,14 +16,20 @@ import com.g2d.model.OrderService;
  */
 public class TestOrder {
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Go2DrinkException {
         
 
-        double[] allPrice;
-        
-        allPrice = new double[]{30,50,30,40,40,30,60,50,40,40,40};
-        
-        OrderService totoal = new OrderService();
+OrderService service = new OrderService() ; 
+
+List<Order> list = service.getByCustomer("south@yahoo.com.tw");
+
+for (Order o : list) {
+    System.out.println(o.getCreatedTime());
+}
+
+
+
+
         
     }
     

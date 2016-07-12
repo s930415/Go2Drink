@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -115,7 +116,10 @@ public class RDBOrdersDAO implements DAOInterface<Integer, Order>{
                 while (rs.next()) {
                     Order o = createOrderObject(null);
                     o.setId(rs.getInt("id"));
-                    o.setCreatedTime(rs.getTime("create_time")); //TimeStamp
+                    
+                    o.setCreatedTime(rs.getTimestamp("create_time"));
+
+                            
                     //o.setStatus(rs.getInt("status"));
                     o.setReceiverName(rs.getString("receiver_name"));
                     o.setReceiverPhone(rs.getString("receiver_phone"));

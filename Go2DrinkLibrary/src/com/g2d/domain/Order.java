@@ -1,5 +1,7 @@
 package com.g2d.domain;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Order {
@@ -87,6 +89,9 @@ public class Order {
      * @return the createdTime
      */
     public Date getCreatedTime() {
+        
+        
+                
         return createdTime;
     }
 

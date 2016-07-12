@@ -67,24 +67,29 @@ public class ShoppingCart {
         return cart.isEmpty();
     }
 
-    public int getTotalQuantity(Product p) {
-        Integer q = cart.get(p);
-        return (q == null ? 0 : q);
+    public int getTotalQuantity() {
+        int totalQuantity = 0;
+        for (Product p : cart.keySet()) {
+            Integer q = cart.get(p);
+            totalQuantity = totalQuantity + q;
+        }
+
+        return totalQuantity;
     }
 
     public double getTotalAmount() {
         double totalAmount = 0;
         for (Product p : cart.keySet()) {
             Integer q = cart.get(p);
-            totalAmount =  totalAmount+(p.getUntiPrice() * (q == null ? 0 : q));
+            totalAmount = totalAmount + (p.getUntiPrice() * (q == null ? 0 : q));
         }
         return totalAmount;
     }
 
     @Override
     public String toString() {
-        return "購物車{" +  " user=" + user + ",\ncart=" + cart + "}\n共有" + cart.size() + "種商品,"
-                + ",實際總金額: " + getTotalAmount() +".\n";
+        return "購物車{" + " user=" + user + ",\ncart=" + cart + "}\n共有" + cart.size() + "種商品,"
+                + "總共件數:" + getTotalQuantity() + ",實際總金額: " + getTotalAmount() + ".\n" ;
     }
-    
+
 }

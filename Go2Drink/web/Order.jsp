@@ -161,7 +161,7 @@
                         <%= p.getName()%>
                     </td>
                     <td>
-                        $<%=(int)p.getUntiPrice()%>
+                        $<%=(int) p.getUntiPrice()%>
                     </td>
                     <td>
                         <select name="Sugar">
@@ -243,7 +243,7 @@
                 if (cart == null || cart.isEmpty()) {
             %>
             <h3>尚無產品</h3>
-<!--            <img src="image/底線.jpg" width="400px">-->
+            <!--            <img src="image/底線.jpg" width="400px">-->
             <%
             } else {
                 user = (Customer) request.getSession().getAttribute("user");
@@ -275,9 +275,13 @@
         </div>
 
         <div class="Order_right_input">
+            <% if (cart.getTotalQuantity() <=20) {%>
             <a href="settle.jsp">
                 <input type="submit" value="確認送出" >
             </a>
+            <%} else if (cart.getTotalQuantity() > 20){%>
+            <p>數量過多請以電話訂購</p>
+            <%}%>
         </div>
         <img src="image/底線.jpg" width="400px">
     </div>
