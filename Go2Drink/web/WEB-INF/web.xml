@@ -12,10 +12,6 @@
         <filter-name>PerformanceFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-    <listener>
-        <description>ServletContextListener,HttpSessionListener</description>
-        <listener-class>com.g2d.web.VisitorsCountListener</listener-class>
-    </listener>
     <servlet>
         <servlet-name>ImageCheckServlet</servlet-name>
         <servlet-class>com.g2d.view.ImageCheckServlet</servlet-class>
@@ -43,8 +39,16 @@
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
-    <init-param>
-        <param-name>len</param-name>
-        <param-value>4</param-value>
-    </init-param>
+    <security-constraint>
+        <display-name>Retail</display-name>
+        <web-resource-collection>
+            <web-resource-name>RetailPage</web-resource-name>
+            <description/>
+            <url-pattern>/Retail.jsp</url-pattern>
+        </web-resource-collection>
+        <user-data-constraint>
+            <description/>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
 </web-app>

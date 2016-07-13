@@ -7,6 +7,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="${pageContext.request.contextPath}/style/g2d.css" rel="stylesheet" type="text/css"/>
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/image/g2dicon.ico"/>
         <script src="${pageContext.request.contextPath}/js/jquery.js" type="text/javascript"></script>
     </head>
     <body>

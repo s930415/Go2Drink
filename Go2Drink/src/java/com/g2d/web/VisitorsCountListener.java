@@ -15,7 +15,6 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
-import javax.sql.rowset.serial.SerialArray;
 
 /**
  * Web application lifecycle listener.
