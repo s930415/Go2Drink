@@ -47,7 +47,7 @@
                     </li>
                     <li><a href="Retail.jsp"><img src="image/門市專區.jpg"width="125"></a>
                         <ul>
-                            <li><a href="Retail.jsp">搜尋店家</a>
+                            <li><a href="Retail.jsp">查看鄰近店家</a>
                             </li>
                             <li><a href="Taipei.jsp">北區</a>
                             </li>

@@ -49,14 +49,14 @@
     <div class="index_left">
         <p class="news_left">最新消息</p>
         <ul class="news">
-            <li><a href="NewsFruit.jsp">水果茶新上市<img src="images/photo_01.jpg" width="285px"></a></li>
-            <li><a href="NewsMilk.jsp">港式奶茶新上市<img src="images/photo_04.jpg" width="285px"></a></li>
+            <li><a href="news.jsp">水果茶新上市<img src="images/photo_01.jpg" width="285px"></a></li>
+            <li><a href="news.jsp">港式奶茶新上市<img src="images/photo_04.jpg" width="285px"></a></li>
         </ul>
     </div>
     <div class="index_right">
         <p class="news_right">門市訊息</p>
         <ul class="news">
-            <li><a href="RM2.jsp">【龍潭東龍店】7/13(三)新鮮試賣<img src="images/龍潭.jpg" width="285px"></a></li>            
+            <li><a href="RetailMessage.jsp">【龍潭東龍店】7/13(三)新鮮試賣<img src="images/龍潭.jpg" width="285px"></a></li>            
         </ul>
     </div>
 </div>
