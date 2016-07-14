@@ -67,12 +67,36 @@
                     mapMarker.setMap(map);
                     // Create a marker and set its position.
                     for (i = 0; i < attrList.length; i++) {
-                        var marker = new google.maps.Marker({
-                            map: map,
-                            position: {lat: attrList[i].lat, lng: attrList[i].lng},
-                            title: attrList[i].note
-                        });
+                        if (!attrList[i].marker) {
+                            attrList[i].marker = new google.maps.Marker({
+                                map: map,
+                                position: {lat: attrList[i].lat, lng: attrList[i].lng},
+                                title: attrList[i].note
+                            });
+
+//                            if (!attrList[i].infowindow) {
+//                                attrList[i].infowindow = new google.maps.InfoWindow({
+//                                    map: map,
+//                                    position: {lat: attrList[i].lat, lng: attrList[i].lng},
+//                                    content: attrList[i].address
+//                                });
+//                                google.maps.event.addListener(attrList[i].marker, 'click', function () {
+//
+//                                    attrList[i].infowindow.open(map, marker);
+//                                    alert("e");
+//                                });
+//
+//                            }
+
+                        }
                     }
+//                    for (i = 0; i < attrList.length; i++) {
+//                        google.maps.event.addListener(attrList[i].marker, 'click', function () {
+//
+//                            attrList[i].infowindow.open(map, marker);
+//                            alert("e");
+//                        });
+//                    }
                 }
             });
         </script>

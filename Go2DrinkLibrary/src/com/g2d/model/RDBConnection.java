@@ -20,7 +20,7 @@ public class RDBConnection {
     static {
         ResourceBundle bundle = null;
         try {
-            bundle = ResourceBundle.getBundle("com.g2d.model.dao");
+            bundle = ResourceBundle.getBundle("com.g2d.model.localdao");
         } catch (Exception ex) {
             System.out.println("無法讀取com.g2d.model.dao.properties");
         }
