@@ -67,28 +67,20 @@
                     mapMarker.setMap(map);
                     // Create a marker and set its position.
                     for (i = 0; i < attrList.length; i++) {
-                        if (!attrList[i].marker) {
-                            attrList[i].marker = new google.maps.Marker({
-                                map: map,
-                                position: {lat: attrList[i].lat, lng: attrList[i].lng},
-                                title: attrList[i].note
-                            });
+                        var the_marker = new google.maps.Marker({
+                            map: map,
+                            position: {lat: attrList[i].lat, lng: attrList[i].lng},
+                            title: attrList[i].note
+                        });
+                            
+                        the_marker.infowindow = new google.maps.InfoWindow({
+                            content: attrList[i].address
+                        });
+                        google.maps.event.clearListeners(the_marker, 'click');
+                        google.maps.event.addListener(the_marker, 'click', function () {
+                            this.infowindow.open(map, this);
+                        });
 
-//                            if (!attrList[i].infowindow) {
-//                                attrList[i].infowindow = new google.maps.InfoWindow({
-//                                    map: map,
-//                                    position: {lat: attrList[i].lat, lng: attrList[i].lng},
-//                                    content: attrList[i].address
-//                                });
-//                                google.maps.event.addListener(attrList[i].marker, 'click', function () {
-//
-//                                    attrList[i].infowindow.open(map, marker);
-//                                    alert("e");
-//                                });
-//
-//                            }
-
-                        }
                     }
 //                    for (i = 0; i < attrList.length; i++) {
 //                        google.maps.event.addListener(attrList[i].marker, 'click', function () {
