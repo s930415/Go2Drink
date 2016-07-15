@@ -16,6 +16,10 @@ public class RDBConnection {
     private static final String url; // = "jdbc:mysql://lotmods.ddns.net:23144/go_2_drink?zeroDateTimeBehavior=convertToNull";
     private static final String userid; // = "root";
     private static final String pwd; // = "1234";
+    
+    
+    
+    
 
     static {
         ResourceBundle bundle = null;
